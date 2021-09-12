@@ -78,3 +78,8 @@ pseed2 <- pseed2 %>%
   mutate(amp.sum=sum(amp.bl))
 pseed2 %>%
   filter(fin=="R")
+pseed.wide <- pseed2 %>%
+  select(-amp)%>%
+  pivot_wider(names_from = fin,values_from = amp.bl) %>%
+  mutate(amp.sum=L+R)%>%
+  print() 
