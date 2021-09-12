@@ -64,3 +64,17 @@ pseed.max <- pseed2%>%
   group_by(date,fin)%>%
   mutate(peak=frame %in% find.peaks(frame,amp.bl))%>%
   filter(peak==T) #new filter
+pseed.max%>%
+  ggplot(aes(x=bl.s,y=amp.bl))+geom_point()+geom_smooth(method="lm")
+amp.aov <-  aov(amp.bl~bl.s,pseed.max)
+summary(amp.aov)
+pseed.max %>%
+  group_by(fish, bl.s) %>%
+  summarize(mean.max=mean(amp.bl)) %>%
+  ggplot(aes(x=bl.s,y=mean.max,col=fish))+geom_point()+geom_smooth(method="lm")
+pseed2
+pseed2 <- pseed2 %>%
+  group_by(date,frame) %>%
+  mutate(amp.sum=sum(amp.bl))
+pseed2 %>%
+  filter(fin=="R")
