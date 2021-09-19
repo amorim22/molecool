@@ -165,12 +165,7 @@ pseed.sum.max <- pseed.sum.max%>% #join tibbles
 print(pseed.sum.max)
 
 pseed.sum.max <- pseed.sum.max%>% #neaten data
-  select(-m.s,-cm.s,-L,-R,-fish,-m.s,-cm.s,-bl.s)
-
+  select(-m.s.x,-cm.s.x,-L,-R,-fish.y,-m.s.x,-cm.s.y,-bl.s.x.y)
 print(pseed.sum.max)
 
-amp.sum.mean <- pseed.sum.max%>% pull(amp.sum.mean)
-
-pseed.sum.max
-
-ggplot(pseed.sum.max, aes(x=amp.sum.mean, y=met.rate, colour=fish))+geom_point()
+ggplot(pseed.sum.max, aes(x=amp.sum.mean, y=met.rate, colour=fish.x))+geom_point()
