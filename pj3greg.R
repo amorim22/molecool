@@ -44,19 +44,47 @@ ggplot(aes(SVL,HTotal))+geom_point()+geom_abline(slope=coef(anole.lm)[2],interce
 #make tibble with predictions
 
 SVL2 <- seq(min(anole2$SVL),max(anole2$SVL),0.1)
+
 pred.lm <- tibble(
   SVL=SVL2,
   H.pred=predict(anole.lm,newdata = data.frame(SVL=SVL2))
 )
+
 anole2%>%
-ggplot(aes(SVL,HTotal))+geom_point()+geom_point(data=pred.lm,aes(SVL,H.pred),col="blue")
+  ggplot(aes(SVL,HTotal))+geom_point()+geom_point(data=pred.lm,aes(SVL,H.pred),col="blue")
+
 summary(anole.lm)
 #summary retrieve info abt the model - include estimated response of HTotal to SVL: ex. slope
 #retrieve r^2 - pretty good model - 0.93 
 #use an allometric model this time instead - use non-linear lesat squares: nls() - approximate relationship by minimizing sum of squares of the residuals 
 #model is fit based on non-linear relationship 
+
 anole.allo <- nls(HTotal~a*SVL^b, start = list(b=1, a=1),data = anole2)
 
 summary(anole.allo)
 #need to specify starting values for parameters in the model with a list - "start"
 #"nls()" conducts a search of model parameter values to find those that reduce the sum of squares of the residuals 
+#starting points estimated on basis that scaling coefficient b is probably around 1 - data fitted a linear model well, intercept a probably is close to but not zero 
+#a and b values are significant, but no r^2 value - model not applicable to non-linear regression
+#more than we want to know if the HTotal varies with SVL or not, we want to know if the model is linear or allometric 
+#carry out likelihood ratio tests - compare likelihood of two nested models 
+#statistical property of likelihood - defined as probability - model and set of parameter values, of obtaining particular set of data
+#whichever model with higher likelihood describe our data better - better mathematical approximation
+#to compare models of any type nested or not - Akaike Information Criterion (AIC) 
+#description of model fit compares the likelihood of model against the number of parameters estimated 
+#AIC - favor model that provides the best fit to the data with as few parameters as possible 
+#use AIC for smaller sample size - AICc 
+#also calculate relative support of each model using AIC weights (AICw)
+
+anole.aic <- AICc(anole.lm,anole.allo)
+anole.aicw <- aicw(anole.aic$AICc)
+print(anole.aicw)
+#anole.allo has lower AIC score - indicate better fit 
+#relative fit is 3x better, but difference in AICc is somewhat smaller (change in AIC = 2.2)
+#change of AIC of less than 4 indicate roughly equivalent models - little difference btw our linear and allometric 
+#so we say that allometry and isometry are roughly equivalent models 
+
+#now consider effect of ecomorph on the hindlimb-SVL relationship 
+#use log-transformed data - visualize hindlimb-SVL relationship for each ecomorph in ggplot
+anole.log%>%
+  ggplot(aes(HTotal,SVL,col=Ecomorph2))+geom_point()+geom_smooth(method="lm")
