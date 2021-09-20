@@ -221,18 +221,6 @@ p.ArbPD <- anole.log%>%
   ggplot(aes(x=ArbPD, y=res))+geom_boxplot()+stat_summary(fun=mean, geom="point", size=3)
 print(p.ArbPD)
 
-anole.log%>%
-  dplyr::select(PH,res,PH.res)%>%
-  pivot_longer(cols=c("res","PH.res"))%>%
-  print%>%
-  ggplot(aes(x=PH,y=value)) +geom_boxplot() +stat_summary(fun=mean, geom="point", size=3)+facet_grid(name~.,scales = "free_y")+ylab("residual")
-
-anole.log%>%
-  dplyr::select(ArbPD,res,ArbPD.res)%>%
-  pivot_longer(cols=c("res","ArbPD.res"))%>%
-  print%>%
-  ggplot(aes(x=ArbPD,y=value)) +geom_boxplot() +stat_summary(fun=mean, geom="point", size=3)+facet_grid(name~.,scales = "free_y")+ylab("residual")
-
 #PGLS under BM, w PH
 pgls.BM3 <- gls(HTotal ~SVL * PH, correlation = corBrownian(1,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
 
@@ -250,5 +238,29 @@ pgls.OU4 <- gls(HTotal ~SVL * ArbPD, correlation = corMartins(0,phy = anole.tree
 
 #PGLS under OU, w PH + PD
 pgls.OU5 <- gls(HTotal ~SVL * PH * ArbPD, correlation = corMartins(0,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+anole.PHArbPD.aic <- AICc(pgls.BM3,pgls.BM4,pgls.BM5,pgls.OU3,pgls.OU4,pgls.OU5)
+aicw(anole.PHArbPD.aic$AICc)
+#best fit is with ArbPD, under BM - pgls.BM4
+
+anova(pgls.BM4)
+
+anole.log <- anole.log%>%
+  mutate(phylo2.res=residuals(pgls.BM4))
+
+p.ArbPD.phylo <- anole.log%>%
+ggplot(aes(x=ArbPD,y=phylo2.res)) +geom_boxplot() +stat_summary(fun=mean, geom="point", size=3)
+print(p.ArbPD.phylo)
+
+anole.log%>%
+  dplyr::select(ArbPD,res,phylo2.res)%>%
+  pivot_longer(cols=c("res","phylo2.res"))%>%
+  print%>%
+  ggplot(aes(x=ArbPD,y=value)) +geom_boxplot() +stat_summary(fun=mean, geom="point", size=3)+facet_grid(name~.,scales = "free_y")+ylab("residual")
+
+
+
+
+
 
 
