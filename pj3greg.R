@@ -135,3 +135,66 @@ p.eco+geom_boxplot()+stat_summary(fun=mean,geom="point",size=3)
 #added point with stat_summary(): apply summarizing function to already established group, plot values of summary with specified geometry
 #applied function: fun=mean, specified point with size 3
 
+#need to account for phylogeny - use phylogenetic comparative methods - PCM
+#phylogenetic generalized least squares (PGLS) may be most flexible and widely used
+#need to establish covriation matrix with tree, assume that characters have evolved in this tree under some evolutionary model
+
+anole.tree <- read.tree("anole.tre")
+plot(anole.tree,cex=0.4)
+
+#evolutionary model - under what process or mode does a trait(S) evolve over a tree
+#Brownian motion model of character evolution - random-walk 
+#value of character walks get higher or lower form previous value - sum of changes describe change in value 
+#how much the value can change over time - sigma squared - higher=greater change 
+#or use Ornstein-Uhlenbeck(OU) model: trait evolving over tree are pulled toward an optimum, assumed to model process of stabilizing selection
+#use similar ZO, sigma^2, and also optimum (theta) and strength of selection(alpha)
+#alpha determines how strongly the trait is pulled back to optimum - when a=0, no selection - OU is mechanistically identical to BM process
+
+#perform PGLS for simple regression models that doesn't include ecomorph and those that do 
+
+#PGLS under BM, no ecomorph
+pgls.BM1 <- gls(HTotal ~SVL, correlation = corBrownian(1,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+#PGLS under BM, w ecomorph
+pgls.BM2 <- gls(HTotal ~SVL * Ecomorph2, correlation = corBrownian(1,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+
+#PGLS under OU, no ecomorph
+pgls.OU1 <- gls(HTotal ~SVL, correlation = corMartins(0,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+#PGLS under OU, w, ecomorph
+pgls.OU2 <- gls(HTotal ~SVL * Ecomorph2, correlation = corMartins(0,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+#use the models to perform AIC operation - see which fit the best
+anole.phylo.aic <- AICc(pgls.BM1,pgls.BM2,pgls.OU1,pgls.OU2)
+aicw(anole.phylo.aic$AICc)
+#including Ecomorph2, under BM is best fit 
+#OU models that specify a pull to some global optimum rejected 
+#traits evolved randomly, but randomly within each lineage 
+
+#now consider whether ecomorph is significant factor in predicting HTotal-SVL relationship in a phylogenetic context - ANOVA on pgls.BM2
+anova(pgls.BM2)
+#variable remains significant - Ecomorph2 has significant effect on relationsihp-mega low p value 
+#isn't as strong as a factor when we consider phylogeny 
+
+#go back to residuals of HTotal-SVL, but now consider BM evolution of relationship over the tree 
+#mutate and redifine anole.log data to include the column for phylogenetically corrected residuals, then plot against ecomorph 
+anole.log <- anole.log%>%
+  mutate(phylo.res=residuals(pgls.BM2))
+
+p.eco.phylo <- anole.log%>%
+  ggplot(aes(x=Ecomorph2, y=phylo.res))+geom_boxplot()+stat_summary(fun=mean, geom="point", size=3)
+
+print(p.eco.phylo)
+
+#now compare phylogenetically corrected residual with uncorrected oens 
+#make anole.log tibble longer with respect to the two types of the residuals 
+#column for each type of residual - make tibble longer, with a column for both residual values and another identifying to which type of residual the value belongs 
+#ggplot faceting tool to include boxplot of both residual types in one plot 
+#facets break plot up into grid according to values in data 
+
+anole.log%>%
+  dplyr::select(Ecomorph2,res,phylo.res)%>%
+  pivot_longer(cols=c("res","phylo.res"))%>%
+  print%>%
+  ggplot(aes(x=Ecomorph2,y=value)) +geom_boxplot() +stat_summary(fun=mean, geom="point", size=3)+facet_grid(name~.,scales = "free_y")+ylab("residual")
