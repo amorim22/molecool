@@ -198,3 +198,57 @@ anole.log%>%
   pivot_longer(cols=c("res","phylo.res"))%>%
   print%>%
   ggplot(aes(x=Ecomorph2,y=value)) +geom_boxplot() +stat_summary(fun=mean, geom="point", size=3)+facet_grid(name~.,scales = "free_y")+ylab("residual")
+
+anole.log.PH.lm <- lm(HTotal~SVL+PH,anole.log)
+summary(anole.log.PH.lm)
+anova(anole.log.PH.lm)
+
+anole.log.ArbPD.lm <- lm(HTotal~SVL+ArbPD,anole.log)
+summary(anole.log.ArbPD.lm)
+anova(anole.log.ArbPD.lm)
+
+anole.log <- anole.log%>%
+  mutate(PH.res=residuals(anole.log.PH.lm))
+
+anole.log <- anole.log%>%
+  mutate(ArbPD.res=residuals(anole.log.ArbPD.lm))
+
+p.PH <- anole.log%>%
+  ggplot(aes(x=PH, y=res))+geom_boxplot()+stat_summary(fun=mean, geom="point", size=3)
+print(p.PH)
+
+p.ArbPD <- anole.log%>%
+  ggplot(aes(x=ArbPD, y=res))+geom_boxplot()+stat_summary(fun=mean, geom="point", size=3)
+print(p.ArbPD)
+
+anole.log%>%
+  dplyr::select(PH,res,PH.res)%>%
+  pivot_longer(cols=c("res","PH.res"))%>%
+  print%>%
+  ggplot(aes(x=PH,y=value)) +geom_boxplot() +stat_summary(fun=mean, geom="point", size=3)+facet_grid(name~.,scales = "free_y")+ylab("residual")
+
+anole.log%>%
+  dplyr::select(ArbPD,res,ArbPD.res)%>%
+  pivot_longer(cols=c("res","ArbPD.res"))%>%
+  print%>%
+  ggplot(aes(x=ArbPD,y=value)) +geom_boxplot() +stat_summary(fun=mean, geom="point", size=3)+facet_grid(name~.,scales = "free_y")+ylab("residual")
+
+#PGLS under BM, w PH
+pgls.BM3 <- gls(HTotal ~SVL * PH, correlation = corBrownian(1,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+#PGLS under BM, w PD
+pgls.BM4 <- gls(HTotal ~SVL * ArbPD, correlation = corBrownian(1,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+#PGLS under BM, w PH + PD
+pgls.BM5 <- gls(HTotal ~SVL * PH * ArbPD, correlation = corBrownian(1,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+#PGLS under OU, w PH
+pgls.OU3 <- gls(HTotal ~SVL * PH, correlation = corMartins(0,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+#PGLS under OU, w PD
+pgls.OU4 <- gls(HTotal ~SVL * ArbPD, correlation = corMartins(0,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+#PGLS under OU, w PH + PD
+pgls.OU5 <- gls(HTotal ~SVL * PH * ArbPD, correlation = corMartins(0,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+
