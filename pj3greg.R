@@ -88,3 +88,50 @@ print(anole.aicw)
 #use log-transformed data - visualize hindlimb-SVL relationship for each ecomorph in ggplot
 anole.log%>%
   ggplot(aes(HTotal,SVL,col=Ecomorph2))+geom_point()+geom_smooth(method="lm")
+#colors=Ecomorph2 - colors all the added geometries according to column values in Ecomorph2 
+#group data to compute multiple regression lines for geom_smooth 
+
+anole.log.eco.lm <- lm(HTotal~SVL*Ecomorph2,anole.log)
+summary(anole.log.eco.lm)
+anova(anole.log.eco.lm)
+#ANOVA test of our models - more precisely defined, two-way analysis of covariance 
+#assess effect of categorical variable (Ecomorph2) in the context of how HTotal covaries with SVL 
+#results indicate that we should reject the null hypothesis that ecomorph groups do not have separate hindlimb-SVL relationships 
+#want to know if adding Ecomorph2 parameter results in better fit compared to simple model 
+#use log-transformed data and compare with AIC and AICw to more complicated model 
+
+anole.log.lm <- lm(HTotal~SVL,anole.log)
+anova(anole.log.lm)
+
+anole.log.aic <- AICc(anole.log.lm,anole.log.eco.lm)
+aicw(anole.log.aic$AICc)
+#model with Ecomorph2 shows better fit 
+
+#now see how much ecomorph varies among anoles in HTotal-SVL relationship
+#residual - represent how much any one data point varies from prediction 
+#have a global model predicting HTotal vs. SVL on all anole species, determine how much each species deviate from prediction
+#residual of each species, look for pattern - plot residual vs. ecomorph 
+
+#compute residual based on global anole.log.lm model
+anole.log <- anole.log %>%
+  mutate(res=residuals(anole.log.lm))
+#used mutate to establish new res column that contains the residuals 
+#redefined anole.log as a tibble containing the new column 
+
+anole.log%>%
+  ggplot(aes(Ecomorph2,res))+geom_point()
+#plot residual against ecomorph2 
+#establish x variable as ecomorph2, y as residual 
+#model deviations are greatest in twig and trunk-ground ecomorphs 
+#include median residual as well - more mutaiton of data or ggplot 
+
+p.eco <- anole.log%>%
+  ggplot(aes(x=Ecomorph2,y=res))+geom_boxplot()
+  print(p.eco)
+#visualize mean instead of median 
+#add geometries to existing plot 
+
+p.eco+geom_boxplot()+stat_summary(fun=mean,geom="point",size=3)
+#added point with stat_summary(): apply summarizing function to already established group, plot values of summary with specified geometry
+#applied function: fun=mean, specified point with size 3
+
