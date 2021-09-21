@@ -257,10 +257,3 @@ anole.log%>%
   pivot_longer(cols=c("res","phylo2.res"))%>%
   print%>%
   ggplot(aes(x=ArbPD,y=value)) +geom_boxplot() +stat_summary(fun=mean, geom="point", size=3)+facet_grid(name~.,scales = "free_y")+ylab("residual")
-
-
-
-
-
-
-
