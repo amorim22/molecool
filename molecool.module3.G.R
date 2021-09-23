@@ -230,16 +230,7 @@ pgls.BM4 <- gls(HTotal ~SVL * ArbPD, correlation = corBrownian(1,phy = anole.tre
 #PGLS under BM, w PH + PD
 pgls.BM5 <- gls(HTotal ~SVL * PH * ArbPD, correlation = corBrownian(1,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
 
-#PGLS under OU, w PH
-pgls.OU3 <- gls(HTotal ~SVL * PH, correlation = corMartins(0,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
-
-#PGLS under OU, w PD
-pgls.OU4 <- gls(HTotal ~SVL * ArbPD, correlation = corMartins(0,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
-
-#PGLS under OU, w PH + PD
-pgls.OU5 <- gls(HTotal ~SVL * PH * ArbPD, correlation = corMartins(0,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
-
-anole.PHArbPD.aic <- AICc(pgls.BM3,pgls.BM4,pgls.BM5,pgls.OU3,pgls.OU4,pgls.OU5)
+anole.PHArbPD.aic <- AICc(pgls.BM3,pgls.BM4,pgls.BM5)
 aicw(anole.PHArbPD.aic$AICc)
 #best fit is with ArbPD, under BM - pgls.BM4
 
