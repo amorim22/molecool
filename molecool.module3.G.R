@@ -214,11 +214,11 @@ anole.log <- anole.log%>%
   mutate(ArbPD.res=residuals(anole.log.ArbPD.lm))
 
 p.PH <- anole.log%>%
-  ggplot(aes(x=PH, y=res))+geom_boxplot()+stat_summary(fun=mean, geom="point", size=3)
+  ggplot(aes(x=Ecomorph2, y=PH.res))+geom_boxplot()+stat_summary(fun=mean, geom="point", size=3)
 print(p.PH)
 
 p.ArbPD <- anole.log%>%
-  ggplot(aes(x=ArbPD, y=res))+geom_boxplot()+stat_summary(fun=mean, geom="point", size=3)
+  ggplot(aes(x=Ecomorph2, y=ArbPD.res))+geom_boxplot()+stat_summary(fun=mean, geom="point", size=3)
 print(p.ArbPD)
 
 #PGLS under BM, w PH
