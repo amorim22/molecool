@@ -5,7 +5,13 @@ date: "9/23/2021"
 output: html_document
 ---
 
-# Header 1
+# Introduction 
+
+<center>
+![An anolis lizard](https://www.thesprucepets.com/thmb/LlrK12XNobyOTpFfUkpMjXGJ9Hg=/1887x1415/smart/filters:no_upscale()/88521688-56a2bcf93df78cf7727961f7.jpg)
+</center>
+
+# Methods
 
 1. Visualize how hind limb length varies with size (i.e., allometry!).
   2. Visualize and asses how hind limb length vs. size relationship covary with ecological niche.
@@ -13,13 +19,11 @@ output: html_document
   4. Evaluate this hindlimb-size relationship using standard frequentist models within and without a phylogenetic context.
   5. Using an information theory approach, assess the fit of phylogenetically corrected models of hind-limb variation under different modes of character evolution.
 
-## Header 2 
-
 [class site](https://bcorgbio.github.io/class/)
 
-### Header 3
+# Results
 
-[![An anolis lizard](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Green_anole.jpg/320px-Green_anole.jpg)
+![An anolis lizard](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Green_anole.jpg/320px-Green_anole.jpg)
 
 <center>
 [![An anolis lizard](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Green_anole.jpg/320px-Green_anole.jpg)](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Green_anole.jpg/320px-Green_anole.jpg)
@@ -53,6 +57,12 @@ paged_table(anole.log, options = list(rows.print = 15))
 | trunk-ground    | Lives in the trunk-ground interface        |
 | twig            | Lives out on the twigs of trees             |
 
+#Discussion
+
+# Author Contributions
+
+# References 
+
 @article{hagey2017there,
   title={There’s more than one way to climb a tree: Limb length and microhabitat use in lizards with toe pads},
   author={Hagey, Travis J and Harte, Scott and Vickers, Mathew and Harmon, Luke J and Schwarzkopf, Lin},
@@ -65,7 +75,7 @@ paged_table(anole.log, options = list(rows.print = 15))
 
 ---
 title: "Project 4"
-author: aRtful coders
+author: molecool
 date: 22/Sep/2020
 output: html_document
 bibliography: BIOL3140.bib
