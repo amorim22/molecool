@@ -137,7 +137,7 @@ p.ArbPD <- anole.log%>%
   ggplot(aes(x=Ecomorph2, y=ArbPD.res))+geom_boxplot()+stat_summary(fun=mean, geom="point", size=3)
 print(p.ArbPD)
 
-#CPK didn't we need to plot the the HL against the residuals of the covariates (PH and PD). No mention of ecomorph. Prompt #3: Explore how both perch diameter and height effect the hindlimb-SVL relationship by plotting the residuals of your simple linear models against these covariates. This will require mutating a data tibble to include residuals from both models. Please produce two separate plots. Code to do so below. -1 pt for not including the right regression plots. Was a simple as this . . .
+#CPK didn't we need to plot the the HL against the residuals of the covariates (PH and PD). No mention of ecomorph. Prompt #3: Explore how both perch diameter and height effect the hindlimb-SVL relationship by plotting the residuals of your simple linear models against these covariates. This will require mutating a data tibble to include residuals from both models. Please produce two separate plots. Code to do so below. -1 pt for not including the right regression plots. It simple as this . . .
 
  anole.log%>%
   ggplot(aes(x=PH.res,y=HTotal))+geom_point()+geom_smooth(method="lm")
