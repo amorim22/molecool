@@ -1,0 +1,47 @@
+---
+title: "Molecool_Module5"
+author: "molecool"
+date: "10/11/2021"
+output: html_document
+bibliography: BIOL3140.bib
+---
+
+
+## Introduction
+ 
+## Methods 
+
+## Results
+
+```{r, include=FALSE}
+library(tidyverse)
+dat.f <- list.files(pattern = "Couch|active.csv") #find the files
+
+dat.l <- list() #make an empty list
+
+for(i in dat.f){
+  met.dat<- unlist(strsplit(i,"_")) #split of the filename string
+  who <- met.dat[1] #store the first element
+  activity <- gsub(".csv","",met.dat[2]) #store second element, dropping CSV with gsub()
+  dat.l[[i]]<- read_csv(i)%>%
+    mutate(who=who,activity=activity) #read, then store data with additional columns of metada in list as position unique to i
+  
+}
+dat <- do.call(rbind,dat.l) #combine the list into table
+```
+
+```{r, echo=FALSE}
+dat%>%
+  ggplot()+geom_boxplot(aes(x=activity,y=degC))+facet_grid(.~who) #plot to see what we get
+```
+
+
+## Discussion
+
+## Author Contributions
+
+## References 
+Hagey, Travis J, Scott Harte, Mathew Vickers, Luke J Harmon, and Lin Schwarzkopf. 2017. “There’s More Than One Way to Climb a Tree: Limb Length and Microhabitat Use in Lizards with Toe Pads.” PloS One 12 (9): e0184641.
+
+Poe, Steven, Adrian Nieto-Montes de Oca, Omar Torres-Carvajal, Kevin De Queiroz, Julián A Velasco, Brad Truett, Levi N Gray, et al. 2017. “A Phylogenetic, Biogeographic, and Taxonomic Study of All Extant Species of Anolis (Squamata; Iguanidae).” Systematic Biology 66 (5): 663–97.
+
