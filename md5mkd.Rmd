@@ -8,6 +8,8 @@ bibliography: BIOL3140.bib
 
 
 ## Introduction
+
+![](https://media0.giphy.com/media/4W0aCcKurdcHgfMY4Z/giphy.gif?cid=ecf05e47d1irpdy599sffuic82dlqbsf6m08s8gj69ynu7xx&rid=giphy.gif&ct=g)
  
 ## Methods 
 
@@ -31,9 +33,15 @@ dat <- do.call(rbind,dat.l) #combine the list into table
 ```
 
 ```{r, echo=FALSE}
+print(dat.l)
+```
+
+
+```{r, echo=FALSE}
 dat%>%
   ggplot()+geom_boxplot(aes(x=activity,y=degC))+facet_grid(.~who) #plot to see what we get
 ```
+
 
 
 ## Discussion
