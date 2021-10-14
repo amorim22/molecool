@@ -1,0 +1,133 @@
+---
+title: "Molecool_Module4"
+author: "molecool"
+date: "9/30/2021"
+output: html_document
+bibliography: BIOL3140.bib
+---
+
+```{r,include=FALSE}
+library(tidyverse) 
+library(ape) 
+library(nlme) 
+library(MuMIn) 
+library(geiger) 
+library(knitr)
+```
+
+<!-- for comments -->
+<style>
+div.comment pre { background-color:#ffbbbb; }
+div.comment pre.r { background-color:#ffbbbb; }
+div.comment {color: red;}
+</style>
+
+## Introduction
+ Anoles are an incredibly diverse genus of iguanian reptiles. The term ecomorph refers to morphological or behavioral adaptations to use a particular niche, and how these adaptations have arisen convergently in multiple lineages. Ecomorphology is important because it helps biologists find adaptive explanations for specific forms. The purpose of this project was to evaluate the morphological and allometric differences between ecomorphs within the genus *Anolis*. We assessed this relationship under Brownian motion and OU models of trait evolution, using phylogenetic least squares analysis. The ecological and morphological data were retrieved from a recent study of allometry and ecomorphology of anoles by @hagey2017there
+ 
+<center>
+![An anolis lizard](https://www.thesprucepets.com/thmb/LlrK12XNobyOTpFfUkpMjXGJ9Hg=/1887x1415/smart/filters:no_upscale()/88521688-56a2bcf93df78cf7727961f7.jpg)
+</center>
+ 
+## Methods 
+The tree data come from a study of the phylogenetic relationships of anoles by @poe2017phylogenetic. Using our non-transformed data, we assessed if hind limb length varies with size using linear and non-linear allometric model analysis; first asking how well the data fits each model (in the context of least squares regression and residual magnitude). We then computed the AICc if both of our models, compared their fits, and calculated the relative support of each model using AIC weights. We log transformed and visualized our size and ecological data before the analysis that follows. We constructed a model that considers ecomorph as an important variable explaining the hindlimb-SVL relationship, and performed an ANOVA test on our new model. To answer the question "is a model of hindlimb growth that includes ecomorph describing the system better than the previous model that doesn't," we established the simple model with the log-transformed data and compared it with AIC and AICw to the complex model. We visualized how much each ecomorph varies among anoles in their hindlimb-SVL relationship by plotting the mean and median residuals versus ecomorph. To account for phylogeny in statistical analysis we used Phylogenetic generalized least squares (PGLS) regression analysis both including and not including ecomorph. We considered if  Ecomorph is a significant factor in predicting the hindlimb-SVL relationship in a phylogenetic context by preforming an ANOVA and visually comparing phylogentically corrected and uncorrected residuals. 
+
+Finally, we assessed if important ecological parameters of perch height and the diameter of the perch predicts discrete patterns in the hindlimb-SVL relationship using log-transformed values. We constructed two linear models that assessed the effect of perch diameter and height. We explored how both perch diameter and  height effect the hindlimb-SVL relationship by plotting the residuals of your simple linear models against the covariates. We constructed phylogenetic least squares models of the hindlimb-SVL relationships that included the unique combinations of the two covariates. We assesed the fit of each of the three models using AICc and AICw and produced a plot that visualized the effect of the covariates on the hindlimb residuals of the best fitting PGLS model. 
+
+## Results
+In this project, data indicated that ecomorphology was an important predictor of the hindlimb-SVL relationship in anoles. According to the ΔAIC and AICw results, a model of hindlimb growth that includes ecomorph describing the system better than one that doesn’t.From the AIC results of the phylogenetic analysis, we con safely say that a phylogenetically corrected regression model that includes Ecomorph2 with traits evolving under BM is the best fit. We also concluded that the traits have evolved randomly, but randomly within each lineage. The comparison of the phylogenetic residual visualization, there was some phylogenetic signal in our hindlimb-SVL data. When considering phylogeny, the patterns of which groups vary substantially changes a lot. Our project data also indicated the ecomorph2 is not as strong as a factor when we consider phylogeny.
+
+
+
+```{r, "load the data", include=FALSE}
+anole <- read.csv("anole.dat.csv")
+anole.eco <- read.csv("anole.eco.csv")
+anole.tree <- read.tree("anole.tre")
+```
+
+```{r,"join,filter,mutate to log", include=FALSE}
+anole2 <- anole%>%
+left_join(anole.eco)%>%
+  filter(!Ecomorph%in%c("U","CH"))%>%
+  na.omit()
+
+anole.log <- anole2%>%
+  mutate_at(c("SVL","HTotal","PH","ArbPD"),log)
+```
+
+```{r,"PGLS models", include=FALSE}
+### phylogenetic GLS models
+
+#PGLS under BM, no ecomorph
+pgls.BM1 <- gls(HTotal ~SVL, correlation = corBrownian(1,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+#PGLS under BM, w ecomorph
+pgls.BM2 <- gls(HTotal ~SVL * Ecomorph2, correlation = corBrownian(1,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+#PGLS under OU, no ecomorph
+pgls.OU1 <- gls(HTotal ~SVL * Ecomorph2, correlation = corMartins(0,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+
+#PGLS under OU, w, ecomorph
+pgls.OU2 <- gls(HTotal ~SVL * Ecomorph2, correlation = corMartins(0,phy = anole.tree,form=~Species),data = anole.log, method = "ML")
+```
+
+```{r, "AIC", include=FALSE}
+#AIC operations
+anole.phylo.aic <- AICc(pgls.BM1,pgls.BM2,pgls.OU1,pgls.OU2)
+anole.phylo.aicw <- aicw(anole.phylo.aic$AICc)
+```
+
+```{r, "AIC TABLE",echo=FALSE}
+n.aic <- anole.phylo.aic%>%
+  group_by()
+
+n.aic%>%
+  kable(caption = "AICc value table of the relationship between HTotal and SVL")
+
+n.aic2 <- anole.phylo.aicw%>%
+  group_by()
+
+n.aic2%>%
+  kable(caption = "AICw value table of the relationship between HTotal and SVL")
+```
+
+```{r echo = FALSE, message = FALSE, "log-transformed HTotal vs SVL", fig.cap="Plot of the log of Snout-vent length versus the log of mean total hind-limb length in various anole species"}
+#Question 6
+
+anole.log%>%
+  ggplot(aes(HTotal,SVL,col=Ecomorph2))+geom_point()+geom_smooth(method="lm")
+
+```
+```{r include=FALSE, "add residuals"}
+#add phylo-corrected residuals
+anole.log <- anole.log%>%
+  mutate(phylo.res=residuals(pgls.BM2))
+```
+
+```{r echo = FALSE,"plot residuals", fig.cap="Boxplot of phylogenetically corrected hindlimb residuals versus anole ecomorph"}
+#plot residuals
+p.eco.phylo <- anole.log%>%
+ggplot(aes(x=Ecomorph2,y=phylo.res)) +geom_boxplot() +stat_summary(fun=mean, geom="point", size=3)
+
+print(p.eco.phylo)
+
+```
+## Discussion
+In this project, data indicated that ecomorphology was an important predictor of the hindlimb-SVL relationship in anoles. We came to this conclusion by visualizing how hind limb length varies with size,assessed how hind limb length vs. size relationship covaries with ecological niche, and utilizing standard frequentist models with and without phylogenetic context. We also assesed the fit of phylogenetically corrected models of hind-limb varuation under different modes of character evolution by using and information theory approach. These methods of ecomorphological and phylogenetic analysis can be widely applied in the field of evolutionary biology, and they can provide insight on the statistical significance of different applied geometric models and confounding factors.
+
+
+## Author Contributions
+In an effort to contribute to each others learning as a whole, Molecool team members brainstormed independently in order to tackle the more challenging aspects of the project, but worked as a group. Greg did questions 3 & 5, Jess did 1,4, & 7, Julia did 2 & 8, and Stephanie did question 6. We convened regularly to discuss questions or to troubleshoot and enjoyed working as a team. A special thanks to Professor Kenaley for the project design.
+ 
+
+<div class="comment">
+Don't need to add references manually. They will appear if the tag's bibtext entry is in the .bib file specified in YAML header. This is the beauty of bibtext!! Commenting out so you can see that they'll still appear.
+
+Excellent work!! 10/10
+
+</div>
+## References 
+<!-- Hagey, Travis J, Scott Harte, Mathew Vickers, Luke J Harmon, and Lin Schwarzkopf. 2017. “There’s More Than One Way to Climb a Tree: Limb Length and Microhabitat Use in Lizards with Toe Pads.” PloS One 12 (9): e0184641. -->
+
+<!-- Poe, Steven, Adrian Nieto-Montes de Oca, Omar Torres-Carvajal, Kevin De Queiroz, Julián A Velasco, Brad Truett, Levi N Gray, et al. 2017. “A Phylogenetic, Biogeographic, and Taxonomic Study of All Extant Species of Anolis (Squamata; Iguanidae).” Systematic Biology 66 (5): 663–97. -->
+
