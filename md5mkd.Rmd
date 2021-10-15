@@ -35,11 +35,6 @@ for(i in dat.f){
 dat <- do.call(rbind,dat.l)
 ```
 
-```{r, echo=FALSE}
-print(dat.l)
-```
-
-
 ```{r, echo=FALSE, fig.cap="Mean body Temperature of Various group members in active and rest (couch) state. Error bars indicate +/-1 standard deviation"}
 dat%>%
   ggplot(aes(x=activity,y=mean.temp, color=activity))+facet_grid(.~who) +
