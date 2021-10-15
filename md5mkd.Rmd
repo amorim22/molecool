@@ -17,19 +17,22 @@ bibliography: BIOL3140.bib
 
 ```{r, include=FALSE}
 library(tidyverse)
-dat.f <- list.files(pattern = "Couch|active.csv") #find the files
-
-dat.l <- list() #make an empty list
-
+library(ggplot2)
+dat.f <- list.files(pattern = "Couch|active.csv") 
+dat.l <- list() 
 for(i in dat.f){
-  met.dat<- unlist(strsplit(i,"_")) #split of the filename string
-  who <- met.dat[1] #store the first element
-  activity <- gsub(".csv","",met.dat[2]) #store second element, dropping CSV with gsub()
+  met.dat<- unlist(strsplit(i,"_")) 
+  who <- met.dat[1] 
+  activity <- gsub(".csv","",met.dat[2]) 
   dat.l[[i]]<- read_csv(i)%>%
-    mutate(who=who,activity=activity) #read, then store data with additional columns of metada in list as position unique to i
+    mutate(who=who,activity=activity)%>%
+    mutate(mean.temp=mean(degC))%>%
+    mutate(s.d=sd(degC))%>%
+    filter(degC>30.5)
   
 }
-dat <- do.call(rbind,dat.l) #combine the list into table
+
+dat <- do.call(rbind,dat.l)
 ```
 
 ```{r, echo=FALSE}
