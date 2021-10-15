@@ -30,7 +30,6 @@ for(i in dat.f){
     mutate(mean.temp=mean(degC))%>%
     mutate(s.d=sd(degC))%>%
     filter(degC>30.5)
-  
 }
 
 dat <- do.call(rbind,dat.l)
