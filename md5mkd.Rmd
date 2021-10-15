@@ -29,7 +29,8 @@ for(i in dat.f){
     mutate(who=who,activity=activity)%>%
     mutate(mean.temp=mean(degC))%>%
     mutate(s.d=sd(degC))%>%
-    filter(degC>30.5)
+    rowid_to_column(var = "rowid")%>%
+    filter(rowid>20)
 }
 
 dat <- do.call(rbind,dat.l)
