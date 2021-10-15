@@ -15,6 +15,7 @@ bibliography: BIOL3140.bib
 
 ## Results
 
+
 ```{r, include=FALSE}
 library(tidyverse)
 library(ggplot2)
@@ -40,9 +41,10 @@ print(dat.l)
 ```
 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.cap="Mean body Temperature of Various group members in active and rest (couch) state. Error bars indicate +/-1 standard deviation"}
 dat%>%
-  ggplot()+geom_boxplot(aes(x=activity,y=degC))+facet_grid(.~who) #plot to see what we get
+  ggplot(aes(x=activity,y=mean.temp, color=activity))+facet_grid(.~who) +
+  geom_point()+geom_errorbar(aes(ymin=mean.temp-s.d, ymax=mean.temp+s.d))
 ```
 
 
