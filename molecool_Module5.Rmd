@@ -3,7 +3,7 @@ title: "Molecool_Module5"
 author: "molecool"
 date: "10/11/2021"
 output: html_document
-bibliography: BIOL3140.bib
+bibliography: BIOL3140BT.bib
 ---
 
 
@@ -11,6 +11,8 @@ bibliography: BIOL3140.bib
 
 ![](https://media0.giphy.com/media/4W0aCcKurdcHgfMY4Z/giphy.gif?cid=ecf05e47d1irpdy599sffuic82dlqbsf6m08s8gj69ynu7xx&rid=giphy.gif&ct=g)
  
+One would expect that body temperature should rise significantly after an extensive workout, considering that a large portion of the roughly 700 muscles in the human body are contracting to move the skeleton, producing considerable amounts of heat in the process. However, many intracellular metabolic and biochemical processes that work to keep the human body functioning require specific temperatures. Therefore, human body must be able to regulate its internal temperature through its homeothermic properties to ensure a relative constant internal environment @chen2019thermometry. After working out or spending the day in the sun, body temperature should go up slightly, but will eventually be restored to its norm. So, how does one explain a fever? Fevers are a different story, but are a consequence of foreign invaders (viruses, bacteria, etc.) @atkins1960pathogenesis trying to set up a shop in our bodies. The body purposely raises its temperature temporarily via the hypothalamus in order to cook the invaders and halt the infection. In summary, body temperature can slightly change, but returns to normal shortly after!
+   
 ## Methods 
 
 ## Results
@@ -48,8 +50,9 @@ dat%>%
 
 ## Author Contributions
 
+In an effort to contribute to each other's learning as a whole, Molecool team members worked together to collect data from each other before and after exercising, assembling Arduino and coding. Once data had been properly saved and committed to the groups repository, individual team members worked on assigned bullet points before putting together the final project report. Team member Stephanie contributed by plotting mean temperature along with standard deviation, qualitatively assess the effect of activity on body temperature and adjusting csv files; team member Jessica contributed to answering the research question, the bib file, citations and coding; team member Greg contributed to the project by collecting and organizing metadata, the Rmd file as well as transferring individual inputs to the final report; team member Julia contributed to the project by helping answer the research question, citing parts as well as the describing each section of the report.
+
 ## References 
-Hagey, Travis J, Scott Harte, Mathew Vickers, Luke J Harmon, and Lin Schwarzkopf. 2017. “There’s More Than One Way to Climb a Tree: Limb Length and Microhabitat Use in Lizards with Toe Pads.” PloS One 12 (9): e0184641.
 
-Poe, Steven, Adrian Nieto-Montes de Oca, Omar Torres-Carvajal, Kevin De Queiroz, Julián A Velasco, Brad Truett, Levi N Gray, et al. 2017. “A Phylogenetic, Biogeographic, and Taxonomic Study of All Extant Species of Anolis (Squamata; Iguanidae).” Systematic Biology 66 (5): 663–97.
-
+Chen, Wenxi. “Thermometry and interpretation of body temperature.” Biomedical engineering letters vol. 9,1 3-17. 9 Feb. 2019, doi:10.1007/s13534-019-00102-2
+Atkins, Elisha. "Pathogenesis of fever." Physiological Reviews 40.3 (1960): 580-646.
