@@ -1,0 +1,47 @@
+---
+title: "Molecool_Module4"
+author: "molecool"
+date: "9/30/2021"
+output: html_document
+bibliography: BIOL3140.bib
+---
+
+```{r,include=FALSE}
+library(tidyverse) # Rember to load your libraries!
+library(ape)
+library(nlme)
+library(geiger)
+library(caper)
+library(phytools)
+library(viridis)
+library(MuMIn)
+
+#load data
+
+
+```
+
+
+## Introduction
+
+
+ 
+## Methods 
+Using our non-transformed data we assessed if body temperature oscillations vary with size using linear and non-linear allometric model analysis; first asking how well the data fits each model (in the context of least squares regression and residual magnitude).  We then computed the AICc if both of our models, compared their fits, and calculated the relative support of each model using AIC weights.
+
+
+We log transformed and visualized our size and ecological data before the analysis that follows. We constructed a model that considers ecomorph as an important variable explaining the hindlimb-SVL relationship, and performed an ANOVA test on our new model. To answer the question "is a model of hindlimb growth that includes ecomorph describing the system better than the previous model that doesn't," we established the simple model with the log-transformed data and compared it with AIC and AICw to the complex model. We visualized how much each ecomorph varies among anoles in their hindlimb-SVL relationship by plotting the mean and median residuals versus ecomorph. To account for phylogeny in statistical analysis we used Phylogenetic generalized least squares (PGLS) regression analysis both including and not including ecomorph. We considered if  Ecomorph is a significant factor in predicting the hindlimb-SVL relationship in a phylogenetic context by preforming an ANOVA and visually comparing phylogentically corrected and uncorrected residuals. 
+
+Finally, we assessed if important ecological parameters of perch height and the diameter of the perch predicts discrete patterns in the hindlimb-SVL relationship using log-transformed values. We constructed two linear models that assessed the effect of perch diameter and height. We explored how both perch diameter and  height effect the hindlimb-SVL relationship by plotting the residuals of your simple linear models against the covariates. We constructed phylogenetic least squares models of the hindlimb-SVL relationships that included the unique combinations of the two covariates. We assesed the fit of each of the three models using AICc and AICw and produced a plot that visualized the effect of the covariates on the hindlimb residuals of the best fitting PGLS model. 
+
+## Results
+
+
+## Discussion
+
+
+## Author Contributions
+
+
+## References 
+
