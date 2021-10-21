@@ -1,0 +1,81 @@
+---
+title: "Molecool_Module5"
+author: "molecool"
+date: "10/11/2021"
+output: html_document
+bibliography: BIOL3140BT.bib
+---
+
+<!-- for comments -->
+
+<style>
+div.comment pre { background-color:#ffbbbb; }
+div.comment pre.r { background-color:#ffbbbb; }
+div.comment {color: red;}
+</style>
+
+
+## Introduction
+
+![](https://media0.giphy.com/media/4W0aCcKurdcHgfMY4Z/giphy.gif?cid=ecf05e47d1irpdy599sffuic82dlqbsf6m08s8gj69ynu7xx&rid=giphy.gif&ct=g)
+ 
+One would expect that body temperature should rise significantly after an extensive workout, considering that a large portion of the roughly 700 muscles in the human body are contracting to move the skeleton, producing considerable amounts of heat in the process. However, many intracellular metabolic and biochemical processes that work to keep the human body functioning require specific temperatures. Therefore, human body must be able to regulate its internal temperature through its homeothermic properties to ensure a relative constant internal environment @chen2019thermometry. After working out or spending the day in the sun, body temperature should go up slightly, but will eventually be restored to its norm. So, how does one explain a fever? Fevers are a different story, but are a consequence of foreign invaders (viruses, bacteria, etc.) @atkins1960pathogenesis trying to set up a shop in our bodies. The body purposely raises its temperature temporarily via the hypothalamus in order to cook the invaders and halt the infection. In summary, body temperature can slightly change, but returns to normal shortly after!
+   
+## Methods 
+We followed the protocol outlined in the class website and used Adafruit's programming guide for the DHT sensor. We recorded each participant's body temperature for approximately 1 minute and 40 seconds after being sedentary in a chair for 20 minutes, and after doing jumping jacks for 5 minutes in the same environment. We copied the recorded data into strategically named csv files to be loaded into th R.Markdown file. We compiled the csv files into a data list, ran the appropriate functions in order to standardize the column names, and took the data list and bound it into a table. To make the figure, we mutated the temperature column to find the standard deviation, and filtered the data in order to only use the temperature readings after the logarithmic plateau (sensor adjustment to initial body temperature). We plotted the mean temperature with plus or minus one standard deviation and ordered the data according to each team member and activity .
+
+## Results
+The x axis shows the category of activity according to person, and the y axis is the mean body temperature in degrees Celsius. For Julia, Greg and Stephanie, the mean body temperature readings after being sedentary were higher by 1.35, 1.11, 1.8 C° (respectively) than the mean body temperature after being active. However, Jess was 0.903 degrees warmer when active in comparison with her mean sedentary reading. The standard deviation of the body temperature readings for "Couch" was higher than the standard deviation for "active" for all four members. The mean active temperature was 34.70 C° and the mean couch (resting) temperature was 35.81 C°. 
+
+```{r, include=FALSE}
+library(tidyverse)
+library(ggplot2)
+dat.f <- list.files(pattern = "Couch|active.csv") 
+dat.l <- list() 
+for(i in dat.f){
+  met.dat<- unlist(strsplit(i,"_")) 
+  who <- met.dat[1] 
+  activity <- gsub(".csv","",met.dat[2]) 
+  dat.l[[i]]<- read_csv(i)%>%
+    mutate(who=who,activity=activity)%>%
+    mutate(mean.temp=mean(degC))%>%
+    mutate(s.d=sd(degC))%>%
+    rowid_to_column(var = "rowid")%>%
+    filter(rowid>20)
+}
+
+dat <- do.call(rbind,dat.l)
+
+active.mean <- mean(34.7,32.28,32.07,32.23)
+
+couch.mean <- mean(35.81,31.40,33.42,34.03)
+```
+
+```{r, echo=FALSE, fig.cap="Mean body Temperature (C°) of Various group members in active and rest (couch) state. Error bars indicate +/-1 standard deviation"}
+dat%>%
+  ggplot(aes(x=activity,y=mean.temp, color=activity))+facet_grid(.~who) +geom_point()+
+  geom_errorbar(aes(ymin=mean.temp-s.d, ymax=mean.temp+s.d))+
+  geom_text(
+    aes(label=round(mean.temp, digits = 2)),position=position_nudge(x=-.35),size=3, colour="black")
+```
+
+## Discussion
+
+In a recent study done on the effects of physical fitness and exercise on skin temperature, the mean baseline skin temperature at rest (which was taken of the pectoral muscle) was 34.06 C° and the mean peak exercise temperature was 36.03 C° @galan2019dynamic. Our experimental research findings found that the mean resting temperature was 35.81 C° and mean active temperature was 34.70 C°, showing that on average, body temperature was higher while resting. Both studies concluded that there should be variation in body temperature depending on activity level and fitness. The criteria for participation in their study was to be a male endurance runner, whereas our study used average cardiovascular fitness and both genders in the study. Some of the differences in the findings could be accounted for by the variation in physical fitness of the participants, and other bio-physiological factors affected by age, gender, health conditions, etc. Other sources of varied results between the studies could include method and location of recorded temperature readings, as well as extent of physical exertion. 
+
+
+
+## Author Contributions
+
+In an effort to contribute to each other's learning as a whole, Molecool team members worked together to collect data from each other before and after exercising, assembling Arduino and coding. Once data had been properly saved and committed to the groups repository, individual team members worked on assigned bullet points before putting together the final project report. Team member Stephanie contributed by plotting mean temperature along with standard deviation, qualitatively assess the effect of activity on body temperature and adjusting csv files; team member Jessica contributed to the introduction, the bib file, citations and coding; team member Greg contributed to the project by collecting and organizing metadata, the Rmd file, the gif, as well as transferring individual inputs to the final report; team member Julia contributed to the project by writing up the methods, results, and discussion with citations.
+
+
+<div class="comment">
+
+Awesome work. Spot on! 10/10
+
+</div>
+
+## References 
+
+
