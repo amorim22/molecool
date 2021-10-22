@@ -24,9 +24,6 @@ mammal.aicw <- aicw(mammal.aic$AICc)
 
 print(mammal.aicw)
 
-mammal%>%
-  ggplot(aes(mass.g,temp,col=Order))+geom_point()+geom_smooth(method="lm")
-
 mammal.Order.lm <- lm(temp~mass.g*Order,mammal)
 summary(mammal.Order.lm)
 
@@ -36,15 +33,3 @@ anova(mammal.lm)
 
 mammal.Order.aic <- AICc(mammal.lm,mammal.Order.lm)
 aicw(mammal.Order.aic$AICc)
-
-mammal <- mammal %>%
-  mutate(res=residuals(mammal.Order.lm))
-
-mammal%>%
-  ggplot(aes(Order,res))+geom_point()
-
-p.Order <- mammal%>%
-  ggplot(aes(x=Order,y=res)) +geom_boxplot()
-print(p.Order)
-
-p.Order+ geom_boxplot() +stat_summary(fun=mean, geom="point", size=2)
