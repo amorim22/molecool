@@ -44,10 +44,10 @@ print(mammal.aicw)
 
 ```{r, echo=FALSE}
 mammal.aic%>%
-  kable(caption="AICc table of the relationship between mass and change in temperature")
+  kable(caption="AICc table of the comparison between linear and allometric models of the relationship between mass and change in temperature")
 
 mammal.aicw%>%
-  kable(caption="AICw table of the relationship between mass and change in temperature")
+  kable(caption="AICw table of the comparison between linear and allometric models of the relationship between mass and change in temperature")
 ```
 
 
@@ -74,10 +74,10 @@ mammal.log <- mammal.log %>%
 
 ```{r,echo=FALSE}
 mammal.log.aic%>%
-  kable(caption="AICc talbe of the relationsihp btw mass and change in temperature when recognizing order as a factor")
+  kable(caption="AICc table of the comparison between linear and allometric models of the relationship between mass and change in temperature recognizing order as a factor")
 
 mammal.log.aicw%>%
-  kable(caption="AICw talbe of the relationsihp btw mass and change in temperature when recognizing order as a factor")
+  kable(caption="AICw table of the comparison between linear and allometric models of the relationship between mass and change in temperature recognizing order as a factor")
 ```
 
 ```{r,echo=FALSE}
