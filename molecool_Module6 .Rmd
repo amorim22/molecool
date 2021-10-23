@@ -15,13 +15,12 @@ library(caper)
 library(phytools)
 library(viridis)
 library(MuMIn)
+library(knitr)
 
 #load data
-
-
 ```
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 mammal <- read_csv("mammal.temp.csv")
 mammal <- mammal %>% mutate(temp=T.high - T.low)
 
@@ -41,10 +40,23 @@ mammal.aic <- AICc(mammal.lm,mammal.allo)
 mammal.aicw <- aicw(mammal.aic$AICc)
 
 print(mammal.aicw)
+```
 
+```{r, echo=FALSE}
+mammal.aic%>%
+  kable(caption="AICc table of the relationship between mass and change in temperature")
+
+mammal.aicw%>%
+  kable(caption="AICw table of the relationship between mass and change in temperature")
+```
+
+
+```{r,echo=FALSE}
 mammal.log%>%
   ggplot(aes(mass.g,temp,col=Order))+geom_point()+geom_smooth(method="lm")
+```
 
+```{r,include=FALSE}
 mammal.log.Order.lm <- lm(temp~mass.g*Order,mammal.log)
 summary(mammal.log.Order.lm)
 anova(mammal.log.Order.lm)
@@ -53,19 +65,25 @@ mammal.log.lm  <- lm(temp~mass.g,mammal.log)
 anova(mammal.log.lm)
 
 mammal.log.aic <- AICc(mammal.log.lm,mammal.log.Order.lm)
-aicw(mammal.log.aic$AICc)
+
+mammal.log.aicw <- aicw(mammal.log.aic$AICc)
 
 mammal.log <- mammal.log %>%
   mutate(res=residuals(mammal.log.Order.lm))
+```
 
-mammal.log%>%
-  ggplot(aes(Order,res))+geom_point()
+```{r,echo=FALSE}
+mammal.log.aic%>%
+  kable(caption="AICc talbe of the relationsihp btw mass and change in temperature when recognizing order as a factor")
 
+mammal.log.aicw%>%
+  kable(caption="AICw talbe of the relationsihp btw mass and change in temperature when recognizing order as a factor")
+```
+
+```{r,echo=FALSE}
 p.Order <- mammal.log%>%
-  ggplot(aes(x=Order,y=res))+geom_boxplot()
+  ggplot(aes(x=Order,y=res))+geom_boxplot()+stat_summary(fun=mean, geom="point", size=2)
 print(p.Order)
-
-p.Order+geom_boxplot() +stat_summary(fun=mean, geom="point", size=2)
 ```
 
 

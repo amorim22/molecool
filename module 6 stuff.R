@@ -25,6 +25,8 @@ mammal.aic <- AICc(mammal.lm,mammal.allo)
 
 mammal.aicw <- aicw(mammal.aic$AICc)
 
+print(mammal.aic)
+
 print(mammal.aicw)
 
 mammal.log%>%
