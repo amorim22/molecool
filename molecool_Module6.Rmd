@@ -33,12 +33,16 @@ In undertaking this analysis, we focused on three key questions:
 
 Most importantly, answering these questions will not only help understanding how individual species are able to adjust their metabolic demands, conserve water and energy during extreme conditions as well as food scarcity, but also show evidence of such phenomenon - temporal heterothermy – within and between mammals (@ostrowski2003heterothermy). 
 
+<center>
+![](https://media3.giphy.com/media/4ZgLPakqTajjVFOVqw/giphy.gif?cid=ecf05e47bpka9henuqmfm1ew3bt4fyj6vdcgltmu6jcpm546&rid=giphy.gif&ct=g)
+</center>
+
 
 ## Methods 
 
 A portable Arduino-based temperature data acquisition system (DAQ) was constructed to enable recording of body axial temperature data over the course of 15 minutes for one designated team member from each of the 10 groups in the BIOL3140-2021 class at two different times: one at around 4 am, when the subject was least active; and the other while the subject was most active at some point in the middle of the day. Once data had been acquired, it would then be joined to last year’s BIOL3140-2020 class data, composed of 30 subjects with the same relative two readings. A number of models describing the relationship between mass and the difference between the mean highest body temperature and mean lowest body temperature were put together for all 40 participants in the study. Likewise, once both the mean mass and mean difference between highest and lowest body temperatures for the 40 human subjects were calculated, these were added a to a larger dataset containing similar data from 51 species of non-human mammals from the study by Mortola and Lanthier, and new model describing the relationship between mass and the difference between the mean highest body temperature and mean lowest body temperature between different species was constructed.
 
-Using our non-transformed data, we assessed if body temperature oscillations vary with mass using linear and non-linear allometric model analysis; first asking how well the data fits each model (in the context of least squares regression and residual magnitude).  We then computed the AIC values of both of our models, compared their fits, and calculated the relative support of each model using AIC weights.
+Using our log-transformed data, we assessed if body temperature oscillations vary with mass using linear and non-linear allometric model analysis; first asking how well the data fits each model (in the context of least squares regression and residual magnitude).  We then computed the AIC values of both of our models, compared their fits, and calculated the relative support of each model using AIC weights.
 
 ## Results
 
@@ -165,11 +169,17 @@ print(p.Order)
 ```
 
 
-In human subjects, the relationship between change in temperature and mass is best modeled by an allometric model with log transformed data. Coefficient of scaling for Temp change vs mass in humans is -0.1227, and the slope is 4.222 for an allometric relationship. Slope for Temp change vs mass in humans is -.0971, and the y intercept is 3.95 for a linear relationship.
-In other mammals, the relationship between change in temperature and mass is best modeled by a linear model in log transformed data.Coefficient of scaling for Temp change vs mass in mammals is 7.284, and the slope is -1.840 for an allometric relationship. Slope for Temp change vs mass in mammals is -.1151 and y intercept is 1.071 for a linear relationship.
+In human subjects, the relationship between change in temperature and mass is best modeled by an allometric model with log transformed data. Coefficient of scaling for Temperature change vs mass in humans is -0.1227, and the slope is 4.222 for an allometric relationship. Slope for Temperature change vs mass in humans is -.0971, and the y intercept is 3.95 for a linear relationship.
+In other mammals, the relationship between change in temperature and mass is best modeled by a linear model in log transformed data. Coefficient of scaling for Temp change vs mass in mammals is 7.284, and the slope is -1.840 for an allometric relationship. Slope for Temp change vs mass in mammals is -.1151 and y intercept is 1.071 for a linear relationship.
 
 ## Discussion
+Body temperatures of animals are usually greater than the external one, implying heat is often lost from the animals to the outside environment. Moreover, the larger an animal is, the smaller the relative surface area-to-volume ratio and so is the likelihood to lose its heat. When comparing previous studies considering this relationship, we concluded that this trend is supported by our evaluation of the mammalian data. For mammals the data showed that there is a relationship between log transformed temperature change and mammalian body mass; organisms in the orders *Rodentia*, *Carnivora*, *Primata*, and *Perissodactyla* all showed that as the body mass increased there was a decrease in temperature change. The exceptions to this trend are in the orders *Lagomorpha* and *Artiodactyla*, which showed a positive linear relationship between temperature change and body mass, this could be accounted for by that the possibility that animals may either modulate heat loss to reduce the "physical heat capacitance and body surface-mass ratio"(@mortola2004scaling).
 
+The mammalian AICc values between the linear and allometric models indicated that the allometric model fits better. The scaling coefficient for temperature change versus mass showed that for each increase in mass in kg, there is an expected increase in temperature change in degrees Celsius of 7.284. This signifies that mammals demonstrate a scaling relationship with respect to TΔ and W; this is a starkly different scaling coefficient from what we found in our human data, possibly due to the fact that we evaluated the coefficients in two different models (isometric/allometric). According to our last boxplot graph of the residuals, taxonomic group with respect to order predicts differences in this relationship across mammals.
+ 
+The data showed that there is a relationship between temperature change and human body mass. In the log transformed plot of the change in temperature (C) between nighttime and daytime temperature reading versus the subject mass of humans, the slope was -0.1227 showing that as the body mass increased there was a decrease in temperature change. The physiological explanation for this could include the larger heat capacitance of larger animals (@mortola2004scaling). The AICc comparison between the linear and allometric models of the relationship between mass and change in temperature in humans showed that the isometric model fits better.The scaling coefficient for temperature change versus mass in humans is -0.1227, meaning that for each increase in mass in kg, there is an expected decrease in temperature change in degrees Celsius of -0.1227. This signifies that humans demonstrate a scaling relationship with respect to TΔ and W.
+ 
+These findings are of significant importance to the scientific community because the data can help us to understand the physiological metabolic differences among mammals, which can aid in the development of studies researching the possible evolutionary and environmental factors that contribute to these differences.Future studies could evaluate the morphological or behavioral adaptations to use a particular niche, and how these adaptations have arisen.
 
 ## Author Contributions
 
