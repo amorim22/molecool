@@ -13,13 +13,29 @@ mammal2 <- mammal2 %>% mutate(temp2=T.high - T.low)
 mammal2.log <- mammal2%>%
 mutate_at(c("temp2", "T.high", "T.low", "mass.g"),log)
 
+mammal2.T.high.lm <- lm(T.high~mass.g,mammal2)
+mammal2.T.low.lm <- lm(T.low~mass.g,mammal2)
+mammal2.temp2.lm <- lm(temp2~mass.g,mammal2)
+
 mammal2.T.high.allo <- nls(T.high~a*mass.g^b, start=list(b=0.1, a=0.1),data = mammal2.log)
 mammal2.T.low.allo <- nls(T.low~a*mass.g^b, start=list(b=0.1, a=0.1),data = mammal2.log)
 mammal2.temp2.allo <- nls(temp2~a*mass.g^b, start=list(b=0.1, a=0.1),data = mammal2.log) 
 
-summary(mammal2.T.high.allo)
-summary(mammal2.T.low.allo)
-summary(mammal2.temp2.allo)
+mammal2.T.high.aic <- AICc(mammal2.T.high.lm,mammal2.T.high.allo)
+mammal2.T.low.aic <- AICc(mammal2.T.low.lm,mammal2.T.low.allo)
+mammal2.temp2.aic <- AICc(mammal2.temp2.lm,mammal2.temp2.allo)
+
+mammal2.T.high.aicw <- aicw(mammal2.T.high.aic$AICc)
+mammal2.T.low.aicw <- aicw(mammal2.T.low.aic$AICc)
+mammal2.temp2.aicw <- aicw(mammal2.temp2.aic$AICc)
+
+print(mammal2.T.high.aic)
+print(mammal2.T.low.aic)
+print(mammal2.temp2.aic)
+
+print(mammal2.T.high.aicw)
+print(mammal2.T.low.aicw)
+print(mammal2.temp2.aicw)
 
 m.phy <- read.tree("mammal.tree.pruned.txt")
 m.phy$tip.label <- gsub("(\\w+)_(\\w+)","\\1 \\2",m.phy$tip.label)
@@ -37,7 +53,7 @@ pgls.BM3 <- gls(temp2 ~mass.g, correlation = corBrownian(1,phy = m.phy,form=~spe
 pgls.OU1 <- gls(T.high ~mass.g, correlation = corMartins(0,phy = m.phy,form=~species),data = mammal2.log, method = "ML")
 
 #PGLS under OU, T.low
-pgls.OU2 <- gls(T.low ~mass.g, correlation = corMartins(0,phy = m.phy,form=~species),data = mammal2.log, method = "ML")
+pgls.OU2 <- gls(T.low ~mass.g, correlation = corMartins(5.05,phy = m.phy,form=~species),data = mammal2.log, method = "ML")
 
 #PGLS under OU, temp2
 pgls.OU3 <- gls(temp2 ~mass.g, correlation = corMartins(0,phy = m.phy,form=~species),data = mammal2.log, method = "ML")
