@@ -10,13 +10,132 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r,include=FALSE}
-library(tidyverse) 
-library(ape) 
-library(nlme) 
-library(MuMIn) 
-library(geiger) 
-library(knitr)
+library(tidyverse)
+library(ape)
+library(nlme)
+library(geiger)
+library(caper)
+library(phytools)
+library(viridis)
+library(MuMIn)
 ```
+
+```{r, include=FALSE}
+#load data
+mammal2 <- read_csv("mammal.temp2.csv")
+mammal2 <- mammal2 %>% 
+  mutate(temp2=T.high - T.low)
+
+mammal2.log <- mammal2%>%
+  mutate_at(c("temp2", "T.high", "T.low", "mass.g"),log)
+
+m.phy <- read.tree("mammal.tree.pruned.txt")
+m.phy$tip.label <- gsub("(\\w+)_(\\w+)","\\1 \\2",m.phy$tip.label)
+```
+
+```{r, include=FALSE}
+#T.high
+T.high.mod <- mammal2$T.high
+names(T.high.mod) <- m.phy$tip.label
+phylosig(m.phy,T.high.mod,method="lambda",test=T)
+
+T.high.lm <- lm(log(T.high.mod)~log(mass.g),mammal2)
+T.high.pgls <- gls(log(T.high.mod) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy, form = ~species))
+T.high.pgls2 <- gls(log(T.high.mod) ~ log(mass.g), mammal2, correlation=corMartins(5, m.phy, form = ~species))
+
+mammal2$m.phy.T.high.pred <- predict(T.high.pgls)
+mammal2$m.phy.T.high.pred2 <- predict(T.high.pgls2)
+
+mammal2$T.high.pred <- predict(T.high.lm)
+
+anova(T.high.lm)
+anova(T.high.pgls)
+anova(T.high.pgls2)
+
+summary(T.high.lm)
+summary(T.high.pgls)
+summary(T.high.pgls2)
+
+coef(T.high.lm)
+coef(T.high.pgls)
+coef(T.high.pgls2)
+```
+
+```{r, include=FALSE}
+#T.low
+T.low.mod <- mammal2$T.low
+names(T.low.mod) <- m.phy$tip.label
+phylosig(m.phy,T.low.mod,method="lambda",test=T)
+
+T.low.lm <- lm(log(T.low.mod)~log(mass.g),mammal2)
+T.low.pgls <- gls(log(T.low.mod) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy, form = ~species))
+T.low.pgls2 <- gls(log(T.low.mod) ~ log(mass.g), mammal2, correlation=corMartins(5.05, m.phy, form = ~species))
+
+mammal2$m.phy.T.low.pred <- predict(T.low.pgls)
+mammal2$m.phy.T.low.pred2 <- predict(T.low.pgls2)
+
+mammal2$T.low.pred <- predict(T.low.lm)
+
+anova(T.low.lm)
+anova(T.low.pgls)
+anova(T.low.pgls2)
+
+summary(T.low.lm)
+summary(T.low.pgls)
+summary(T.low.pgls2)
+
+coef(T.low.lm)
+coef(T.low.pgls)
+coef(T.low.pgls2)
+```
+
+```{r,include=FALSE}
+#temp2
+m.phy <- read.tree("mammal.tree.pruned.txt")
+m.phy$tip.label <- gsub("(\\w+)_(\\w+)","\\1 \\2",m.phy$tip.label)
+
+temp2.mod <- mammal2$temp2
+names(temp2.mod) <- m.phy$tip.label
+phylosig(m.phy,temp2.mod,method="lambda",test=T)
+
+temp2.lm <- lm(log(temp2.mod)~log(mass.g),mammal2)
+temp2.pgls <- gls(log(temp2.mod) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy, form = ~species))
+temp2.pgls2 <- gls(log(temp2.mod) ~ log(mass.g), mammal2, correlation=corMartins(5.05, m.phy, form = ~species))
+
+mammal2$m.phy.temp2.pred <- predict(temp2.pgls)
+mammal2$m.phy.temp2.pred2 <- predict(temp2.pgls2)
+mammal2$temp2.pred <- predict(temp2.lm)
+
+anova(temp2.lm)
+anova(temp2.pgls)
+anova(temp2.pgls2)
+
+summary(temp2.lm)
+summary(temp2.pgls)
+summary(temp2.pgls2)
+
+coef(temp2.lm)
+coef(temp2.pgls)
+coef(temp2.pgls2)
+```
+
+```{r, echo=FALSE}
+mammal2%>%
+  ggplot(aes(log(mass.g),log(T.high.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.T.high.pred))
+mammal2%>%
+  ggplot(aes(log(mass.g),log(T.high.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=T.high.pred))
+
+mammal2%>%
+  ggplot(aes(log(mass.g),log(T.low.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.T.low.pred))
+mammal2%>%
+  ggplot(aes(log(mass.g),log(T.low.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=T.low.pred))
+
+mammal2%>%
+  ggplot(aes(log(mass.g),log(temp2.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.temp2.pred))
+mammal2%>%
+  ggplot(aes(log(mass.g),log(temp2.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=temp2.pred))
+```
+
 
 ## Introduction
  
