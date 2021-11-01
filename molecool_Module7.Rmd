@@ -94,22 +94,23 @@ T.high.lm <- lm(log(T.high.mod)~log(mass.g),mammal2)
 T.high.pgls <- gls(log(T.high.mod) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy, form = ~species))
 T.high.pgls2 <- gls(log(T.high.mod) ~ log(mass.g), mammal2, correlation=corMartins(5, m.phy, form = ~species))
 
+T.high.aic <- AICc(T.high.pgls, T.high.pgls2)
+T.high.aicw <- aicw(T.high.aic$AICc)
+
+print(T.high.aicw)
+
 mammal2$m.phy.T.high.pred <- predict(T.high.pgls)
-mammal2$m.phy.T.high.pred2 <- predict(T.high.pgls2)
 
 mammal2$T.high.pred <- predict(T.high.lm)
 
 anova(T.high.lm)
 anova(T.high.pgls)
-anova(T.high.pgls2)
 
 summary(T.high.lm)
 summary(T.high.pgls)
-summary(T.high.pgls2)
 
 coef(T.high.lm)
 coef(T.high.pgls)
-coef(T.high.pgls2)
 ```
 
 ```{r, include=FALSE, message=FALSE}
@@ -122,21 +123,22 @@ T.low.lm <- lm(log(T.low.mod)~log(mass.g),mammal2)
 T.low.pgls <- gls(log(T.low.mod) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy, form = ~species))
 T.low.pgls2 <- gls(log(T.low.mod) ~ log(mass.g), mammal2, correlation=corMartins(5.05, m.phy, form = ~species))
 
-mammal2$m.phy.T.low.pred <- predict(T.low.pgls)
-mammal2$m.phy.T.low.pred2 <- predict(T.low.pgls2)
+T.low.aic <- AICc(T.low.pgls, T.low.pgls2)
+T.low.aicw <- aicw(T.low.aic$AICc)
+
+print(T.low.aicw)
+
+mammal2$m.phy.T.low.pred <- predict(T.low.pgls2)
 
 mammal2$T.low.pred <- predict(T.low.lm)
 
 anova(T.low.lm)
-anova(T.low.pgls)
 anova(T.low.pgls2)
 
 summary(T.low.lm)
-summary(T.low.pgls)
 summary(T.low.pgls2)
 
 coef(T.low.lm)
-coef(T.low.pgls)
 coef(T.low.pgls2)
 ```
 
@@ -153,20 +155,22 @@ temp2.lm <- lm(log(temp2.mod)~log(mass.g),mammal2)
 temp2.pgls <- gls(log(temp2.mod) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy, form = ~species))
 temp2.pgls2 <- gls(log(temp2.mod) ~ log(mass.g), mammal2, correlation=corMartins(5.05, m.phy, form = ~species))
 
-mammal2$m.phy.temp2.pred <- predict(temp2.pgls)
-mammal2$m.phy.temp2.pred2 <- predict(temp2.pgls2)
+temp2.aic <- AICc(temp2.pgls, temp2.pgls2)
+temp2.aicw <- aicw(temp2.aic$AICc)
+
+print(temp2.aicw)
+
+mammal2$m.phy.temp2.pred <- predict(temp2.pgls2)
+
 mammal2$temp2.pred <- predict(temp2.lm)
 
 anova(temp2.lm)
-anova(temp2.pgls)
 anova(temp2.pgls2)
 
 summary(temp2.lm)
-summary(temp2.pgls)
 summary(temp2.pgls2)
 
 coef(temp2.lm)
-coef(temp2.pgls)
 coef(temp2.pgls2)
 ```
 
