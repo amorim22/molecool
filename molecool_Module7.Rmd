@@ -3,6 +3,7 @@ title: "molecool_Module7"
 author: "Molecool"
 date: "10/29/2021"
 output: html_document
+bibliography: BIOL3140.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -32,6 +33,28 @@ mammal2.log <- mammal2%>%
 m.phy <- read.tree("mammal.tree.pruned.txt")
 m.phy$tip.label <- gsub("(\\w+)_(\\w+)","\\1 \\2",m.phy$tip.label)
 ```
+
+## Introduction
+
+ In a recent project, we looked back at the evolution of certain species, and concluded that temperature was a true game changer for some of them, for it became an important component often associated with temporal growth, survival and reproduction (@angilletta2009thermal). Moreover, researchers have also discovered predictable scaling patterns across different mammal species, indicating a relationship between temperature change and body mass as well as the ability of mammals to modulate heat loss to reduce the "physical heat capacitance and body surface-mass ratio" (@mortola2004scaling). However, as ground-breaking as their discovery may be, they failed to include an important factor that can help account for similarities in comparative methods, such as phylogeny. Although one may infer that phylogeny is not always related and, therefore, cannot explain a multitude of variation among different species; it is often a handy tool which can help explain a relationship that would otherwise be left out and unseen.
+
+In undertaking the analysis done by Mortola and Lanthier, we focused on a few key questions:
+
+•	Are their scaling relationships for Tmin ,Tmax, and TΔ reproducible?
+
+•	Considering their studies did not include phylogeny, was it a significant factor at all after applying it and then comparing mass, Tmin, Tmax, and TΔ?
+
+•	If finding models exhibiting a significant phylogenetic signal through BM and OU comparative models of trait evolution, was there one that fit the data best?
+
+•	After reproducing Mortola and Lanthier’s original work and including phylogeny, was there any significant change in parameter estimates?
+
+•	After adding phylogeny to the data, how can the conclusions of the original authors be reinterpreted?
+
+## Methods 
+
+In order to begin working on this project, the full dataset containing Tb variables, Tmin and Tmax, for humans and 52 other species of mammals, from the Mortola and Lanthier study as well as a phylogeny file for the same taxa were downloaded. Once downloaded, our variables of interest were extracted, log-transformed and while some others were computed, such as TΔ. Reproducing the scaling models constructed by Mortola and Lanthier involved building different log-log regression models of the three Tb variables as a function of mass. In such case, we approached the task by running linear models as well as allometric ones, and then assessing their significance. Once their original work had been reproduced, we reassessed all of the same variables with the inclusion of phylogeny, and observed the signal of each of the four variables in the study - W, Tb, Tmin and Tmax – using Pagel’s λ. Once these signals were observed, we ran an individual PGLS analyses of log-log regression for each model, containing our four variables of interest as well as a BM and an OU model of trait evolution. After identifying the model that best fit our data, we performed an ANOVA test to extract and compare significant parameters.
+
+## Results
 
 ```{r, include=FALSE, message=FALSE}
 mammal2.T.high.lm <- lm(T.high~mass.g,mammal2)
@@ -191,16 +214,12 @@ mammal2%>%
   ggplot(aes(log(mass.g),log(temp2.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=temp2.pred))
 ```
 
-
-## Introduction
- 
-## Methods 
-
-## Results
-
 ## Discussion
-Body temperature regulation and maintenance is crucial in mammals to insure homeostasis, and a properly functioning body system. Larger mammals have a greater volume to surface area ratio, thus allowing for less heat transfer between the surface of the mammal and the environment. Previous studies have quantified the effect mass on change in body temperature (@mortola2004scaling). However, in a review of endotherm body temperature scaling, Clarke and Rothery found that adjusting for phylogeny can effect the scaling relationship between temperature and body mass (insert bib thingie). 
+
+Body temperature regulation and maintenance is crucial in mammals to insure homeostasis, and a properly functioning body system. Larger mammals have a greater volume to surface area ratio, thus allowing for less heat transfer between the surface of the mammal and the environment. Previous studies have quantified the effect mass on change in body temperature (@mortola2004scaling). However, in a review of endotherm body temperature scaling, Clarke and Rothery found that adjusting for phylogeny can effect the scaling relationship between temperature and body mass (@clarke2008scaling). 
 
 ## Author Contributions
+
+As always, in an effort to contribute to each other's learning as a whole, Molecool team members worked together to figure out the code and compile an organized final .rmd document. Team member Stephanie contributed by cracking the code, verifying whether Mortola and Lanthier’s project was reproducible as well as analyzing which model fit best after running the necessary tests, and putting together a discussion; team member Greg contributed to the project by qualitatively assessing the effect of Tmin, Tmax, and TΔ after phylogeny had been considered in the game as well as running PGLS for our models, the Rmd file; team member Jessica contributed to the project by doing research to put together a comprehensive introduction, the bib file, citations and some of the methods; team member Julia contributed by writing up the methods and results with citations.
 
 ## References 
