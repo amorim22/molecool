@@ -151,18 +151,15 @@ T.low.aicw <- aicw(T.low.aic$AICc)
 
 print(T.low.aicw)
 
-mammal2$m.phy.T.low.pred <- predict(T.low.pgls2)
+mammal2$m.phy.T.low.pred <- predict(T.low.pgls)
 
 mammal2$T.low.pred <- predict(T.low.lm)
 
 anova(T.low.lm)
-anova(T.low.pgls2)
 
 summary(T.low.lm)
-summary(T.low.pgls2)
 
 coef(T.low.lm)
-coef(T.low.pgls2)
 ```
 
 ```{r,include=FALSE, message=FALSE}
@@ -183,35 +180,26 @@ temp2.aicw <- aicw(temp2.aic$AICc)
 
 print(temp2.aicw)
 
-mammal2$m.phy.temp2.pred <- predict(temp2.pgls2)
+mammal2$m.phy.temp2.pred <- predict(temp2.pgls)
 
 mammal2$temp2.pred <- predict(temp2.lm)
 
 anova(temp2.lm)
-anova(temp2.pgls2)
 
 summary(temp2.lm)
-summary(temp2.pgls2)
 
 coef(temp2.lm)
-coef(temp2.pgls2)
 ```
 
 ```{r, echo=FALSE, message=FALSE}
 mammal2%>%
   ggplot(aes(log(mass.g),log(T.high.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.T.high.pred))
-mammal2%>%
-  ggplot(aes(log(mass.g),log(T.high.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=T.high.pred))
 
 mammal2%>%
   ggplot(aes(log(mass.g),log(T.low.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.T.low.pred))
-mammal2%>%
-  ggplot(aes(log(mass.g),log(T.low.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=T.low.pred))
 
 mammal2%>%
   ggplot(aes(log(mass.g),log(temp2.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.temp2.pred))
-mammal2%>%
-  ggplot(aes(log(mass.g),log(temp2.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=temp2.pred))
 ```
 
 ## Discussion
