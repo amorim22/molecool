@@ -24,7 +24,7 @@ library(MuMIn)
 #load data
 mammal2 <- read_csv("mammal.temp2.csv")
 mammal2 <- mammal2 %>% 
-  mutate(temp2=T.high - T.low)
+  mutate(temp2=abs(T.high - T.low))
 
 mammal2.log <- mammal2%>%
   mutate_at(c("temp2", "T.high", "T.low", "mass.g"),log)
@@ -195,6 +195,7 @@ mammal2%>%
 ## Results
 
 ## Discussion
+Body temperature regulation and maintenance is crucial in mammals to insure homeostasis, and a properly functioning body system. Larger mammals have a greater volume to surface area ratio, thus allowing for less heat transfer between the surface of the mammal and the environment. Previous studies have quantified the effect mass on change in body temperature (@mortola2004scaling). However, in a review of endotherm body temperature scaling, Clarke and Rothery found that adjusting for phylogeny can effect the scaling relationship between temperature and body mass (insert bib thingie). 
 
 ## Author Contributions
 
