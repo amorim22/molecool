@@ -1,0 +1,295 @@
+---
+title: "Molecool_Module6"
+author: "molecool"
+date: "9/30/2021"
+output: html_document
+bibliography: BIOL3140.bib
+---
+
+
+<!-- for comments -->
+<style>
+div.comment pre { background-color:#ffbbbb; }
+div.comment pre.r { background-color:#ffbbbb; }
+div.comment {color: red;}
+</style>
+
+```{r,include=FALSE}
+library(tidyverse) # Remember to load your libraries!
+library(ape)
+library(nlme)
+library(geiger)
+library(caper)
+library(phytools)
+library(viridis)
+library(MuMIn)
+library(knitr)
+
+#load data
+```
+## Introduction
+
+When looking back at the evolution of certain species, one can observe that temperature was a true game changer for some of them, for it became an important component often associated with temporal growth, survival and reproduction (@angilletta2009thermal). For instance, after evolving and adapting thermally, birds and mammals were then capable of not only maintaining a constant, significant body temperature, but also of attaining higher metabolic output in environments with a variety of biophysical parameters and temperatures. However, as we could expect, not all species behave the same way, nor do they perform equally under the same circumstances and temperatures or regulate their internal environment the same way. Indeed, some background studies have been done, and have aimed at understanding how much of their different phenotypes were due solely to their ability to thermally adapt (both internally and externally) to temperature changes as well as what factors contribute and limit this phenomenon (@angilletta2009thermal); while others have aimed at observing the significant implications of the circadian clock across different species and its role in body temperature, heart and metabolic rate and their relationship to body weight (@aschoff1982circadian).
+
+In undertaking this analysis, we focused on three key questions:
+
+•	Do humans demonstrate a scaling relationship with respect to TΔ and body mass? If so, what type of relationship is it?
+
+•	What is the relationship between TΔ and body mass across humans and other mammals?
+
+•	Does taxonomic group with respect to order effectively predict differences in this relationship across mammals?
+
+Most importantly, answering these questions will not only help understanding how individual species are able to adjust their metabolic demands, conserve water and energy during extreme conditions as well as food scarcity, but also show evidence of such phenomenon - temporal heterothermy – within and between mammals (@ostrowski2003heterothermy). 
+
+<center>
+![](https://media3.giphy.com/media/4ZgLPakqTajjVFOVqw/giphy.gif?cid=ecf05e47bpka9henuqmfm1ew3bt4fyj6vdcgltmu6jcpm546&rid=giphy.gif&ct=g)
+</center>
+
+<div class="comment">
+Great intro
+
+</div>
+
+## Methods 
+
+A portable Arduino-based temperature data acquisition system (DAQ) was constructed to enable recording of body axial temperature data over the course of 15 minutes for one designated team member from each of the 10 groups in the BIOL3140-2021 class at two different times: one at around 4 am, when the subject was least active; and the other while the subject was most active at some point in the middle of the day. Once data had been acquired, it would then be joined to last year’s BIOL3140-2020 class data, composed of 30 subjects with the same relative two readings. A number of models describing the relationship between mass and the difference between the mean highest body temperature and mean lowest body temperature were put together for all 40 participants in the study. Likewise, once both the mean mass and mean difference between highest and lowest body temperatures for the 40 human subjects were calculated, these were added a to a larger dataset containing similar data from 51 species of non-human mammals from the study by Mortola and Lanthier, and new model describing the relationship between mass and the difference between the mean highest body temperature and mean lowest body temperature between different species was constructed.
+
+Using our log-transformed data, we assessed if body temperature oscillations vary with mass using linear and non-linear allometric model analysis; first asking how well the data fits each model (in the context of least squares regression and residual magnitude).  We then computed the AIC values of both of our models, compared their fits, and calculated the relative support of each model using AIC weights.
+
+## Results
+
+```{r, include=FALSE, message=FALSE}
+f <- list.files("./project6data",pattern=".csv",full.names = T)
+
+f.l <- list()
+for(i in f){
+  f.i <- read_csv(i)
+  if(ncol(f.i)==1) coln <- 1
+  if(ncol(f.i)==2) coln <- 2
+  m <- strsplit(i,"_")%>%unlist
+  print(m)
+  sub <- m[2]
+  time <- m[3]%>%tolower()
+  mass <- as.numeric(gsub(".csv","",m[4]))
+  f.i <- f.i[,coln]
+  colnames(f.i) <- "Temp"
+  f.l[[i]] <- f.i%>%
+    mutate(N=1:n(),Temp=as.numeric(Temp),subject=sub,Time=time,mass=mass)
+}
+
+dat <- do.call(rbind,f.l)
+```
+
+
+### Humans
+```{r,echo=FALSE, warning=FALSE, message=FALSE, fig.cap="Log of change in temperature (C) between nighttime and daytime temp reading vs log of subject mass"}
+  
+dat%>%
+  group_by(subject,Time,mass)%>%
+  na.omit()%>%
+  filter(N>0.5*max(N))%>%
+  summarize(m.temp=mean(Temp),n=n())%>%
+  pivot_wider(names_from=Time,values_from = c(m.temp,n))%>%
+  mutate(Tdifference=abs(m.temp_day-m.temp_night))%>%
+  ggplot(aes(log(mass),log(Tdifference)))+geom_point()+geom_smooth(method='lm')
+```
+
+ <div class="comment">
+Haven't saved your summarized data here, only produced a plot. You need the tempeature difference as the prompt asked for.
+</div>
+
+```{r,include=FALSE}
+dat.log <- dat%>%
+  mutate_at(c("Temp", "mass"),log)
+dat.log.lm <- lm(Temp~mass,dat.log)
+dat.log.allo <- nls(Temp~a*mass^b, start=list(b=0.1, a=0.1),data = dat.log)
+summary(dat.log.lm)
+summary(dat.log.allo)
+dat.log.aic <- AICc(dat.log.lm,dat.log.allo)
+dat.log.aicw <- aicw(dat.log.aic$AICc)
+summary(dat.log.allo)
+summary(dat.log.lm)
+```
+
+ <div class="comment">
+These models don't include the temperature difference. 
+</div>
+
+```{r,echo=FALSE, message=FALSE}
+dat.log.aic%>%
+  kable(caption="AICc table of the comparison between linear and allometric models of the relationship between mass and change in temperature in humans")
+
+dat.log.aicw%>%
+  kable(caption="AICw table of the comparison between linear and allometric models of the relationship between mass and change in temperature in humans")
+```
+
+ <div class="comment">
+Great work on producing nice tables.
+
+But here's what needed to happen both in terms of modeling and preparing the human data so that it could be added to the other mammal data.
+
+```{r}
+dat <- dat%>%
+  group_by(subject,Time,mass)%>%
+  na.omit()%>%
+  filter(N>0.5*max(N))%>%
+  summarize(m.temp=mean(Temp),n=n())%>%
+  pivot_wider(names_from=Time,values_from = c(m.temp,n))%>%
+  mutate(Td=abs(m.temp_day-m.temp_night))
+
+##linear model
+  dat.log.lm <- lm(Td~mass,dat)
+  dat.log.allo <- nls(Td~a*mass^b, start=list(b=1, a=1),data = dat)
+
+#AIC
+  
+dat.log.aic <- AICc(dat.log.lm,dat.log.allo)
+dat.log.aicw <- aicw(dat.log.aic$AICc)
+
+#Prepare for merging with mammal data. Notice the log transformation
+
+human.dat <- dat%>%
+  ungroup()%>%
+  summarize(temp=mean(log(Td),na.rm = TRUE),mass.g=mean(log(mass*1000),na.rm = TRUE),species="Homo sapians",Order="Primata")%>%
+  dplyr::select(Order,species,mass.g,temp)
+
+
+
+
+
+```
+</div>
+
+### Other Mammals
+```{r, include=FALSE}
+mammal <- read_csv("mammal.temp.csv")
+mammal <- mammal %>% mutate(temp=T.high - T.low)
+
+print(mammal)
+
+mammal.log <- mammal%>%
+  mutate_at(c("temp", "mass.g"),log)
+
+mammal.lm <- lm(temp~mass.g,mammal.log)
+
+mammal.allo <- nls(temp~a*mass.g^b, start=list(b=0.1, a=0.1),data = mammal.log)
+
+summary(mammal.allo)
+
+mammal.aic <- AICc(mammal.lm,mammal.allo)
+
+mammal.aicw <- aicw(mammal.aic$AICc)
+
+print(mammal.aicw)
+```
+
+ <div class="comment">
+Please don't print big data tables. Also, you didn't add the human data . . .what the prompts asked for. Here's how.
+
+```{r}
+mammal.log <- mammal.log%>%
+  dplyr::select(Order,species,mass.g,temp)%>%
+  add_row(human.dat)
+  
+#now the modeling which include humans
+mammal.lm <- lm(temp~mass.g,mammal.log)
+
+mammal.allo <- nls(temp~a*mass.g^b, start=list(b=0.1, a=0.1),data = mammal.log)
+
+#AIC and a nice table (which wasn't included)
+
+mammal.aic <- AICc(mammal.lm,mammal.allo)
+mammal.aicw <- aicw(mammal.aic$AICc)
+
+```
+</div>
+
+
+#### Linear and allometric models mass vs change in temperature
+```{r, echo=FALSE, message=FALSE}
+mammal.aic%>%
+  kable(caption="AICc table of the comparison between linear and allometric models of the relationship between mass and change in temperature")
+
+mammal.aicw%>%
+  kable(caption="AICw table of the comparison between linear and allometric models of the relationship between mass and change in temperature")
+```
+
+ <div class="comment">
+Why both and AIC table and AICw table? The latter includes all the info in the former.
+</div>
+#### Change in Temp vs Mass in Various Mammals
+```{r,echo=FALSE, warning=FALSE, message=FALSE, fig.cap="Log of change in Temp vs log of Mass in Various mammals"}
+mammal.log%>%
+  ggplot(aes(mass.g,temp,col=Order))+geom_point()+geom_smooth(method="lm")
+```
+
+```{r,include=FALSE}
+mammal.log.Order.lm <- lm(temp~mass.g*Order,mammal.log)
+summary(mammal.log.Order.lm)
+anova(mammal.log.Order.lm)
+
+mammal.log.lm  <- lm(temp~mass.g,mammal.log)
+anova(mammal.log.lm)
+
+mammal.log.aic <- AICc(mammal.log.lm,mammal.log.Order.lm)
+
+mammal.log.aicw <- aicw(mammal.log.aic$AICc)
+
+mammal.log <- mammal.log %>%
+  mutate(res=residuals(mammal.log.Order.lm))
+summary(mammal.log.lm)
+summary(mammal.allo)
+```
+
+ <div class="comment">
+We only need one table for the AICw. And we don't need to run anovas on models that don't fit well (the one without order)
+
+Also, it's easy to print nicer looking anova tables with `broom`
+
+```{r}
+require(broom)#install if not
+
+anova(mammal.log.Order.lm)%>%tidy()%>%kable(capiton="some informative caption")
+```
+
+I also think the regression of the orders does a better job at representing the different relationships between orders than the residuals plot below.
+</div>
+
+#### AIC of linear and allometric models of mass vs change in temperature recognizing order as a factor
+```{r,echo=FALSE, message=FALSE}
+mammal.log.aic%>%
+  kable(caption="AICc table of the comparison between linear and allometric models of the relationship between mass and change in temperature recognizing order as a factor")
+
+mammal.log.aicw%>%
+  kable(caption="AICw table of the comparison between linear and allometric models of the relationship between mass and change in temperature recognizing order as a factor")
+```
+
+```{r,echo=FALSE}
+p.Order <- mammal.log%>%
+  ggplot(aes(x=Order,y=res))+geom_boxplot()+stat_summary(fun=mean, geom="point", size=2)
+print(p.Order)
+```
+
+
+In human subjects, the relationship between change in temperature and mass is best modeled by an allometric model with log transformed data. Coefficient of scaling for Temperature change vs mass in humans is -0.1227, and the slope is 4.222 for an allometric relationship. Slope for Temperature change vs mass in humans is -.0971, and the y intercept is 3.95 for a linear relationship.
+In other mammals, the relationship between change in temperature and mass is best modeled by a linear model in log transformed data. Coefficient of scaling for Temp change vs mass in mammals is 7.284, and the slope is -1.840 for an allometric relationship. Slope for Temp change vs mass in mammals is -.1151 and y intercept is 1.071 for a linear relationship.
+
+## Discussion
+Body temperatures of animals are usually greater than the external one, implying heat is often lost from the animals to the outside environment. Moreover, the larger an animal is, the smaller the relative surface area-to-volume ratio and so is the likelihood to lose its heat. When comparing previous studies considering this relationship, we concluded that this trend is supported by our evaluation of the mammalian data. For mammals the data showed that there is a relationship between log transformed temperature change and mammalian body mass; organisms in the orders *Rodentia*, *Carnivora*, *Primata*, and *Perissodactyla* all showed that as the body mass increased there was a decrease in temperature change. The exceptions to this trend are in the orders *Lagomorpha* and *Artiodactyla*, which showed a positive linear relationship between temperature change and body mass, this could be accounted for by that the possibility that animals may either modulate heat loss to reduce the "physical heat capacitance and body surface-mass ratio"(@mortola2004scaling).
+
+The mammalian AICc values between the linear and allometric models indicated that the allometric model fits better. The scaling coefficient for temperature change versus mass showed that for each increase in mass in kg, there is an expected increase in temperature change in degrees Celsius of 7.284. This signifies that mammals demonstrate a scaling relationship with respect to TΔ and W; this is a starkly different scaling coefficient from what we found in our human data, possibly due to the fact that we evaluated the coefficients in two different models (isometric/allometric). According to our last boxplot graph of the residuals, taxonomic group with respect to order predicts differences in this relationship across mammals.
+ 
+The data showed that there is a relationship between temperature change and human body mass. In the log transformed plot of the change in temperature (C) between nighttime and daytime temperature reading versus the subject mass of humans, the slope was -0.1227 showing that as the body mass increased there was a decrease in temperature change. The physiological explanation for this could include the larger heat capacitance of larger animals (@mortola2004scaling). The AICc comparison between the linear and allometric models of the relationship between mass and change in temperature in humans showed that the isometric model fits better.The scaling coefficient for temperature change versus mass in humans is -0.1227, meaning that for each increase in mass in kg, there is an expected decrease in temperature change in degrees Celsius of -0.1227. This signifies that humans demonstrate a scaling relationship with respect to TΔ and W.
+ 
+These findings are of significant importance to the scientific community because the data can help us to understand the physiological metabolic differences among mammals, which can aid in the development of studies researching the possible evolutionary and environmental factors that contribute to these differences.Future studies could evaluate the morphological or behavioral adaptations to use a particular niche, and how these adaptations have arisen.
+
+
+<div class="comment">
+
+Excelllent discussion.
+</div>
+## Author Contributions
+
+In an effort to contribute to each other's learning as a whole, Molecool team members worked together to crack the code, collecting data, assembling Arduino, and compiling an organized final .Rmd document. Team member Stephanie contributed by collecting her own data early in the morning and at night, cracking the code, and qualitatively assessing the effect of body temperature and mass in humans; team member Jessica contributed to the project by doing research to put together a comprehensive introduction, the bib file, citations, coding and csv file extraction and adjustments; team member Greg contributed to the project by collecting and organizing metadata, the Rmd file, as well as assessing the effect of body temperature and mass across humans and other mammals; team member Julia contributed to the project by doing csv file extraction and adjustments, writing up the methods, results, and discussion with citations.
+
+## References 
