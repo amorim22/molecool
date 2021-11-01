@@ -156,10 +156,13 @@ mammal2$m.phy.T.low.pred <- predict(T.low.pgls)
 mammal2$T.low.pred <- predict(T.low.lm)
 
 anova(T.low.lm)
+anova(T.low.pgls)
 
 summary(T.low.lm)
+summary(T.low.pgls)
 
-coef(T.low.lm)
+coef(T.high.lm)
+coef(T.low.pgls)
 ```
 
 ```{r,include=FALSE, message=FALSE}
@@ -185,10 +188,13 @@ mammal2$m.phy.temp2.pred <- predict(temp2.pgls)
 mammal2$temp2.pred <- predict(temp2.lm)
 
 anova(temp2.lm)
+anova(temp2.pgls)
 
 summary(temp2.lm)
+summary(temp2.pgls)
 
 coef(temp2.lm)
+coef(temp2.pgls)
 ```
 
 ```{r, echo=FALSE, message=FALSE}
