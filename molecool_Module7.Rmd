@@ -33,7 +33,7 @@ m.phy <- read.tree("mammal.tree.pruned.txt")
 m.phy$tip.label <- gsub("(\\w+)_(\\w+)","\\1 \\2",m.phy$tip.label)
 ```
 
-```{r, include=FALSE}
+```{r, include=FALSE, message=FALSE}
 mammal2.T.high.lm <- lm(T.high~mass.g,mammal2)
 mammal2.T.low.lm <- lm(T.low~mass.g,mammal2)
 mammal2.temp2.lm <- lm(temp2~mass.g,mammal2)
@@ -84,7 +84,7 @@ anova(pgls.BM2)
 anova(pgls.BM3)
 ```
 
-```{r, include=FALSE}
+```{r, include=FALSE, message=FALSE}
 #T.high
 T.high.mod <- mammal2$T.high
 names(T.high.mod) <- m.phy$tip.label
@@ -112,7 +112,7 @@ coef(T.high.pgls)
 coef(T.high.pgls2)
 ```
 
-```{r, include=FALSE}
+```{r, include=FALSE, message=FALSE}
 #T.low
 T.low.mod <- mammal2$T.low
 names(T.low.mod) <- m.phy$tip.label
@@ -140,7 +140,7 @@ coef(T.low.pgls)
 coef(T.low.pgls2)
 ```
 
-```{r,include=FALSE}
+```{r,include=FALSE, message=FALSE}
 #temp2
 m.phy <- read.tree("mammal.tree.pruned.txt")
 m.phy$tip.label <- gsub("(\\w+)_(\\w+)","\\1 \\2",m.phy$tip.label)
@@ -170,7 +170,7 @@ coef(temp2.pgls)
 coef(temp2.pgls2)
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE}
 mammal2%>%
   ggplot(aes(log(mass.g),log(T.high.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.T.high.pred))
 mammal2%>%
