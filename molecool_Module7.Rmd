@@ -109,13 +109,15 @@ anova(pgls.BM3)
 
 ```{r, include=FALSE, message=FALSE}
 #T.high
-T.high.mod <- mammal2$T.high
-names(T.high.mod) <- m.phy$tip.label
-phylosig(m.phy,T.high.mod,method="lambda",test=T)
+T.high <- mammal2$T.high
+names(T.high) <- m.phy$tip.label
+phylosig(m.phy,T.high,method="lambda",test=T)
 
-T.high.lm <- lm(log(T.high.mod)~log(mass.g),mammal2)
-T.high.pgls <- gls(log(T.high.mod) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy, form = ~species))
-T.high.pgls2 <- gls(log(T.high.mod) ~ log(mass.g), mammal2, correlation=corMartins(5, m.phy, form = ~species))
+m.phy1<- rescale(m.phy, model = "lambda", 0.743819)
+
+T.high.lm <- lm(log(T.high)~log(mass.g),mammal2)
+T.high.pgls <- gls(log(T.high) ~ log(mass.g), mammal2, correlation=corBrownian(0, m.phy1, form = ~species))
+T.high.pgls2 <- gls(log(T.high) ~ log(mass.g), mammal2, correlation=corMartins(5.05, m.phy1, form = ~species))
 
 T.high.aic <- AICc(T.high.pgls, T.high.pgls2)
 T.high.aicw <- aicw(T.high.aic$AICc)
@@ -138,13 +140,15 @@ coef(T.high.pgls)
 
 ```{r, include=FALSE, message=FALSE}
 #T.low
-T.low.mod <- mammal2$T.low
-names(T.low.mod) <- m.phy$tip.label
-phylosig(m.phy,T.low.mod,method="lambda",test=T)
+T.low <- mammal2$T.low
+names(T.low) <- m.phy$tip.label
+phylosig(m.phy,T.low,method="lambda",test=T)
 
-T.low.lm <- lm(log(T.low.mod)~log(mass.g),mammal2)
-T.low.pgls <- gls(log(T.low.mod) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy, form = ~species))
-T.low.pgls2 <- gls(log(T.low.mod) ~ log(mass.g), mammal2, correlation=corMartins(5.05, m.phy, form = ~species))
+m.phy2<- rescale(m.phy, model = "lambda", 0.491692)
+
+T.low.lm <- lm(log(T.low)~log(mass.g),mammal2)
+T.low.pgls <- gls(log(T.low) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy2, form = ~species))
+T.low.pgls2 <- gls(log(T.low) ~ log(mass.g), mammal2, correlation=corMartins(5.05, m.phy2, form = ~species))
 
 T.low.aic <- AICc(T.low.pgls, T.low.pgls2)
 T.low.aicw <- aicw(T.low.aic$AICc)
@@ -167,16 +171,15 @@ coef(T.low.pgls)
 
 ```{r,include=FALSE, message=FALSE}
 #temp2
-m.phy <- read.tree("mammal.tree.pruned.txt")
-m.phy$tip.label <- gsub("(\\w+)_(\\w+)","\\1 \\2",m.phy$tip.label)
+temp2 <- mammal2$temp2
+names(temp2) <- m.phy$tip.label
+phylosig(m.phy,temp2,method="lambda",test=T)
 
-temp2.mod <- mammal2$temp2
-names(temp2.mod) <- m.phy$tip.label
-phylosig(m.phy,temp2.mod,method="lambda",test=T)
+m.phy3<- rescale(m.phy, model = "lambda", 0.188806)
 
-temp2.lm <- lm(log(temp2.mod)~log(mass.g),mammal2)
-temp2.pgls <- gls(log(temp2.mod) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy, form = ~species))
-temp2.pgls2 <- gls(log(temp2.mod) ~ log(mass.g), mammal2, correlation=corMartins(5.05, m.phy, form = ~species))
+temp2.lm <- lm(log(temp2)~log(mass.g),mammal2)
+temp2.pgls <- gls(log(temp2) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy3, form = ~species))
+temp2.pgls2 <- gls(log(temp2) ~ log(mass.g), mammal2, correlation=corMartins(5.05, m.phy3, form = ~species))
 
 temp2.aic <- AICc(temp2.pgls, temp2.pgls2)
 temp2.aicw <- aicw(temp2.aic$AICc)
@@ -199,13 +202,13 @@ coef(temp2.pgls)
 
 ```{r, echo=FALSE, message=FALSE}
 mammal2%>%
-  ggplot(aes(log(mass.g),log(T.high.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.T.high.pred))
+  ggplot(aes(log(mass.g),log(T.high)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.T.high.pred))
 
 mammal2%>%
-  ggplot(aes(log(mass.g),log(T.low.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.T.low.pred))
+  ggplot(aes(log(mass.g),log(T.low)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.T.low.pred))
 
 mammal2%>%
-  ggplot(aes(log(mass.g),log(temp2.mod)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.temp2.pred))
+  ggplot(aes(log(mass.g),log(temp2)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.temp2.pred))
 ```
 
 ## Discussion
