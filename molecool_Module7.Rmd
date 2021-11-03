@@ -128,6 +128,9 @@ mammal2$m.phy.T.high.pred <- predict(T.high.pgls)
 
 mammal2$T.high.pred <- predict(T.high.lm)
 
+ML.high <- lm(log(T.high)~log(mass.g),mammal2)
+coef(ML.high)
+
 anova(T.high.lm)
 anova(T.high.pgls)
 
@@ -159,13 +162,16 @@ mammal2$m.phy.T.low.pred <- predict(T.low.pgls)
 
 mammal2$T.low.pred <- predict(T.low.lm)
 
+ML.low <- lm(log(T.low)~log(mass.g),mammal2)
+coef(ML.low)
+
 anova(T.low.lm)
 anova(T.low.pgls)
 
 summary(T.low.lm)
 summary(T.low.pgls)
 
-coef(T.high.lm)
+coef(T.low.lm)
 coef(T.low.pgls)
 ```
 
@@ -190,6 +196,9 @@ mammal2$m.phy.temp2.pred <- predict(temp2.pgls)
 
 mammal2$temp2.pred <- predict(temp2.lm)
 
+ML.temp2 <- lm(log(temp2)~log(mass.g),mammal2)
+coef(ML.temp2)
+
 anova(temp2.lm)
 anova(temp2.pgls)
 
@@ -197,7 +206,7 @@ summary(temp2.lm)
 summary(temp2.pgls)
 
 coef(temp2.lm)
-coef(temp2.pgls) 
+coef(temp2.pgls)
 ```
 
 ```{r, echo=FALSE, message=FALSE}
@@ -213,7 +222,11 @@ mammal2%>%
 
 ## Discussion
 
-Body temperature regulation and maintenance is crucial in mammals to insure homeostasis, and a properly functioning body system. Larger mammals have a greater volume to surface area ratio, thus allowing for less heat transfer between the surface of the mammal and the environment. Previous studies have quantified the effect mass on change in body temperature (@mortola2004scaling). However, in a review of endotherm body temperature scaling, Clarke and Rothery found that adjusting for phylogeny can effect the scaling relationship between temperature and body mass (@clarke2008scaling). 
+Body temperature regulation and maintenance is crucial in mammals to insure homeostasis, and a properly functioning body system. Larger mammals have a greater volume to surface area ratio, thus allowing for less heat transfer between the surface of the mammal and the environment. Previous studies have quantified the effect mass on change in body temperature (@mortola2004scaling). Specifically, after adjusting for phylogeny "there is no statistically significant relationship between temperature and body mass in mammals" (@clarke2008scaling).
+Mortola and Lanthier neglected to adjust for phylogeny in their evaluation of daily temperature differences in mammals. Yet, the calculated lambda value (between 0 and 1), indicates that the species are not statistically independent, and one must correct for phylogeny. 
+Mortola and Lanthier found no significant slope in the allometric model of high temperatures, with a y intercept of 3.577, and a slope of -.0010. Alternatively, we found a significant slope in our phylogenetically corrected model, with a y intercept of 3.65, and a slope of  -0.00212. This difference indicates that there is a relationship between Thigh and mass. The lack of correlation found by Mortola and Lanthier is due to the closely related species’ shared ancestry. In the low temperature allometric model, Mortola and Lanthier found a correlation between Tlow and mass, with an allometric scaling coefficient of .00309, and a y intercept of 3.58. In our mode, we found a smaller larger slope of 0.00282, with a lower y intercept of 3.52. Interestingly, these two differences mostly cancelled each other out in the model of delta T vs mass. Due to coincidence, there were only very slight differences between phylogenetically altered data and non-phylogenetically altered data. Mortola had a slope of -0.115 and a y int of 1.071, whereas phylogenetically altered data had a y int of 1.07 and a slope of -0.119. 
+Our allometrically graphed data aligned with the methods of Lanthier and Mortola; additionally, a AICw test proved it to be a better fit for the data than a linear model. When applying pgls; an Ornstein–Uhlenbeck model fit better for all except Thigh (which better fit a Brownian motion model). However, the OU model is not effective at graphing the predictions with limited species, because it will converge on a simple uncorrected model if the phylogenetic signal is not high enough. Therefore, we relied on the Brownian motion model.
+These models and their deviations from Lanthier and Mortola’s unaltered data help show the importance of correcting for phylogeny when evaluating traits across similar species. This allows for accurate findings that represent wide physiological trends. Without proper phylogenetic adjustments, the scientific community could come to false conclusions, thus wasting time or resources.
 
 ## Author Contributions
 
