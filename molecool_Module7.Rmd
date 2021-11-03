@@ -170,7 +170,7 @@ coef(T.low.pgls)
 ```
 
 ```{r,include=FALSE, message=FALSE}
-#temp2
+#temp2 part
 temp2 <- mammal2$temp2
 names(temp2) <- m.phy$tip.label
 phylosig(m.phy,temp2,method="lambda",test=T)
@@ -197,7 +197,7 @@ summary(temp2.lm)
 summary(temp2.pgls)
 
 coef(temp2.lm)
-coef(temp2.pgls)
+coef(temp2.pgls) 
 ```
 
 ```{r, echo=FALSE, message=FALSE}
