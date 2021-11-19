@@ -3,6 +3,7 @@ title: "molecool_Module8"
 author: "molecool"
 date: "11/17/2021"
 output: html_document
+bibliography: BIOL3140.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -21,6 +22,20 @@ library(MuMIn)
 ```
 ## Introduction
 
+When taking a closer look at the physiology of the muscular system and observing how it enables us to move by exerting force on our bones, it is important to understand two key factors, such as speed and length, behind this phenomenon and how their relationship is affected with muscle fatigue. Within a muscle cell’s myofibril, all of the necessary machinery controlling this force-length relationship is found in the form of myofilaments – actin and myosin – whose interaction with one another at the zone of overlap within a sarcomere culminates in cross-bridges (@silverthorn2015human). Yes! These microscopic but powerful attachments are the ones responsible for muscle contraction and movement. In essence, the number of cross-bridges formed in a sarcomere not only determines the amount that is being produced, but also limits its maximal isometric force overall. 
+
+Let’s not forget the body is not made up of just long, straight bones, but is also composed of many joints, which assemble lever systems when transected by muscles. In this project, we looked at a 3rd order lever present in the human upper limb, whose forearm flexors originate on the pectoral girdle just above the humerus and insert on the radius and ulna, creating the elbow joint. In this scenario, our system possessed a mechanical advantage, predicting the amount of output force transmitted by the input force. Although this mechanical advantage cannot always predict the output force, because the insertion angle varies as the forearm rotates, we incorporated the study of force in a biomechanical system done by physiologists into our work, and implied that the force measured at the hand during an isometric force at various lengths can be used to mirror the force-length relationship governing force in myofibrils (@rassier1999length).
+
+In undertaking this analysis, we focused on some key aspects:
+
+  •	When considering a force vs. length relationship, does class-wide force-angle data for isometric maximum voluntary contractions under fatigued and non-fatigued conditions agree?
+
+  •	What is the comparison between the angles at which maximum isometric force occurs and non-fatigued and eccentrically fatigued forearm flexors?
+  
+  •	 Is there a significant shift between θmax between the fatigue and non-fatigued force-length relationships?
+  
+Most importantly, answering these questions will not only give us more understanding of the force-length relationship of the human upper limb and how this relationship responds to fatigue by allowing us to produce isometric force-angle curves of our own for the human forearm under maximum voluntary contractions, but also help illustrate the underlying mechanisms resulting in a shift of θmax after eccentric fatigue.
+
 ## Methods 
 
 ## Results
@@ -28,5 +43,7 @@ library(MuMIn)
 ## Discussion
 
 ## Author Contributions
+
+As always, in an effort to contribute to each other's learning as a whole, Molecool team members worked together to figure out the code and compile an organized final .rmd document. All of the members met during the week or worked individually to collect the necessary data for this project. Team member Stephanie contributed by cracking the code and analyzing data, as well as assembling the Arduino unit; team member Greg contributed to the project by helping with the code and writing up the methods; team member Jessica contributed to the project by doing research to put together a comprehensive introduction and the bib file; team member Julia contributed by writing up the results and discussion with citations.
 
 ## References 
