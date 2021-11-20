@@ -58,6 +58,28 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 
 
@@ -174,9 +196,17 @@ pre code {
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
+<p>When taking a closer look at the physiology of the muscular system and observing how it enables us to move by exerting force on our bones, it is important to understand two key factors, such as speed and length, behind this phenomenon and how their relationship is affected with muscle fatigue. Within a muscle cell’s myofibril, all of the necessary machinery controlling this force-length relationship is found in the form of myofilaments – actin and myosin – whose interaction with one another at the zone of overlap within a sarcomere culminates in cross-bridges (<span class="citation">Silverthorn (2015)</span>). Yes! These microscopic but powerful attachments are the ones responsible for muscle contraction and movement. In essence, the number of cross-bridges formed in a sarcomere not only determines the amount that is being produced, but also limits its maximal isometric force overall.</p>
+<p>Let’s not forget the body is not made up of just long, straight bones, but is also composed of many joints, which assemble lever systems when transected by muscles. In this project, we looked at a 3rd order lever present in the human upper limb, whose forearm flexors originate on the pectoral girdle just above the humerus and insert on the radius and ulna, creating the elbow joint. In this scenario, our system possessed a mechanical advantage, predicting the amount of output force transmitted by the input force. Although this mechanical advantage cannot always predict the output force, because the insertion angle varies as the forearm rotates, we incorporated the study of force in a biomechanical system done by physiologists into our work, and implied that the force measured at the hand during an isometric force at various lengths can be used to mirror the force-length relationship governing force in myofibrils (<span class="citation">Rassier, MacIntosh, and Herzog (1999)</span>).</p>
+<p>In undertaking this analysis, we focused on some key aspects:</p>
+<p>• When considering a force vs. length relationship, does class-wide force-angle data for isometric maximum voluntary contractions under fatigued and non-fatigued conditions agree?</p>
+<p>• What is the comparison between the angles at which maximum isometric force occurs and non-fatigued and eccentrically fatigued forearm flexors?</p>
+<p>• Is there a significant shift between θmax between the fatigue and non-fatigued force-length relationships?</p>
+<p>Most importantly, answering these questions will not only give us more understanding of the force-length relationship of the human upper limb and how this relationship responds to fatigue by allowing us to produce isometric force-angle curves of our own for the human forearm under maximum voluntary contractions, but also help illustrate the underlying mechanisms resulting in a shift of θmax after eccentric fatigue.</p>
 </div>
 <div id="methods" class="section level2">
 <h2>Methods</h2>
+<p>We first read and normalized the data so they would have a value between 0 and 1 for better and easier comparison and plotting.Then we ran polynomial models of different orders to find which model would fit the data the best. Then using the best fitting model we create the list of predicted angle and normalized force values, and we repeat the similar process with the fatigued data as well. We also ran the AIC table to find which polynomial order would best represent our data. After the models and the predicted values were created, we observed the shift of the data between the control data and the fatigued data to investigate their differences and how fatigue affects the normalized force data. We look at this by comparing the data of each subject and finding the angle that produced the maximum around of force for each subject, therefore calculating out the theta max. We also calculate the shift of the data from the control and nonfatigued experimental data through observing the difference in the calculated theta max.</p>
 </div>
 <div id="results" class="section level2">
 <h2>Results</h2>
@@ -186,9 +216,18 @@ pre code {
 </div>
 <div id="author-contributions" class="section level2">
 <h2>Author Contributions</h2>
+<p>As always, in an effort to contribute to each other’s learning as a whole, Molecool team members worked together to figure out the code and compile an organized final .rmd document. All of the members met during the week or worked individually to collect the necessary data for this project. Team member Stephanie contributed by cracking the code and analyzing data, as well as assembling the Arduino unit; team member Greg contributed to the project by helping with the code and writing up the methods; team member Jessica contributed to the project by doing research to put together a comprehensive introduction and the bib file; team member Julia contributed by writing up the results and discussion with citations.</p>
 </div>
-<div id="references" class="section level2">
-<h2>References</h2>
+<div id="references" class="section level2 unnumbered">
+<h2 class="unnumbered">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-rassier1999length" class="csl-entry">
+Rassier, Dilson E, BR MacIntosh, and W Herzog. 1999. <span>“Length Dependence of Active Force Production in Skeletal Muscle.”</span> <em>Journal of Applied Physiology</em> 86 (5): 1445–57.
+</div>
+<div id="ref-silverthorn2015human" class="csl-entry">
+Silverthorn, Dee Unglaub. 2015. <em>Human Physiology</em>. Jones &amp; Bartlett Publishers.
+</div>
+</div>
 </div>
 
 

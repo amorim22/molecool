@@ -38,6 +38,8 @@ Most importantly, answering these questions will not only give us more understan
 
 ## Methods 
 
+We first read and normalized the data so they would have a value between 0 and 1 for better and easier comparison and plotting.Then we ran polynomial models of different orders to find which model would fit the data the best. Then using the best fitting model we create the list of predicted angle and normalized force values, and we repeat the similar process with the fatigued data as well. We also ran the AIC table to find which polynomial order would best represent our data. After the models and the predicted values were created, we observed the shift of the data between the control data and the fatigued data to investigate their differences and how fatigue affects the normalized force data. We look at this by comparing the data of each subject and finding the angle that produced the maximum around of force for each subject, therefore calculating out the theta max. We also calculate the shift of the data from the control and nonfatigued experimental data through observing the difference in the calculated theta max.
+
 ## Results
 
 ## Discussion
