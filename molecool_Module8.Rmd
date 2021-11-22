@@ -117,7 +117,7 @@ fits <- d.max%>%
 ```
 knitr::kable(fits)
 
-```{r, echo=FALSEE, message=FALSE}
+```{r, include=FALSE, message=FALSE}
 best.models <- fits%>%
   left_join(AICs)%>%
   group_by(subject,experiment)%>%
@@ -125,14 +125,14 @@ best.models <- fits%>%
   filter(best==TRUE)%>%
   select(-best)%>%
   print()
-kitr::kable(best.models)
+knitr::kable(best.models)
 ```
 
 ```{r,echo=FALSE, include=FALSE, message=FALSE}
 anova(lm(theta_max~experiment,best.models))\
 ```
 
-```{r, echo=FALSEE, message=FALSE}
+```{r, include=FALSE, message=FALSE}
 best.models%>%
   pivot_wider(id_cols=subject,names_from = experiment,values_from=theta_max)%>%
   mutate(shift=(fatigue-control))%>%
