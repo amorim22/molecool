@@ -58,6 +58,7 @@ AICs <- d.max%>%
   pivot_longer(m2:m4,names_to="model",values_to="AICc")%>% 
   print()
 
+x.pred <- seq(45,157.5,length.out = 1000)
 
 fits <- d.max%>%
   group_by(subject,experiment)%>%
@@ -85,5 +86,5 @@ best.models%>%
   pivot_wider(id_cols=subject,names_from = experiment,values_from=theta_max)%>%
   mutate(shift=(fatigue-control))%>%
   ungroup()%>%
-  summarise(mean.shift=mean(shift),se.shift=sd(shift, na.rm=TRUE)/sqrt(length(shift)))
+  summarise(mean.shift=mean(shift, na.rm=TRUE),se.shift=sd(shift, na.rm=TRUE)/sqrt(length(shift)))
 
