@@ -34,7 +34,7 @@ In undertaking this analysis, we focused on some key aspects:
   
   •	 Is there a significant shift between θmax between the fatigue and non-fatigued force-length relationships?
   
-Most importantly, answering these questions will not only give us more understanding of the force-length relationship of the human upper limb and how this relationship responds to fatigue by allowing us to produce isometric force-angle curves of our own for the human forearm under maximum voluntary contractions, but also help illustrate the underlying mechanisms resulting in a shift of θmax after eccentric fatigue.
+Most importantly, answering these questions will not only give us more understanding of the force-length relationship of the human upper limb and how this relationship responds to fatigue by allowing us to produce isometric force-angle curves of our own for the human forearm under maximum voluntary contractions, but also help illustrate the underlying mechanisms resulting in a shift of θ max after eccentric fatigue.
 
 ## Methods 
 
@@ -44,6 +44,6 @@ Most importantly, answering these questions will not only give us more understan
 
 ## Author Contributions
 
-As always, in an effort to contribute to each other's learning as a whole, Molecool team members worked together to figure out the code and compile an organized final .rmd document. All of the members met during the week or worked individually to collect the necessary data for this project. Team member Stephanie contributed by cracking the code and analyzing data, as well as assembling the Arduino unit; team member Greg contributed to the project by helping with the code and writing up the methods; team member Jessica contributed to the project by doing research to put together a comprehensive introduction and the bib file; team member Julia contributed by writing up the results and discussion with citations.
+As always, in an effort to contribute to each other's learning as a whole, Molecool team members worked together to figure out the code and compile an organized final .rmd document. All of the members met during the week or worked individually to collect the necessary data for this project. Team member Stephanie contributed by cracking the code and analyzing data, writing the results as well as assembling the Arduino unit; team member Greg contributed to the project by helping with the code and writing up the methods; team member Jessica contributed to the project by doing research to put together a comprehensive introduction and the bib file; team member Julia contributed by writing up the discussion with citations.
 
 ## References 
