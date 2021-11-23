@@ -78,16 +78,14 @@ if(TRUE){
     left_join(d.max2)%>%
     mutate(normF=max.force/max.f2)
 }
+```
 
+```{r,echo=FALSE, message=FALSE}
 d.max%>%
   ggplot(aes(angle,normF,col=experiment))+geom_point()
+```
 
-
-d.max <- d.max%>%
-  left_join(good.data)%>%
-filter(good== TRUE)
-
-
+```{r,echo=FALSE, include=FALSE, message=FALSE}
 AICs <- d.max%>% 
   group_by(subject,experiment)%>% 
   summarize(m2=AICc(lm(normF~poly(angle,2))), 
@@ -110,7 +108,7 @@ fits <- d.max%>%
   summarize(theta_max=x.pred[which.max(value)])%>%
   print()
 ```
-knitr::kable(fits)
+
 
 ```{r, include=FALSE, message=FALSE}
 best.models <- fits%>%
@@ -138,6 +136,6 @@ best.models %>%
 
 ## Author Contributions
 
-As always, in an effort to contribute to each other's learning as a whole, Molecool team members worked together to figure out the code and compile an organized final .rmd document. All of the members met during the week or worked individually to collect the necessary data for this project. Team member Stephanie contributed by cracking the code and analyzing data, writing the results as well as assembling the Arduino unit; team member Greg contributed to the project by helping with the code and writing up the methods; team member Jessica contributed to the project by doing research to put together a comprehensive introduction, the bib file and author contributions; team member Julia contributed by writing up the discussion with citations.
+As always, in an effort to contribute to each other's learning as a whole, Molecool team members worked together to figure out the code and compile an organized final .rmd document. All of the members met during the week or worked individually to collect the necessary data for this project. Team member Stephanie contributed by cracking the code and analyzing data, writing the results as well as assembling the Arduino unit; team member Greg contributed to the project by helping with the code and writing up the methods; team member Jessica contributed to the project by helping with the code, doing research to put together a comprehensive introduction, the bib file and author contributions; team member Julia contributed by writing up the discussion with citations.
 
 ## References 
