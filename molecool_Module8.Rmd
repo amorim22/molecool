@@ -38,7 +38,7 @@ Most importantly, answering these questions will not only give us more understan
 
 ## Methods 
 
-We first read and put all the data in a list to make it easier to edit and make necessary changes to the data for us to better analyze them. Then, we normalize the force data using the if loop, by computing the max force force based and not based on angle, and then dividing them from each other to create the list of normalized values, and then joining them to our list for further use. Then, we sort out and filter the data for better analyzation and create a separate list for the sorted out data. We then create three different polynomial models and compare the AICc values of the models to find out which model fits our data the best. We also find the predicted maximum angle that would produced the highest force based on the models that we created. Finally, now only using the best model of the three, we compare the maximum angle and AICc values of the best models based on the experiment, control or fatigue, and also the subject. But we make sure both the control and fatigue values show up so we can compare the control and fatigue values on their own and also the difference, or the shift between the control and the fatigue data values. 
+We first read and put all the data in a list to make it easier to edit and make necessary changes to the data for us to better analyze them. Then, we normalize the force data using the if loop, by computing the max force force based and not based on angle, and then dividing them from each other to create the list of normalized values, and then joining them to our list for further use. Then, we sort out and filter the data for better analyzation and create a separate list for the sorted out data. We then create three different polynomial models and compare the AICc values of the models to find out which model fits our data the best. We also find the predicted maximum angle that would produced the highest force based on the models that we created. Finally, now only using the best model of the three, we compare the maximum angle and AICc values of the best models based on the experiment, control or fatigue, and also the subject. But we make sure both the control and fatigue values show up so we can compare the control and fatigue values on their own and also the difference, or the shift between the control and the fatigue data values.  
 
 ## Results
 
@@ -82,11 +82,6 @@ if(TRUE){
 d.max%>%
   ggplot(aes(angle,normF,col=experiment))+geom_point()
 
-good.data <- d.max%>%
-  group_by(subject)%>%
-  summarise(n=n)%>%
-  mutate(good=n>=16)%>%
-  select(subject,good)
 
 d.max <- d.max%>%
   left_join(good.data)%>%
@@ -123,17 +118,16 @@ best.models <- fits%>%
   group_by(subject,experiment)%>%
   mutate(best=AICc==min(AICc))%>%
   filter(best==TRUE)%>%
-  select(-best)%>%
   print()
 knitr::kable(best.models)
 ```
 
 ```{r,echo=FALSE, include=FALSE, message=FALSE}
-anova(lm(theta_max~experiment,best.models))\
+anova(lm(theta_max~experiment,best.models))
 ```
 
 ```{r, include=FALSE, message=FALSE}
-best.models%>%
+best.models %>%
   pivot_wider(id_cols=subject,names_from = experiment,values_from=theta_max)%>%
   mutate(shift=(fatigue-control))%>%
   ungroup()%>%
@@ -144,6 +138,6 @@ best.models%>%
 
 ## Author Contributions
 
-As always, in an effort to contribute to each other's learning as a whole, Molecool team members worked together to figure out the code and compile an organized final .rmd document. All of the members met during the week or worked individually to collect the necessary data for this project. Team member Stephanie contributed by cracking the code and analyzing data, writing the results as well as assembling the Arduino unit; team member Greg contributed to the project by helping with the code and writing up the methods; team member Jessica contributed to the project by doing research to put together a comprehensive introduction and the bib file; team member Julia contributed by writing up the discussion with citations.
+As always, in an effort to contribute to each other's learning as a whole, Molecool team members worked together to figure out the code and compile an organized final .rmd document. All of the members met during the week or worked individually to collect the necessary data for this project. Team member Stephanie contributed by cracking the code and analyzing data, writing the results as well as assembling the Arduino unit; team member Greg contributed to the project by helping with the code and writing up the methods; team member Jessica contributed to the project by doing research to put together a comprehensive introduction, the bib file and author contributions; team member Julia contributed by writing up the discussion with citations.
 
 ## References 
