@@ -117,11 +117,11 @@ best.models <- fits%>%
   mutate(best=AICc==min(AICc))%>%
   filter(best==TRUE)%>%
   print()
-knitr::kable(best.models)
 ```
 
-```{r,echo=FALSE, include=FALSE, message=FALSE}
+```{r,echo=FALSE, echo=FALSE, message=FALSE}
 anova(lm(theta_max~experiment,best.models))
+knitr::kable(best.models)
 ```
 
 ```{r, include=FALSE, message=FALSE}
@@ -131,6 +131,8 @@ best.models %>%
   ungroup()%>%
   summarise(mean.shift=mean(shift, na.rm=TRUE),se.shift=sd(shift, na.rm=TRUE)/sqrt(length(shift)))
 ```
+mean shift=6.88
+standard deviation of shift=6.48
 
 ## Discussion
 
