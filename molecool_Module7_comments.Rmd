@@ -1,0 +1,254 @@
+---
+title: "molecool_Module7"
+author: "Molecool"
+date: "10/29/2021"
+output: html_document
+bibliography: BIOL3140.bib
+---
+
+<!-- for comments -->
+<style>
+div.comment pre { background-color:#ffbbbb; }
+div.comment pre.r { background-color:#ffbbbb; }
+div.comment {color: red;}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r,include=FALSE}
+library(tidyverse)
+library(ape)
+library(nlme)
+library(geiger)
+library(caper)
+library(phytools)
+library(viridis)
+library(MuMIn)
+```
+
+```{r, include=FALSE}
+#load data
+mammal2 <- read_csv("mammal.temp2.csv")
+mammal2 <- mammal2 %>% 
+  mutate(temp2=abs(T.high - T.low))
+
+mammal2.log <- mammal2%>%
+  mutate_at(c("temp2", "T.high", "T.low", "mass.g"),log)
+
+m.phy <- read.tree("mammal.tree.pruned.txt")
+m.phy$tip.label <- gsub("(\\w+)_(\\w+)","\\1 \\2",m.phy$tip.label)
+```
+
+## Introduction
+
+ In a recent project, we looked back at the evolution of certain species, and concluded that temperature was a true game changer for some of them, for it became an important component often associated with temporal growth, survival and reproduction (@angilletta2009thermal). Moreover, researchers have also discovered predictable scaling patterns across different mammal species, indicating a relationship between temperature change and body mass as well as the ability of mammals to modulate heat loss to reduce the "physical heat capacitance and body surface-mass ratio" (@mortola2004scaling). However, as ground-breaking as their discovery may be, they failed to include an important factor that can help account for similarities in comparative methods, such as phylogeny. Although one may infer that phylogeny is not always related and, therefore, cannot explain a multitude of variation among different species; it is often a handy tool which can help explain a relationship that would otherwise be left out and unseen.
+
+In undertaking the analysis done by Mortola and Lanthier, we focused on a few key questions:
+
+•	Are their scaling relationships for Tmin ,Tmax, and TΔ reproducible?
+
+•	Considering their studies did not include phylogeny, was it a significant factor at all after applying it and then comparing mass, Tmin, Tmax, and TΔ?
+
+•	If finding models exhibiting a significant phylogenetic signal through BM and OU comparative models of trait evolution, was there one that fit the data best?
+
+•	After reproducing Mortola and Lanthier’s original work and including phylogeny, was there any significant change in parameter estimates?
+
+•	After adding phylogeny to the data, how can the conclusions of the original authors be reinterpreted?
+
+## Methods 
+
+In order to begin working on this project, the full dataset containing Tb variables, Tmin and Tmax, for humans and 52 other species of mammals, from the Mortola and Lanthier study as well as a phylogeny file for the same taxa were downloaded. Once downloaded, our variables of interest were extracted, log-transformed and while some others were computed, such as TΔ. Reproducing the scaling models constructed by Mortola and Lanthier involved building different log-log regression models of the three Tb variables as a function of mass. In such case, we approached the task by running linear models as well as allometric ones, and then assessing their significance. Once their original work had been reproduced, we reassessed all of the same variables with the inclusion of phylogeny, and observed the signal of each of the four variables in the study - W, Tb, Tmin and Tmax – using Pagel’s λ. Once these signals were observed, we ran an individual PGLS analyses of log-log regression for each model, containing our four variables of interest as well as a BM and an OU model of trait evolution. After identifying the model that best fit our data, we performed an ANOVA test to extract and compare significant parameters.
+
+## Results
+In the log transformed linear graphs, the recreated Mortola data lines are in blue, and  our phylogenetically corrected model data is in black. In the allometric model of high temperatures, for both models, there was a negative linear relationship between the log transformed mass and the log transformed T.high; the blue mortola line with a y intercept of 3.577, and a slope of -.0010, and the black phylogenetically corrected line with a y intercept of 3.65, and a slope of  -0.00212. 
+
+In the low temperature allometric model, both models showed a positive correlation between Tlow and mass. Mortola and Lanthier with an allometric scaling coefficient of .00309, and a y intercept of 3.58, we found a slope of 0.00282, with a y intercept of 3.52.
+
+In the model of delta T vs mass, both models showed a negative linear relationship between change in temperature and mass. Mortola had a slope of -0.115 and a y int of 1.071, the phylogenetically altered data had a y int of 1.07 and a slope of -0.119. 
+
+The results of the Pagel's lambda tests are as follows. The t.high lambda value was 0.743819, the t.low lambda value was 0.491692, and the t.delta lambda value was 0.188806.
+
+```{r, include=FALSE, message=FALSE}
+mammal2.T.high.lm <- lm(T.high~mass.g,mammal2)
+mammal2.T.low.lm <- lm(T.low~mass.g,mammal2)
+mammal2.temp2.lm <- lm(temp2~mass.g,mammal2)
+
+mammal2.T.high.allo <- nls(T.high~a*mass.g^b, start=list(b=0.1, a=0.1),data = mammal2.log)
+mammal2.T.low.allo <- nls(T.low~a*mass.g^b, start=list(b=0.1, a=0.1),data = mammal2.log)
+mammal2.temp2.allo <- nls(temp2~a*mass.g^b, start=list(b=0.1, a=0.1),data = mammal2.log) 
+
+mammal2.T.high.aic <- AICc(mammal2.T.high.lm,mammal2.T.high.allo)
+mammal2.T.low.aic <- AICc(mammal2.T.low.lm,mammal2.T.low.allo)
+mammal2.temp2.aic <- AICc(mammal2.temp2.lm,mammal2.temp2.allo)
+
+mammal2.T.high.aicw <- aicw(mammal2.T.high.aic$AICc)
+mammal2.T.low.aicw <- aicw(mammal2.T.low.aic$AICc)
+mammal2.temp2.aicw <- aicw(mammal2.temp2.aic$AICc)
+
+print(mammal2.T.high.aic)
+print(mammal2.T.low.aic)
+print(mammal2.temp2.aic)
+
+print(mammal2.T.high.aicw)
+print(mammal2.T.low.aicw)
+print(mammal2.temp2.aicw)
+
+#PGLS under BM, T.high
+pgls.BM1 <- gls(T.high ~mass.g, correlation = corBrownian(1,phy = m.phy,form=~species),data = mammal2.log, method = "ML")
+
+#PGLS under BM, T.low
+pgls.BM2 <- gls(T.low ~mass.g, correlation = corBrownian(1,phy = m.phy,form=~species),data = mammal2.log, method = "ML")
+
+#PGLS under BM, temp2
+pgls.BM3 <- gls(temp2 ~mass.g, correlation = corBrownian(1,phy = m.phy,form=~species),data = mammal2.log, method = "ML")
+
+#PGLS under OU, T.high
+pgls.OU1 <- gls(T.high ~mass.g, correlation = corMartins(0,phy = m.phy,form=~species),data = mammal2.log, method = "ML")
+
+#PGLS under OU, T.low
+pgls.OU2 <- gls(T.low ~mass.g, correlation = corMartins(5.05,phy = m.phy,form=~species),data = mammal2.log, method = "ML")
+
+#PGLS under OU, temp2
+pgls.OU3 <- gls(temp2 ~mass.g, correlation = corMartins(0,phy = m.phy,form=~species),data = mammal2.log, method = "ML")
+
+mammal2.phylo.aic <- AICc(pgls.BM1,pgls.BM2,pgls.BM3,pgls.OU1,pgls.OU2,pgls.OU3)
+aicw(mammal2.phylo.aic$AICc)
+
+anova(pgls.BM1)
+anova(pgls.BM2)
+anova(pgls.BM3)
+```
+
+```{r, include=FALSE, message=FALSE}
+#T.high
+T.high <- mammal2$T.high
+names(T.high) <- m.phy$tip.label
+phylosig(m.phy,T.high,method="lambda",test=T)
+
+m.phy1<- rescale(m.phy, model = "lambda", 0.743819)
+
+T.high.lm <- lm(log(T.high)~log(mass.g),mammal2)
+T.high.pgls <- gls(log(T.high) ~ log(mass.g), mammal2, correlation=corBrownian(0, m.phy1, form = ~species))
+T.high.pgls2 <- gls(log(T.high) ~ log(mass.g), mammal2, correlation=corMartins(5.05, m.phy1, form = ~species))
+
+T.high.aic <- AICc(T.high.pgls, T.high.pgls2)
+T.high.aicw <- aicw(T.high.aic$AICc)
+
+print(T.high.aicw)
+
+mammal2$m.phy.T.high.pred <- predict(T.high.pgls)
+
+mammal2$T.high.pred <- predict(T.high.lm)
+
+ML.high <- lm(log(T.high)~log(mass.g),mammal2)
+coef(ML.high)
+
+anova(T.high.lm)
+anova(T.high.pgls)
+
+summary(T.high.lm)
+summary(T.high.pgls)
+
+coef(T.high.lm)
+coef(T.high.pgls)
+```
+
+```{r, include=FALSE, message=FALSE}
+#T.low
+T.low <- mammal2$T.low
+names(T.low) <- m.phy$tip.label
+phylosig(m.phy,T.low,method="lambda",test=T)
+
+m.phy2<- rescale(m.phy, model = "lambda", 0.491692)
+
+T.low.lm <- lm(log(T.low)~log(mass.g),mammal2)
+T.low.pgls <- gls(log(T.low) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy2, form = ~species))
+T.low.pgls2 <- gls(log(T.low) ~ log(mass.g), mammal2, correlation=corMartins(5.05, m.phy2, form = ~species))
+
+T.low.aic <- AICc(T.low.pgls, T.low.pgls2)
+T.low.aicw <- aicw(T.low.aic$AICc)
+
+print(T.low.aicw)
+
+mammal2$m.phy.T.low.pred <- predict(T.low.pgls)
+
+mammal2$T.low.pred <- predict(T.low.lm)
+
+ML.low <- lm(log(T.low)~log(mass.g),mammal2)
+coef(ML.low)
+
+anova(T.low.lm)
+anova(T.low.pgls)
+
+summary(T.low.lm)
+summary(T.low.pgls)
+
+coef(T.low.lm)
+coef(T.low.pgls)
+```
+
+```{r,include=FALSE, message=FALSE}
+#temp2 part
+temp2 <- mammal2$temp2
+names(temp2) <- m.phy$tip.label
+phylosig(m.phy,temp2,method="lambda",test=T)
+
+m.phy3<- rescale(m.phy, model = "lambda", 0.188806)
+
+temp2.lm <- lm(log(temp2)~log(mass.g),mammal2)
+temp2.pgls <- gls(log(temp2) ~ log(mass.g), mammal2, correlation=corBrownian(5, m.phy3, form = ~species))
+temp2.pgls2 <- gls(log(temp2) ~ log(mass.g), mammal2, correlation=corMartins(5.05, m.phy3, form = ~species))
+
+temp2.aic <- AICc(temp2.pgls, temp2.pgls2)
+temp2.aicw <- aicw(temp2.aic$AICc)
+
+print(temp2.aicw)
+
+mammal2$m.phy.temp2.pred <- predict(temp2.pgls)
+
+mammal2$temp2.pred <- predict(temp2.lm)
+
+ML.temp2 <- lm(log(temp2)~log(mass.g),mammal2)
+coef(ML.temp2)
+
+anova(temp2.lm)
+anova(temp2.pgls)
+
+summary(temp2.lm)
+summary(temp2.pgls)
+
+coef(temp2.lm)
+coef(temp2.pgls)
+```
+
+```{r, echo=FALSE, message=FALSE}
+mammal2%>%
+  ggplot(aes(log(mass.g),log(T.high)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.T.high.pred))
+
+mammal2%>%
+  ggplot(aes(log(mass.g),log(T.low)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.T.low.pred))
+
+mammal2%>%
+  ggplot(aes(log(mass.g),log(temp2)))+geom_point()+geom_smooth(method="lm",se = F)+geom_line(aes(y=m.phy.temp2.pred))
+```
+
+## Discussion
+
+Body temperature regulation and maintenance is crucial in mammals to insure homeostasis, and a properly functioning body system. Larger mammals have a greater volume to surface area ratio, thus allowing for less heat transfer between the surface of the mammal and the environment. Previous studies have quantified the effect mass on change in body temperature (@mortola2004scaling). Specifically, after adjusting for phylogeny "there is no statistically significant relationship between temperature and body mass in mammals" (@clarke2008scaling).
+Mortola and Lanthier neglected to adjust for phylogeny in their evaluation of daily temperature differences in mammals. Yet, the calculated lambda value (between 0 and 1), indicates that the species are not statistically independent, and one must correct for phylogeny. 
+Mortola and Lanthier found no significant slope in the allometric model of high temperatures, with a y intercept of 3.577, and a slope of -.0010. Alternatively, we found a significant slope in our phylogenetically corrected model, with a y intercept of 3.65, and a slope of  -0.00212. This difference indicates that there is a relationship between Thigh and mass. The lack of correlation found by Mortola and Lanthier is due to the closely related species’ shared ancestry. In the low temperature allometric model, Mortola and Lanthier found a correlation between Tlow and mass, with an allometric scaling coefficient of .00309, and a y intercept of 3.58. In our mode, we found a slope of 0.00282, with a lower y intercept of 3.52. Interestingly, these two differences mostly cancelled each other out in the model of delta T vs mass. Due to coincidence, there were only very slight differences between phylogenetically altered data and non-phylogenetically altered data. Mortola had a slope of -0.115 and a y int of 1.071, whereas phylogenetically altered data had a y int of 1.07 and a slope of -0.119. 
+Our allometrically graphed data aligned with the methods of Lanthier and Mortola; additionally, a AICw test proved it to be a better fit for the data than a linear model. When applying pgls; an Ornstein–Uhlenbeck model fit better for all except Thigh (which better fit a Brownian motion model). However, the OU model is not effective at graphing the predictions with limited species, because it will converge on a simple uncorrected model if the phylogenetic signal is not high enough. Therefore, we relied on the Brownian motion model.
+These models and their deviations from Lanthier and Mortola’s unaltered data help show the importance of correcting for phylogeny when evaluating traits across similar species. This allows for accurate findings that represent wide physiological trends. Without proper phylogenetic adjustments, the scientific community could come to false conclusions, thus wasting time or resources.
+
+<div class="comment">
+This is so great that you found a different result (I did when I reanalyzed their data). This is really exceptional work. Well done!
+
+</div>
+
+## Author Contributions
+
+As always, in an effort to contribute to each other's learning as a whole, Molecool team members worked together to figure out the code and compile an organized final .rmd document. Team member Stephanie contributed by cracking the code, verifying whether Mortola and Lanthier’s project was reproducible as well as analyzing which model fit best after running the necessary tests, and putting together a discussion; team member Greg contributed to the project by qualitatively assessing the effect of Tmin, Tmax, and TΔ after phylogeny had been considered in the game as well as running PGLS for our models, the Rmd file; team member Jessica contributed to the project by doing research to put together a comprehensive introduction, the bib file, citations and some of the methods; team member Julia contributed by writing up the methods and results with citations.
+
+## References 

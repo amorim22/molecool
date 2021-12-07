@@ -1,0 +1,1483 @@
+commit 4871f0156c7c1e933d16989f206cded4bae68fed
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Fri Nov 19 18:57:06 2021 -0500
+
+    updated
+
+ molecool_Module8.Rmd | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+commit c21a82d5d6baecb8089d9b4674e9f70606143154
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Fri Nov 19 16:56:29 2021 -0500
+
+    updated P8
+
+ BIOL3140.bib | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+
+commit e14afccc56c25758c965788d573b2b2c870c8d43
+Author: kimdzb <kimdzb@gregs-mbp.bc.edu>
+Date:   Fri Nov 19 10:49:30 2021 -0500
+
+    wrong method
+
+ molecool_Module8.Rmd  | 1 -
+ molecool_Module8.html | 1 -
+ 2 files changed, 2 deletions(-)
+
+commit 099f4c3a598f0a8c7912186b1138988026389d00
+Author: kimdzb <kimdzb@gregs-mbp.bc.edu>
+Date:   Wed Nov 17 21:04:53 2021 -0500
+
+    progress
+
+ molecool_Module8.Rmd  |   1 +
+ molecool_Module8.html | 241 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 242 insertions(+)
+
+commit 1749ec90170131ea9818e615d697538c087e2486
+Author: kimdzb <kimdzb@Gregs-MacBook-Pro.local>
+Date:   Wed Nov 17 10:32:24 2021 -0500
+
+    rmd file
+
+ molecool_Module8.Rmd | 32 ++++++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+commit bddac702a4e5205c9201a9d56e5b9191815c22ac
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Wed Nov 3 00:06:17 2021 -0400
+
+    project submission (sorry for the delay my rstudio crashed at the worst time)
+
+ molecool_Module7.Rmd | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+commit c692b33a33bdd9f984dafd678951e025aae63a48
+Author: Stephanie Robinson <stephanierobinson@stephaniesmbp2.bc.edu>
+Date:   Tue Nov 2 23:25:57 2021 -0400
+
+    discussion update
+
+ molecool_Module7.Rmd | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+
+commit 73b706e20b75bfd49c06557efc9a6da95a634089
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Tue Nov 2 22:04:17 2021 -0400
+
+    stuff
+
+ molecool_Module7.Rmd | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit cf30a84233219e07810173c54ab18d2a164e82cf
+Author: kimdzb <greg@gregs-mbp.bc.edu>
+Date:   Mon Nov 1 19:07:41 2021 -0400
+
+    reconfigured trees
+
+ molecool_Module7.Rmd  |  49 +++++++-------
+ molecool_Module7.html |   2 +-
+ testing out 2.R       | 174 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 201 insertions(+), 24 deletions(-)
+
+commit ee5565f44c73659b76f87fa67d2ff7d9e90e552d
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Mon Nov 1 17:30:52 2021 -0400
+
+    update on anova and everything
+
+ molecool_Module7.Rmd  |  8 ++++++-
+ molecool_Module7.html | 64 ++++++++++++++++++++++++++++++++++++++-------------
+ 2 files changed, 55 insertions(+), 17 deletions(-)
+
+commit 95a751cd089ff9d4bd2e8fc741111f3ead8193e7
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Mon Nov 1 17:28:20 2021 -0400
+
+    updates
+
+ molecool_Module7.Rmd | 16 ++--------------
+ 1 file changed, 2 insertions(+), 14 deletions(-)
+
+commit c21781f4fde30e3abae59dbe98ef95d73870526a
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Mon Nov 1 17:21:25 2021 -0400
+
+    Updated
+
+ BIOL3140.bib         | 11 +++++++++++
+ molecool_Module7.Rmd | 35 +++++++++++++++++++++++++++--------
+ 2 files changed, 38 insertions(+), 8 deletions(-)
+
+commit 779a039038fc4c1a818e3f4a9b78913958262082
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Mon Nov 1 15:35:36 2021 -0400
+
+    aic files sorted
+
+ molecool_Module7.Rmd | 32 ++++++++++++++++++--------------
+ 1 file changed, 18 insertions(+), 14 deletions(-)
+
+commit 91d1b76b80d5131565dca99f7232f7575d5ff251
+Author: Stephanie Robinson <stephanierobinson@stephaniesmbp2.bc.edu>
+Date:   Mon Nov 1 13:51:53 2021 -0400
+
+    fun updates
+
+ molecool_Module7.Rmd | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 0e0f1bdc089e90a7228349644af3d50eb4b00006
+Author: ckenaley <cpkenaley@gmail.com>
+Date:   Mon Nov 1 12:13:19 2021 -0400
+
+    proj6 feedback
+
+ Molecool_Final_Module_6_feedback.html | 1910 +++++++++++++++++++++++++++++++++
+ molecool_Module6_comments.Rmd         |  295 +++++
+ molecool_Module6_comments.html        |  756 +++++++++++++
+ 3 files changed, 2961 insertions(+)
+
+commit 38a94374705555de8219f0afb6676f16a7eb4a50
+Author: Stephanie Robinson <stephanierobinson@Stephanies-MacBook-Pro-2.local>
+Date:   Mon Nov 1 10:06:48 2021 -0400
+
+    nov 1 update
+
+ molecool_Module7.Rmd | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit f2f1f09c0412f5deb9b75cf32f6f1da7131482fe
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Oct 31 17:05:07 2021 -0400
+
+    update
+
+ molecool_Module7.Rmd | 53 +++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 52 insertions(+), 1 deletion(-)
+
+commit 6c32f07d54d26b11628a6f0fbb6994b5d2b779e5
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Oct 31 17:02:11 2021 -0400
+
+    test
+
+ molecool_Module7.Rmd  | 131 ++++++++++++++++++++++++--
+ molecool_Module7.html | 252 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 377 insertions(+), 6 deletions(-)
+
+commit f156b8248122da599d74b3202ceb2ed329df2a2e
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Oct 31 16:41:12 2021 -0400
+
+    additions
+
+ pj7stuff.R               |  2 +-
+ steph's code for Thigh.R | 52 ++++++++++++++++++++++++++++++++++++++++++++++++
+ steph's code for tlow.R  | 52 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 105 insertions(+), 1 deletion(-)
+
+commit 71a2f53b358e0238a05eb57719d1aa156d3a3820
+Author: Stephanie Robinson <stephanierobinson@stephaniesmbp2.bc.edu>
+Date:   Fri Oct 29 18:29:03 2021 -0400
+
+    Friday update
+
+ project7.sr.R | 46 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
+
+commit e043db811c5d9113fdaa949469c05b70233a8348
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Fri Oct 29 17:30:41 2021 -0400
+
+    project 7 master
+
+ molecool_Module7.Rmd | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+
+commit d2577a8397a401678cf2c692033aead607f64395
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Fri Oct 29 17:27:11 2021 -0400
+
+    added some code
+
+ pj7stuff.R | 24 ++++++++++++++++++++----
+ 1 file changed, 20 insertions(+), 4 deletions(-)
+
+commit 32998c3682479cb800e69449120a28a1ec49e8e5
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Wed Oct 27 16:44:25 2021 -0400
+
+    progress
+
+ mammal.temp2.csv       | 53 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ mammal.tree.pruned.txt |  1 +
+ pj7stuff.R             | 50 +++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 104 insertions(+)
+
+commit 9679b4bb95c87eac1be23157be14e399aaf8a05c
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Sun Oct 24 19:13:59 2021 -0400
+
+    Project 6 Final Submission
+
+ molecool_Module6.Rmd  |  16 +-
+ molecool_Module6.html | 451 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 464 insertions(+), 3 deletions(-)
+
+commit ac222ba1e06c936bb638ce10b738d30e17881656
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Sun Oct 24 17:41:46 2021 -0400
+
+    Updated
+
+ BIOL3140.bib | 38 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
+
+commit fecf177c33410ee5a0ca05dd805822b0cbe230e4
+Author: Stephanie Robinson <stephanierobinson@stephaniesmbp2.bc.edu>
+Date:   Sun Oct 24 17:36:29 2021 -0400
+
+    RMD!
+
+ molecool_Module6.Rmd | 178 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 178 insertions(+)
+
+commit 80d8c5c839db7af2878164c5f0450b649a44a115
+Author: Stephanie Robinson <stephanierobinson@Stephanies-MacBook-Pro-2.local>
+Date:   Sun Oct 24 17:33:33 2021 -0400
+
+    don't use the file with the ~
+
+ molecool_Module6 .Rmd | 122 --------------------------------------------------
+ 1 file changed, 122 deletions(-)
+
+commit a3f7e794d1da3d3fbe1895021b2491341c647a3d
+Author: kimdzb <greg@gregs-mbp.bc.edu>
+Date:   Sun Oct 24 16:43:41 2021 -0400
+
+    changes
+
+ human species data.R  | 61 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ module 6 stuff.R      | 16 +++++++------
+ molecool_Module6 .Rmd | 62 +++++++++++----------------------------------------
+ 3 files changed, 83 insertions(+), 56 deletions(-)
+
+commit 520bd4defd55c1f06e9aecedcadbf1db3cf4c47b
+Author: Stephanie Robinson <stephanierobinson@Stephanies-MacBook-Pro-2.local>
+Date:   Sun Oct 24 16:42:54 2021 -0400
+
+    Mod 6 Markdown update
+
+ molecool_Module6 .Rmd | 58 +++++++++++++++++++++++++++++++++++++++++----------
+ 1 file changed, 47 insertions(+), 11 deletions(-)
+
+commit 1e60096c4cdb1d83e5f83d0f027a327e61837289
+Author: Jessica Amorim <jessicaamorim@Jessicas-MacBook-Air-3.local>
+Date:   Sat Oct 23 18:19:29 2021 -0400
+
+    Jessica's added changes
+
+ molecool_Module6 .Rmd | 34 ++++++++++++++++++++++------------
+ 1 file changed, 22 insertions(+), 12 deletions(-)
+
+commit 1e127c7eac0778e2e0251f0f9f7e2f74c519ec33
+Author: kimdzb <greg@gregs-mbp.lan>
+Date:   Sat Oct 23 16:03:53 2021 -0400
+
+    caption changes
+
+ molecool_Module6 .Rmd  | 8 ++++----
+ molecool_Module6-.html | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+commit c4feca4e949457c7ded36d0f17cc269bd426020d
+Author: kimdzb <greg@gregs-mbp.lan>
+Date:   Sat Oct 23 16:00:49 2021 -0400
+
+    tidy up, add kables for visualization and graphs too for the knit file
+
+ module 6 stuff.R       |   2 +
+ molecool_Module6 .Rmd  |  36 +++++++---
+ molecool_Module6-.html | 184 ++++++++++++++++++++++++-------------------------
+ 3 files changed, 118 insertions(+), 104 deletions(-)
+
+commit 21d20ae26c615bbbbc3e89e20a013b46753c60dc
+Author: kimdzb <greg@gregs-mbp.lan>
+Date:   Sat Oct 23 15:15:15 2021 -0400
+
+    included mammalian data
+
+ molecool_Module6 .Rmd  |  49 ++++++-
+ molecool_Module6-.html | 347 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 395 insertions(+), 1 deletion(-)
+
+commit 7a7fd17eff1022e4166cbf440db2e0e308e66e4f
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Fri Oct 22 11:29:45 2021 -0400
+
+    log updates
+
+ module 6 stuff.R | 30 ++++++++++++++++++------------
+ 1 file changed, 18 insertions(+), 12 deletions(-)
+
+commit bb53275e89d1fc987fb0f6d69f970e2e9254c96b
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Fri Oct 22 11:11:57 2021 -0400
+
+    log edit
+
+ log file test.R  | 53 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ module 6 stuff.R |  3 ---
+ 2 files changed, 53 insertions(+), 3 deletions(-)
+
+commit 873d23eabc44fdfd4aac81b99fefb9649cdae8d3
+Author: Stephanie Robinson <stephanierobinson@stephaniesmbp2.bc.edu>
+Date:   Fri Oct 22 10:41:49 2021 -0400
+
+    updated data
+
+ project6data/BIOL314021_Subject36_day_60.csv   | 446 ++++++++++++++++++++
+ project6data/BIOL314021_Subject36_night_60.csv | 552 +++++++++++++++++++++++++
+ 2 files changed, 998 insertions(+)
+
+commit 5a27e419bf4b534ab96c2a9d4cc72cb00d411d4d
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Fri Oct 22 10:38:03 2021 -0400
+
+    project6 data
+
+ project6data/BIOL314020_subject01_day_52.csv     |  559 ++++
+ project6data/BIOL314020_subject01_night_52.csv   |  486 ++++
+ project6data/BIOL314020_subject02_day_73.csv     |  622 ++++
+ project6data/BIOL314020_subject02_night_73.csv   |  619 ++++
+ project6data/BIOL314020_subject03_day_59.csv     |  565 ++++
+ project6data/BIOL314020_subject03_night_59.csv   |  601 ++++
+ project6data/BIOL314020_subject04_day_72.csv     |  549 ++++
+ project6data/BIOL314020_subject04_night_72.csv   |  567 ++++
+ project6data/BIOL314020_subject05_day_64.csv     |  594 ++++
+ project6data/BIOL314020_subject05_night_64.csv   |  531 ++++
+ project6data/BIOL314020_subject06_day_61.csv     |  308 ++
+ project6data/BIOL314020_subject06_night_61.csv   |  359 +++
+ project6data/BIOL314020_subject07_day_52.csv     | 1763 ++++++++++++
+ project6data/BIOL314020_subject07_night_52.csv   | 1784 ++++++++++++
+ project6data/BIOL314020_subject08_day_93.csv     |  177 ++
+ project6data/BIOL314020_subject08_night_93.csv   |  166 ++
+ project6data/BIOL314020_subject09_day_52.csv     | 1687 +++++++++++
+ project6data/BIOL314020_subject09_night_52.csv   | 3344 ++++++++++++++++++++++
+ project6data/BIOL314020_subject10_day_63.5.csv   |  542 ++++
+ project6data/BIOL314020_subject10_night_63.5.csv |  303 ++
+ project6data/BIOL314020_subject11_day_95.csv     |  586 ++++
+ project6data/BIOL314020_subject11_night_95.csv   |  594 ++++
+ project6data/BIOL314020_subject12_day_86.csv     |  532 ++++
+ project6data/BIOL314020_subject12_night_86.csv   |  573 ++++
+ project6data/BIOL314020_subject13_day_80.csv     |  582 ++++
+ project6data/BIOL314020_subject13_night_80.csv   |  595 ++++
+ project6data/BIOL314020_subject14_day_65.csv     |  475 +++
+ project6data/BIOL314020_subject14_night_65.csv   |  597 ++++
+ project6data/BIOL314020_subject15_day_63.csv     | 1942 +++++++++++++
+ project6data/BIOL314020_subject15_night_63.csv   | 1942 +++++++++++++
+ project6data/BIOL314020_subject16_day_81.csv     | 1825 ++++++++++++
+ project6data/BIOL314020_subject16_night_81.csv   | 1808 ++++++++++++
+ project6data/BIOL314020_subject17_day_85.csv     | 1566 ++++++++++
+ project6data/BIOL314020_subject17_night_85.csv   | 1782 ++++++++++++
+ project6data/BIOL314020_subject18_day_53.csv     | 1298 +++++++++
+ project6data/BIOL314020_subject19_day_56.csv     |  194 ++
+ project6data/BIOL314020_subject19_night_56.csv   |  118 +
+ project6data/BIOL314020_subject20_day_84.csv     | 1741 +++++++++++
+ project6data/BIOL314020_subject20_night_84.csv   | 1692 +++++++++++
+ project6data/BIOL314020_subject21_day_55.csv     | 1803 ++++++++++++
+ project6data/BIOL314020_subject21_night_55.csv   | 1802 ++++++++++++
+ project6data/BIOL314020_subject22_day_82.csv     | 1872 ++++++++++++
+ project6data/BIOL314020_subject22_night_82.csv   | 1796 ++++++++++++
+ project6data/BIOL314020_subject23_day_79.csv     | 1779 ++++++++++++
+ project6data/BIOL314020_subject23_night_79.csv   | 1619 +++++++++++
+ project6data/BIOL314020_subject24_day_63.csv     |  588 ++++
+ project6data/BIOL314020_subject24_night_63.csv   |  609 ++++
+ project6data/BIOL314020_subject25_day_49.csv     |  552 ++++
+ project6data/BIOL314020_subject25_night_49.csv   |  527 ++++
+ project6data/BIOL314020_subject26_day_75.csv     |  590 ++++
+ project6data/BIOL314020_subject26_night_75.csv   |  571 ++++
+ project6data/BIOL314020_subject27_day_63.csv     | 1673 +++++++++++
+ project6data/BIOL314020_subject27_night_63.csv   | 1801 ++++++++++++
+ project6data/BIOL314020_subject28_day_65.csv     | 1762 ++++++++++++
+ project6data/BIOL314020_subject28_night_65.csv   | 1825 ++++++++++++
+ project6data/BIOL314020_subject29_day_77.csv     |  179 ++
+ project6data/BIOL314020_subject29_night_77.csv   |  173 ++
+ project6data/BIOL314020_subject30_day_80.csv     | 1802 ++++++++++++
+ project6data/BIOL314020_subject30_night_80.csv   | 1803 ++++++++++++
+ project6data/BIOL314021_Subject31_night_55.csv   |  465 +++
+ project6data/BIOL314021_Subject32_day_82.csv     |  446 +++
+ project6data/BIOL314021_Subject32_night_82.csv   |  446 +++
+ project6data/BIOL314021_Subject33_day_123.csv    |  928 ++++++
+ project6data/BIOL314021_Subject33_night_123.csv  |  468 +++
+ project6data/BIOL314021_Subject34_day_61.csv     |  446 +++
+ project6data/BIOL314021_Subject34_night_61.csv   |  430 +++
+ project6data/BIOL314021_Subject39_day_50.csv     |  453 +++
+ project6data/BIOL314021_Subject39_night_50.csv   |  179 ++
+ project6data/BIOL314021_subject31_day_55.csv     |  299 ++
+ project6data/BIOL314021_subject35_day_57.csv     |  468 +++
+ project6data/BIOL314021_subject35_night_57.csv   |  450 +++
+ project6data/BIOL314021_subject37_day_49.csv     |  451 +++
+ project6data/BIOL314021_subject37_night_49.csv   |  468 +++
+ project6data/BIOL314021_subject38_day_75.csv     |  891 ++++++
+ project6data/BIOL314021_subject38_night_75.csv   |  909 ++++++
+ project6data/BIOL314021_subject40_day_54.csv     |  474 +++
+ project6data/BIOL314021_subject40_night_54.csv   |  283 ++
+ project6data/BIOL3140_Subject36_day_60.csv       |  446 +++
+ project6data/BIOL3140_Subject36_night_60.csv     |  552 ++++
+ 79 files changed, 71646 insertions(+)
+
+commit cd514e372aecb4dea944e4cdaac178cac7771be8
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Fri Oct 22 10:34:39 2021 -0400
+
+    stuff
+
+ module 6 stuff.R | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+commit c12c5422ef6bc0de3ae1dbe34d5b92094c7dad84
+Author: Stephanie Robinson <stephanierobinson@stephaniesmbp2.bc.edu>
+Date:   Fri Oct 22 10:13:17 2021 -0400
+
+    first iteration
+
+ module6.sr.R | 39 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
+
+commit 4008c9079066160d09c066f68c06dbaff1d4cdee
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Fri Oct 22 10:11:10 2021 -0400
+
+    removed parts about graphs or tables that don't seem necesssary
+
+ module 6 stuff.R | 17 +----------------
+ 1 file changed, 1 insertion(+), 16 deletions(-)
+
+commit 9b5acf15c8c36b2863937d5b05e824703306149f
+Author: GregKim2 <kimgregory0612@gmail.com>
+Date:   Thu Oct 21 23:49:20 2021 -0400
+
+    speices file
+
+ mammal.temp.csv  | 52 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ module 6 stuff.R | 50 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 102 insertions(+)
+
+commit c395627e9d3b88f1dbcc90b8f20ac4bb34331d03
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Thu Oct 21 22:19:38 2021 -0400
+
+    2021 csv files
+
+ BIOL314021/.DS_Store                          | Bin 0 -> 8196 bytes
+ BIOL314021/BIOL314021_Subject31_night_55.csv  | 465 +++++++++++++
+ BIOL314021/BIOL314021_Subject32_day_82.csv    | 446 +++++++++++++
+ BIOL314021/BIOL314021_Subject32_night_82.csv  | 446 +++++++++++++
+ BIOL314021/BIOL314021_Subject33_day_123.csv   | 928 ++++++++++++++++++++++++++
+ BIOL314021/BIOL314021_Subject33_night_123.csv | 468 +++++++++++++
+ BIOL314021/BIOL314021_Subject34_day_61.csv    | 446 +++++++++++++
+ BIOL314021/BIOL314021_Subject34_night_61.csv  | 430 ++++++++++++
+ BIOL314021/BIOL314021_Subject39_day_50.csv    | 453 +++++++++++++
+ BIOL314021/BIOL314021_Subject39_night_50.csv  | 179 +++++
+ BIOL314021/BIOL314021_subject31_day_55.csv    | 299 +++++++++
+ BIOL314021/BIOL314021_subject35_day_57.csv    | 468 +++++++++++++
+ BIOL314021/BIOL314021_subject35_night_57.csv  | 450 +++++++++++++
+ BIOL314021/BIOL314021_subject37_day_49.csv    | 451 +++++++++++++
+ BIOL314021/BIOL314021_subject37_night_49.csv  | 468 +++++++++++++
+ BIOL314021/BIOL314021_subject38_day_75.csv    | 891 +++++++++++++++++++++++++
+ BIOL314021/BIOL314021_subject38_night_75.csv  | 909 +++++++++++++++++++++++++
+ BIOL314021/BIOL314021_subject40_day_54.csv    | 474 +++++++++++++
+ BIOL314021/BIOL314021_subject40_night_54.csv  | 283 ++++++++
+ BIOL314021/BIOL3140_Subject36_day_60.csv      | 446 +++++++++++++
+ BIOL314021/BIOL3140_Subject36_night_60.csv    | 552 +++++++++++++++
+ 21 files changed, 9952 insertions(+)
+
+commit b30937de59eeb1e77262abe6416e2739b3894cf8
+Author: ckenaley <cpkenaley@gmail.com>
+Date:   Thu Oct 21 09:59:13 2021 -0400
+
+    proj 5 comments
+
+ molecool_Module5_comments.Rmd | 81 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 81 insertions(+)
+
+commit 356f1b01285ce10dd985d2e9bf7ca86c67c61d1a
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Mon Oct 18 12:44:31 2021 -0400
+
+    module 6 proj rmd
+
+ molecool_Module6 .Rmd | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 47 insertions(+)
+
+commit ea7b9a2e39254b74e95896f48570ecdbf469bd23
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Mon Oct 18 10:34:11 2021 -0400
+
+    2020 data csv's
+
+ BIOL314020/BIOL314020_subject01_day_52.csv     |  559 ++++
+ BIOL314020/BIOL314020_subject01_night_52.csv   |  486 ++++
+ BIOL314020/BIOL314020_subject02_day_73.csv     |  622 +++++
+ BIOL314020/BIOL314020_subject02_night_73.csv   |  619 +++++
+ BIOL314020/BIOL314020_subject03_day_59.csv     |  565 ++++
+ BIOL314020/BIOL314020_subject03_night_59.csv   |  601 +++++
+ BIOL314020/BIOL314020_subject04_day_72.csv     |  549 ++++
+ BIOL314020/BIOL314020_subject04_night_72.csv   |  567 ++++
+ BIOL314020/BIOL314020_subject05_day_64.csv     |  594 +++++
+ BIOL314020/BIOL314020_subject05_night_64.csv   |  531 ++++
+ BIOL314020/BIOL314020_subject06_day_61.csv     |  308 +++
+ BIOL314020/BIOL314020_subject06_night_61.csv   |  359 +++
+ BIOL314020/BIOL314020_subject07_day_52.csv     | 1763 +++++++++++++
+ BIOL314020/BIOL314020_subject07_night_52.csv   | 1784 +++++++++++++
+ BIOL314020/BIOL314020_subject08_day_93.csv     |  177 ++
+ BIOL314020/BIOL314020_subject08_night_93.csv   |  166 ++
+ BIOL314020/BIOL314020_subject09_day_52.csv     | 1687 ++++++++++++
+ BIOL314020/BIOL314020_subject09_night_52.csv   | 3344 ++++++++++++++++++++++++
+ BIOL314020/BIOL314020_subject10_day_63.5.csv   |  542 ++++
+ BIOL314020/BIOL314020_subject10_night_63.5.csv |  303 +++
+ BIOL314020/BIOL314020_subject11_day_95.csv     |  586 +++++
+ BIOL314020/BIOL314020_subject11_night_95.csv   |  594 +++++
+ BIOL314020/BIOL314020_subject12_day_86.csv     |  532 ++++
+ BIOL314020/BIOL314020_subject12_night_86.csv   |  573 ++++
+ BIOL314020/BIOL314020_subject13_day_80.csv     |  582 +++++
+ BIOL314020/BIOL314020_subject13_night_80.csv   |  595 +++++
+ BIOL314020/BIOL314020_subject14_day_65.csv     |  475 ++++
+ BIOL314020/BIOL314020_subject14_night_65.csv   |  597 +++++
+ BIOL314020/BIOL314020_subject15_day_63.csv     | 1942 ++++++++++++++
+ BIOL314020/BIOL314020_subject15_night_63.csv   | 1942 ++++++++++++++
+ BIOL314020/BIOL314020_subject16_day_81.csv     | 1825 +++++++++++++
+ BIOL314020/BIOL314020_subject16_night_81.csv   | 1808 +++++++++++++
+ BIOL314020/BIOL314020_subject17_day_85.csv     | 1566 +++++++++++
+ BIOL314020/BIOL314020_subject17_night_85.csv   | 1782 +++++++++++++
+ BIOL314020/BIOL314020_subject18_day_53.csv     | 1298 +++++++++
+ BIOL314020/BIOL314020_subject19_day_56.csv     |  194 ++
+ BIOL314020/BIOL314020_subject19_night_56.csv   |  118 +
+ BIOL314020/BIOL314020_subject20_day_84.csv     | 1741 ++++++++++++
+ BIOL314020/BIOL314020_subject20_night_84.csv   | 1692 ++++++++++++
+ BIOL314020/BIOL314020_subject21_day_55.csv     | 1803 +++++++++++++
+ BIOL314020/BIOL314020_subject21_night_55.csv   | 1802 +++++++++++++
+ BIOL314020/BIOL314020_subject22_day_82.csv     | 1872 +++++++++++++
+ BIOL314020/BIOL314020_subject22_night_82.csv   | 1796 +++++++++++++
+ BIOL314020/BIOL314020_subject23_day_79.csv     | 1779 +++++++++++++
+ BIOL314020/BIOL314020_subject23_night_79.csv   | 1619 ++++++++++++
+ BIOL314020/BIOL314020_subject24_day_63.csv     |  588 +++++
+ BIOL314020/BIOL314020_subject24_night_63.csv   |  609 +++++
+ BIOL314020/BIOL314020_subject25_day_49.csv     |  552 ++++
+ BIOL314020/BIOL314020_subject25_night_49.csv   |  527 ++++
+ BIOL314020/BIOL314020_subject26_day_75.csv     |  590 +++++
+ BIOL314020/BIOL314020_subject26_night_75.csv   |  571 ++++
+ BIOL314020/BIOL314020_subject27_day_63.csv     | 1673 ++++++++++++
+ BIOL314020/BIOL314020_subject27_night_63.csv   | 1801 +++++++++++++
+ BIOL314020/BIOL314020_subject28_day_65.csv     | 1762 +++++++++++++
+ BIOL314020/BIOL314020_subject28_night_65.csv   | 1825 +++++++++++++
+ BIOL314020/BIOL314020_subject29_day_77.csv     |  179 ++
+ BIOL314020/BIOL314020_subject29_night_77.csv   |  173 ++
+ BIOL314020/BIOL314020_subject30_day_80.csv     | 1802 +++++++++++++
+ BIOL314020/BIOL314020_subject30_night_80.csv   | 1803 +++++++++++++
+ 59 files changed, 61694 insertions(+)
+
+commit 20e60d17cad00ba20d022d5d08dbc5032ebe1815
+Merge: 73f698e a31582b
+Author: Julia Barquin <barquinj@julias-air-4.bc.edu>
+Date:   Sun Oct 17 22:32:01 2021 -0400
+
+    Merge branch 'master' of https://github.com/amorim22/molecool
+
+commit 73f698e5012d33e9eee2df3ee7c332fabcdf65d4
+Merge: 85befe8 a8b82e9
+Author: Julia Barquin <barquinj@julias-air-4.bc.edu>
+Date:   Sun Oct 17 22:24:30 2021 -0400
+
+    Merge branch 'master' of https://github.com/amorim22/molecool
+
+commit a31582bc8d0e92af138cd195402645f4b6f94d5c
+Merge: 85befe8 a8b82e9
+Author: Julia Barquin <barquinj@julias-air-4.bc.edu>
+Date:   Sun Oct 17 22:24:30 2021 -0400
+
+    Merge branch 'master' of https://github.com/amorim22/molecool
+
+commit 85befe8aae81a60da2e308897aaeec02e6a63f34
+Merge: 60b5f99 5f4e39b
+Author: ckenaley <cpkenaley@gmail.com>
+Date:   Sun Oct 17 21:22:53 2021 -0400
+
+    Project 5 final final
+
+commit a8b82e96dfef47d6529330897d0fe6b038fe949e
+Merge: 60b5f99 5f4e39b
+Author: ckenaley <cpkenaley@gmail.com>
+Date:   Sun Oct 17 21:22:53 2021 -0400
+
+    Merge branch 'master' of https://github.com/amorim22/molecool
+
+commit 5f4e39b663b2a9707e5c6692cdb7b44becb6d80e
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Sun Oct 17 19:25:37 2021 -0400
+
+    Project 5 submission final
+
+ molecool_Module5.Rmd  |  24 +++--
+ molecool_Module5.html | 288 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 306 insertions(+), 6 deletions(-)
+
+commit 24c29d42c922fdf39bf79dc9afd8c5ca239d72b2
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Sun Oct 17 18:48:56 2021 -0400
+
+    updated
+
+ BIOL3140BT.bib | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+commit e7befeb264b178d6cd9f0953d0a9cdd7256e7391
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Sun Oct 17 17:19:50 2021 -0400
+
+    updated
+
+ molecool_Module5.Rmd | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+commit 0346ba6dedea53a03140b19c9dff78ec2debfc56
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Oct 17 17:14:03 2021 -0400
+
+    update
+
+ md5mkd.Rmd => molecool_Module5.Rmd | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit a5b00171f75613cdcd7d633836b795264b719f70
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Sun Oct 17 17:10:25 2021 -0400
+
+    Project 5 bib
+
+ BIOL3140BT.bib | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+commit 2b81b5ffb366fa8cb1d93738e223a49f8f869d68
+Author: Stephanie Robinson <stephanierobinson@stephaniesmbp2.bc.edu>
+Date:   Fri Oct 15 10:24:35 2021 -0400
+
+    10?15 all R chunks updated
+
+ md5mkd.Rmd | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 71d0d092cedc8e07f215384d265df724964cfe2c
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Thu Oct 14 22:24:02 2021 -0400
+
+    ?
+
+ md5mkd.Rmd  |   5 ---
+ md5mkd.html | 134 +++---------------------------------------------------------
+ 2 files changed, 6 insertions(+), 133 deletions(-)
+
+commit 0f16008c3b85a8e42cb38bc8cd6b36b20176229e
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Thu Oct 14 22:22:09 2021 -0400
+
+    progress
+
+ md5mkd.Rmd | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 7e300acd6d6354d4f671122d2f647d02189b53a3
+Author: Stephanie Robinson <stephanierobinson@stephaniesmbp2.bc.edu>
+Date:   Thu Oct 14 22:20:46 2021 -0400
+
+    update: single, consise graph
+
+ md5mkd.Rmd | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+commit 30d5b0f018b00de70850afc9924fe41f0e2cbf32
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Thu Oct 14 22:16:34 2021 -0400
+
+    updated with steph's data codes
+
+ md5mkd.Rmd  |  21 +++---
+ md5mkd.html | 218 ++++++++++++++++++++++++++++++------------------------------
+ 2 files changed, 121 insertions(+), 118 deletions(-)
+
+commit 48db5eadd3f8e81a84cd6422d0691c3237a83a0d
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Thu Oct 14 18:28:28 2021 -0400
+
+    gif added too
+
+ md5mkd.html | 193 ++++++++++++++++++++++++++++++------------------------------
+ 1 file changed, 96 insertions(+), 97 deletions(-)
+
+commit 60b5f99f585d3adab8379909c95ceca161d50a88
+Author: ckenaley <cpkenaley@gmail.com>
+Date:   Thu Oct 14 11:43:38 2021 -0400
+
+    proj4 comments
+
+ .DS_Store                       | Bin 10244 -> 10244 bytes
+ molecool_Module4.0_comment.Rmd  | 133 ++++++++++
+ molecool_Module4.0_comment.html | 547 ++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 680 insertions(+)
+
+commit a43ec6fdb44226fec1817175a5e59a0ac478ae94
+Author: Stephanie Robinson <stephanierobinson@stephaniesmbp2.bc.edu>
+Date:   Wed Oct 13 12:44:59 2021 -0400
+
+    modified data files, corrected
+
+ Greg_Couch.csv   | 144 ++++++++++++++----------------------------
+ Greg_active.csv  | 159 ++++++++++++++++------------------------------
+ Jess_Couch.csv   | 189 +++++++++++++++++++------------------------------------
+ Jess_active.csv  | 147 +++++++++++++++----------------------------
+ Julia_Couch.csv  | 153 +++++++++++++++-----------------------------
+ Julia_active.csv | 141 +++++++++++++----------------------------
+ Steph_Couch.csv  | 162 ++++++++++++++++-------------------------------
+ Steph_active.csv | 147 +++++++++++++++----------------------------
+ 8 files changed, 412 insertions(+), 830 deletions(-)
+
+commit cca58460d668b3516c2608845cab0fd74c122c87
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Wed Oct 13 10:45:23 2021 -0400
+
+    progress
+
+ md5mkd.Rmd  |   8 ++++
+ md5mkd.html | 128 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 136 insertions(+)
+
+commit e325c622c18024bc6b10c3d5f001a6c9a9e30a65
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Tue Oct 12 10:03:57 2021 -0400
+
+    baseline file
+
+ md5mkd.Rmd  |  47 ++++++++++++
+ md5mkd.html | 244 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 291 insertions(+)
+
+commit a0e14eea59dc0622514c9e298a169124c4f29ba6
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Oct 10 18:51:22 2021 -0400
+
+    changed
+
+ GKMD5.R | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 893b8daeed5e08829ece06bd36cf26a539a85804
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Oct 10 18:41:05 2021 -0400
+
+    changed files
+
+ Greg_Couch.csv   | 196 +++++++++++++++++++++---------------------
+ Greg_active.csv  | 219 +++++++++++++++++++++++------------------------
+ Jess_Couch.csv   | 255 +++++++++++++++++++++++++++----------------------------
+ Jess_active.csv  | 199 +++++++++++++++++++++----------------------
+ Julia_Couch.csv  | 208 ++++++++++++++++++++++-----------------------
+ Julia_active.csv | 196 +++++++++++++++++++++---------------------
+ Steph_Couch.csv  | 219 ++++++++++++++++++++++++-----------------------
+ Steph_active.csv | 200 +++++++++++++++++++++----------------------
+ 8 files changed, 838 insertions(+), 854 deletions(-)
+
+commit c573d26b3a5e552930f4eec8a27ac5f3c20fa261
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Oct 10 18:38:30 2021 -0400
+
+    update
+
+ .DS_Store | Bin 6148 -> 10244 bytes
+ GKMD5.R   |   8 ++++----
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+commit 6ce0a0d12f1c291dc23b4736059be9299779ee96
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Oct 10 18:30:05 2021 -0400
+
+    name change
+
+ Jessica_Couch.csv => Jess_Couch.csv | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e9f020cd5e6ea7ec0411fcab9997249c2fca6fcb
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Oct 10 18:26:51 2021 -0400
+
+    project file
+
+ GKMD5.R | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+commit 3cf02d8222dc6b0030b46f6f1fb542a34c95c7e8
+Author: kimdzb <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Oct 10 18:22:13 2021 -0400
+
+    metadata
+
+ Greg_Couch.csv    |  99 +++++++++++++++++++++++++++++++++++++++++
+ Greg_active.csv   | 112 +++++++++++++++++++++++++++++++++++++++++++++++
+ Jess_active.csv   | 100 ++++++++++++++++++++++++++++++++++++++++++
+ Jessica_Couch.csv | 128 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Julia_Couch.csv   | 105 ++++++++++++++++++++++++++++++++++++++++++++
+ Julia_active.csv  |  99 +++++++++++++++++++++++++++++++++++++++++
+ Steph_Couch.csv   | 110 ++++++++++++++++++++++++++++++++++++++++++++++
+ Steph_active.csv  | 101 ++++++++++++++++++++++++++++++++++++++++++
+ 8 files changed, 854 insertions(+)
+
+commit 6755a5796527f98b14021627ea254d02f885ea24
+Author: ckenaley <cpkenaley@gmail.com>
+Date:   Thu Oct 7 11:24:28 2021 -0400
+
+    p3 update
+
+ Molecool_module3_comments.R | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit daaf5ab7a354791875130cb46e97130f197bcd76
+Author: ckenaley <cpkenaley@gmail.com>
+Date:   Thu Oct 7 11:17:19 2021 -0400
+
+    proj3 comments
+
+ .DS_Store                   | Bin 6148 -> 6148 bytes
+ Molecool_module3_comments.R | 180 ++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 180 insertions(+)
+
+commit c095f3b5550c6b1b481e97ebff2dbbadcf945f78
+Author: amorim22 <89811989+amorim22@users.noreply.github.com>
+Date:   Mon Oct 4 10:08:36 2021 -0400
+
+    Delete MolecoolJB_Module4.html
+
+ MolecoolJB_Module4.html | 245 ------------------------------------------------
+ 1 file changed, 245 deletions(-)
+
+commit a15a79ca0f5aa27ee93f163a20e1424e627a2a5f
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Mon Oct 4 00:11:58 2021 -0400
+
+    final
+
+ molecool_Module4.0.Rmd  |   2 +-
+ molecool_Module4.0.html | 351 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 352 insertions(+), 1 deletion(-)
+
+commit d529dbbcd84af5eb25164bff60f4bdd3bb4930ca
+Author: Julia Barquin <89813520+barquinjulia@users.noreply.github.com>
+Date:   Mon Oct 4 00:00:10 2021 -0400
+
+    Add files via upload
+    
+    Project 4 Submission
+
+ molecool_Module4.0.Rmd | 121 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 121 insertions(+)
+
+commit 5cd22a60b3d1c2c2a593b6003960134c1679e087
+Author: Julia Barquin <89813520+barquinjulia@users.noreply.github.com>
+Date:   Sun Oct 3 23:59:00 2021 -0400
+
+    Delete molecool_Module4.Rmd
+
+ molecool_Module4.Rmd | 121 ---------------------------------------------------
+ 1 file changed, 121 deletions(-)
+
+commit c3e8db3c77250efb6bce3b8d46cb02c6ef675ce3
+Author: Julia Barquin <89813520+barquinjulia@users.noreply.github.com>
+Date:   Sun Oct 3 23:58:21 2021 -0400
+
+    Module 4 Project Submission
+
+ molecool_Module4.Rmd | 121 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 121 insertions(+)
+
+commit 5454de95e100b860af61dbd0ed0bc0e88e2d49c6
+Author: amorim22 <89811989+amorim22@users.noreply.github.com>
+Date:   Sun Oct 3 20:44:00 2021 -0400
+
+    Delete molecoolgreg_Module4.html
+
+ molecoolgreg_Module4.html | 359 ----------------------------------------------
+ 1 file changed, 359 deletions(-)
+
+commit e38c19fe5a10bf0968792ef81302922cdc137a38
+Author: amorim22 <89811989+amorim22@users.noreply.github.com>
+Date:   Sun Oct 3 20:43:47 2021 -0400
+
+    Delete molecoolgreg_Module4.Rmd
+
+ molecoolgreg_Module4.Rmd | 172 -----------------------------------------------
+ 1 file changed, 172 deletions(-)
+
+commit 31ca9f3be17a294db3632b3646d7c2c0b9d6952c
+Author: amorim22 <89811989+amorim22@users.noreply.github.com>
+Date:   Sun Oct 3 20:43:31 2021 -0400
+
+    Delete MolecoolJB_Module4.Rmd
+
+ MolecoolJB_Module4.Rmd | 33 ---------------------------------
+ 1 file changed, 33 deletions(-)
+
+commit e81fdcd2cc067f9ca045afc9f0f73694888b2b16
+Author: amorim22 <89811989+amorim22@users.noreply.github.com>
+Date:   Sun Oct 3 20:42:34 2021 -0400
+
+    Delete molecool_Module4.Rmd
+
+ molecool_Module4.Rmd | 30 ------------------------------
+ 1 file changed, 30 deletions(-)
+
+commit 9bc6ce50998da912175c1dc84f06d99cf7636db3
+Author: Stephanie Robinson <stephanierobinson@stephaniesmbp2.bc.edu>
+Date:   Sun Oct 3 18:42:47 2021 -0400
+
+    SR
+
+ Project3-SR/MOLECOOL_module4.SR.Rmd  |  84 ++++++++++++
+ Project3-SR/MOLECOOL_module4.SR.html | 254 +++++++++++++++++++++++++++++++++++
+ 2 files changed, 338 insertions(+)
+
+commit 41d76c88c921985232d349da3dfe3a54f05cd5db
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Sun Oct 3 18:33:09 2021 -0400
+
+    Jess' Bib file
+
+ BIOL3140.bib | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+
+commit 4cc998e649f26903ce5bf31321a56af673d75dfd
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Thu Sep 30 17:53:30 2021 -0400
+
+    master file
+
+ molecool_Module4.Rmd | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+
+commit 3fa132dfeeba83793a09d9e20c216f60e6a78381
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Thu Sep 30 17:25:26 2021 -0400
+
+    ?
+
+ MolecoolJB_Module4.html   | 245 +++++++++++++++++++++++++++++++
+ molecoolgreg_Module4.html | 359 ++++++++++++++++++++++++++++++++++++++++++++++
+ svl_small.png             | Bin 0 -> 153127 bytes
+ 3 files changed, 604 insertions(+)
+
+commit 52de422e8cb1a5f462f2a67837c4fb3caafe6224
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Thu Sep 30 17:15:41 2021 -0400
+
+    master file project 4
+
+ molecoolgreg_Module4.Rmd | 172 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 172 insertions(+)
+
+commit a301111c48bbe2153d2d6ed7f11d614b57d752f8
+Merge: 5054bac d732eb6
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Thu Sep 30 17:02:10 2021 -0400
+
+    branch fix?
+    
+    Merge branch 'master' of https://github.com/amorim22/molecool
+    
+    # Conflicts:
+    #       .DS_Store
+
+commit 5054baca4dc15a76c9befffb3aaa3c03560070e1
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Thu Sep 30 15:29:25 2021 -0400
+
+    ?
+
+ .DS_Store | Bin 0 -> 6148 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit d732eb627cc44922f472255b75673a5ec7859ae4
+Author: Greg Kim <greg@gregs-mbp.bc.edu>
+Date:   Wed Sep 29 10:30:31 2021 -0400
+
+    progress on questions
+
+ .DS_Store                 | Bin 0 -> 8196 bytes
+ Anonolis.jpeg             | Bin 0 -> 203598 bytes
+ molecoolgreg_Module4.Rmd  |  22 ++++++++++++++++------
+ molecoolgreg_Module4.html |  35 ++++++++++++++++++++++++-----------
+ 4 files changed, 40 insertions(+), 17 deletions(-)
+
+commit a44f50e356c225ddd993580769789ec277500d90
+Author: Greg Kim <greg@gregs-mbp.bc.edu>
+Date:   Mon Sep 27 18:32:56 2021 -0400
+
+    basep
+
+ molecoolgreg_Module4.Rmd  | 162 ++++++++++++++++++++++
+ molecoolgreg_Module4.html | 346 ++++++++++++++++++++++++++++++++++++++++++++++
+ svl_small.png             | Bin 0 -> 153127 bytes
+ 3 files changed, 508 insertions(+)
+
+commit a4604dea99ca0f568749b0c86dca27fb3e8a28af
+Author: ckenaley <cpkenaley@gmail.com>
+Date:   Sat Sep 25 12:55:05 2021 -0400
+
+    proj2 comments
+
+ molecool_module2.sr.R         |  24 +++++-
+ molecool_module2.sr_comment.R | 188 ++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 209 insertions(+), 3 deletions(-)
+
+commit d02ea55ab58be1b9842138c9442331d4e72a4723
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Fri Sep 24 15:00:41 2021 -0400
+
+    Linear graph - Jess' update
+
+ Molecool_module3.R | 160 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 160 insertions(+)
+
+commit e3a475c519c04f22e19cbdc64e787e9382b939b3
+Author: Greg Kim <greg@gregs-mbp.bc.edu>
+Date:   Wed Sep 22 21:05:04 2021 -0400
+
+    updated for q4
+
+ molecool.module3.G.R | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
+
+commit a80500d1569e45ab3c33233aded922a59ba9f5f0
+Author: Greg Kim <greg@gregs-mbp.bc.edu>
+Date:   Wed Sep 22 20:21:09 2021 -0400
+
+    namechange and updates
+
+ pj3greg.R => molecool.module3.G.R | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit cf6edc1a91ef4c5e82a32ed58bf87f24aa52114e
+Author: Greg Kim <greg@gregs-mbp.bc.edu>
+Date:   Tue Sep 21 19:52:05 2021 -0400
+
+    final proj
+
+ pj3greg.R | 7 -------
+ 1 file changed, 7 deletions(-)
+
+commit e15fec38fe8e6c933025ab492007d45a2b6e2df2
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Mon Sep 20 19:32:18 2021 -0400
+
+    i think i'm done
+
+ pj3greg.R | 36 ++++++++++++++++++++++++------------
+ 1 file changed, 24 insertions(+), 12 deletions(-)
+
+commit 6b09e11fc586f519a4eb7353f3a4714df3d10c3a
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Mon Sep 20 19:20:16 2021 -0400
+
+    still doing questions
+
+ pj3greg.R | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 54 insertions(+)
+
+commit 32f04f3ce9792c47bd81a7505ea2315a0d93cd4a
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Mon Sep 20 18:04:36 2021 -0400
+
+    base proj
+
+ pj3greg.R | 63 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 63 insertions(+)
+
+commit 364dea88a99844175becae9bc1af3f056c36f049
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Mon Sep 20 16:29:14 2021 -0400
+
+    progress check
+
+ pj3greg.R | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 47 insertions(+)
+
+commit e36d8f3900e87518f820c3160ab437d46eeaaaee
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Mon Sep 20 10:43:59 2021 -0400
+
+    progress
+
+ pj3greg.R | 30 +++++++++++++++++++++++++++++-
+ 1 file changed, 29 insertions(+), 1 deletion(-)
+
+commit 8dd4ed80c951659a9c3975480f96c99c06bf7af3
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Mon Sep 20 10:15:02 2021 -0400
+
+    pj3
+
+ anole.dat.csv | 71 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ anole.eco.csv | 71 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ anole.tre     |  1 +
+ pj3greg.R     | 62 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 205 insertions(+)
+
+commit 27965d41352a0690367abb55395f6ee64ff2542d
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Sep 19 18:30:11 2021 -0400
+
+    committed
+
+ stephaniescodepj2.R => molecool_project2.R |  9 ++----
+ pseed.met.rate.csv                         | 51 ++++++++++++++++++++++++++++++
+ 2 files changed, 53 insertions(+), 7 deletions(-)
+
+commit 21c576e938507a613760ab7603cb997683685906
+Merge: 548200f 7fc0556
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Sep 19 18:29:55 2021 -0400
+
+    Merge branch 'master' of https://github.com/amorim22/molecool
+
+commit 7fc055696bbc2b45e5202516a4bd6ef1de878482
+Author: stephanie-r <89795002+stephanie-r@users.noreply.github.com>
+Date:   Sun Sep 19 18:27:48 2021 -0400
+
+    Add files via upload
+
+ molecool_module2.sr.R | 170 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 170 insertions(+)
+
+commit 548200f3067c8a06fdd6210ccb685ae30d8fae5e
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Sep 19 17:43:33 2021 -0400
+
+    experimental
+
+ stephaniescodepj2.R | 176 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 176 insertions(+)
+
+commit 5ae2046d5df625dea85d86186912bdcb703f5c3e
+Author: ckenaley <cpkenaley@gmail.com>
+Date:   Thu Sep 16 17:30:23 2021 -0400
+
+    proj1 feedback
+
+ .gitignore                |  4 +++
+ Project_1_Greg_comments.R | 66 +++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 70 insertions(+)
+
+commit 236eb1e2636967c54e24bb7922c4c644e198375d
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Sep 12 18:03:32 2021 -0400
+
+    final?
+
+ Project2Greg.R | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit 7a4cd81bbb9cc71fd6bb8e8413c6a535e67a33f9
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Sep 12 18:00:52 2021 -0400
+
+    yes
+
+ Project2Greg.R | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+commit 2fc60df942fa7c60c0c82cb526b3e2c4f9e744a7
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Sep 12 17:51:12 2021 -0400
+
+    midway
+
+ Project2Greg.R        |    66 +
+ pseed.calibration.csv |   120 +
+ pseed.fin.amps.csv    | 73353 ++++++++++++++++++++++++++++++++++++++++++++++++
+ pseed.lengths.csv     |     4 +
+ 4 files changed, 73543 insertions(+)
+
+commit d5307201e0e9b9bce60b14952f139ac8181721fd
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Sun Sep 12 17:10:59 2021 -0400
+
+    started
+
+ Project2Greg.R | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2466ed41d20423f6e24b3ea33f43d8997ea5fec2
+Author: amorim22 <89811989+amorim22@users.noreply.github.com>
+Date:   Fri Sep 10 11:48:31 2021 -0400
+
+    Delete Project 1 - JA.R
+
+ Project 1 - JA.R | 60 --------------------------------------------------------
+ 1 file changed, 60 deletions(-)
+
+commit 7e5b2941fadfedbd0daec02dd156dc8cb1e35318
+Merge: bd0a2b5 339245b
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Fri Sep 10 11:47:42 2021 -0400
+
+    Merge branch 'master' of https://github.com/amorim22/molecool
+
+commit bd0a2b58779f4e1a645707ac0cfd1db8b2c28cbd
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Fri Sep 10 11:47:31 2021 -0400
+
+    j
+
+ Project 1 - JA.R | 60 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 60 insertions(+)
+
+commit 2eb240ee68be6efa030d36ec2394c16eb3eb279e
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Fri Sep 10 11:33:45 2021 -0400
+
+    Jess
+
+ Project 1 - JA/.DS_Store        | Bin 6148 -> 6148 bytes
+ Project 1 - JA/Project 1 - JA.R |  60 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 60 insertions(+)
+
+commit 339245bdfe404591a2aaa7f96fbf57ba5ca926c9
+Merge: 5a27d2a b212a6c
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Thu Sep 9 10:48:06 2021 -0400
+
+    Merge branch 'master' of https://github.com/amorim22/molecool
+
+commit b212a6cdb93e54f85814fa2883ed0174cda23cf7
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Wed Sep 8 17:02:13 2021 -0400
+
+    Jessica's
+
+ Project 1 - JA/.DS_Store                   |  Bin 0 -> 6148 bytes
+ Project 1 - JA/scales.csv - JA.csv         | 1843 ++++++++++++++++++++++++++++
+ Project 1 - JA/species.quadrant.pdf-JA.pdf |  Bin 0 -> 11676 bytes
+ 3 files changed, 1843 insertions(+)
+
+commit 7ad119a9aac393d1434011dce6f37ccfacdb5b79
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Wed Sep 8 16:57:33 2021 -0400
+
+    Jessica's
+
+ molecool                    |    1 +
+ scales.csv - JA.csv         | 1843 -------------------------------------------
+ species.quadrant.pdf-JA.pdf |  Bin 11676 -> 0 bytes
+ 3 files changed, 1 insertion(+), 1843 deletions(-)
+
+commit 8ed6d8a47e87e0e02574e999aad86412979c2418
+Merge: 06d45a8 c5de07d
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Wed Sep 8 16:48:31 2021 -0400
+
+    Merge branch 'master' of https://github.com/amorim22/molecool
+
+commit 06d45a82b5585c2b5e022ecbd07fd6db06f999db
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Wed Sep 8 16:48:12 2021 -0400
+
+    Jessica's
+
+ scales.csv - JA.csv         | 1843 +++++++++++++++++++++++++++++++++++++++++++
+ species.quadrant.pdf-JA.pdf |  Bin 0 -> 11676 bytes
+ 2 files changed, 1843 insertions(+)
+
+commit c5de07d2100d34cb411c6bb4d88a67b186f0aa1d
+Author: amorim22 <89811989+amorim22@users.noreply.github.com>
+Date:   Wed Sep 8 16:35:17 2021 -0400
+
+    Delete testjuliaboolea.R
+
+ Tests/testjuliaboolea.R | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit ac98216499c37949146ddbc94788fca78e6052cf
+Author: amorim22 <89811989+amorim22@users.noreply.github.com>
+Date:   Wed Sep 8 16:35:09 2021 -0400
+
+    Delete testgregkim.R
+
+ Tests/testgregkim.R | 2 --
+ 1 file changed, 2 deletions(-)
+
+commit 47841bf018f60ea95f168d216d647aed13dd81f8
+Author: amorim22 <89811989+amorim22@users.noreply.github.com>
+Date:   Wed Sep 8 16:35:01 2021 -0400
+
+    Delete Test Jess.R
+
+ Tests/Test Jess.R | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 5a27d2af017016ec826f474f04249378d40b31f8
+Merge: 2ab26aa 97992b7
+Author: Julia Barquin <barquinj@julias-air-4.bc.edu>
+Date:   Wed Sep 8 13:21:06 2021 -0400
+
+    Merge branch 'master' of https://github.com/amorim22/molecool
+
+commit 2ab26aa4b551631b9c627dd46fed53a1da73f86f
+Author: Julia Barquin <barquinj@julias-air-4.bc.edu>
+Date:   Wed Sep 8 13:17:43 2021 -0400
+
+    tests
+
+ testjuliaboolea.R | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 97992b7592da87eb58d5541be15728172fadbc10
+Author: Julia Barquin <barquinj@julias-air-4.bc.edu>
+Date:   Wed Sep 8 13:17:43 2021 -0400
+
+    tests
+
+ Tests/Test Jess.R       | 1 +
+ Tests/testgregkim.R     | 2 ++
+ Tests/testjuliaboolea.R | 3 +++
+ 3 files changed, 6 insertions(+)
+
+commit 058914c5557711ab555dc3b09f422c1810ed73bb
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Wed Sep 8 13:11:00 2021 -0400
+
+    scales project
+
+ Project 1 JB/.DS_Store            |  Bin 0 -> 6148 bytes
+ Project 1 JB/Project 1 JBarquin.R |  105 +++
+ Project 1 JB/scales.csv           | 1843 +++++++++++++++++++++++++++++++++++++
+ Project 1 JB/species.quadrant.pdf |  Bin 0 -> 11676 bytes
+ 4 files changed, 1948 insertions(+)
+
+commit 81e80cf2176e8e2e82372e11d9a597f7694b3fff
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Wed Sep 8 12:20:54 2021 -0400
+
+    just organizing a little (;
+
+ Project 1 JB/Project 1 JBarquin.R | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8b19728a3773643fa0b437d92749e0a845b72fe9
+Author: Julia Barquin <barquinj@Julias-MacBook-Air-4.local>
+Date:   Wed Sep 8 12:09:21 2021 -0400
+
+    yee haw
+
+ testjuliaboolea.R | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit c0ee7630c2b1d0d7c4533b43ff5844f3e89cf9bc
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Wed Sep 8 11:38:20 2021 -0400
+
+    test
+
+ Test Jess.R | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit de6e01d578dbdeed26bec595730026bb65f8eb4e
+Author: Jessica Amorim <jessicaamorim@jessicas-air-3.bc.edu>
+Date:   Wed Sep 8 10:54:24 2021 -0400
+
+    jess
+
+ testgregkim.R | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 137d9d40880ed9f9d4bdaa0cc97e6eb5f912a943
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Wed Sep 8 10:36:57 2021 -0400
+
+    test file
+
+ testgregkim.R | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit f23f5734c5d5aa01a9c4e499f7134488872f9516
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Wed Sep 8 10:34:37 2021 -0400
+
+    its finally working
+
+ Project_1_Greg.R | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit b1acde2cd2a207b665260017844657dbdbc6d97d
+Author: Greg Kim <greg@Gregs-MacBook-Pro.local>
+Date:   Wed Sep 8 10:32:18 2021 -0400
+
+    test commit
+
+ Project_1_Greg.R | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 9b7465e972dc2292e4f666f13b0ef49126e4140a
+Author: amorim22 <89811989+amorim22@users.noreply.github.com>
+Date:   Sun Sep 5 18:34:03 2021 -0400
+
+    Delete Project.1.R
+
+ Project.1.R | 55 -------------------------------------------------------
+ 1 file changed, 55 deletions(-)
+
+commit 3cb516a2ebe25bae16a2c2fe52c37f0bdc724e3c
+Author: amorim22 <89811989+amorim22@users.noreply.github.com>
+Date:   Sun Sep 5 18:33:35 2021 -0400
+
+    Delete species.quadrant.1.pdf
+
+ species.quadrant.1.pdf | Bin 11676 -> 0 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 67f77a5923e81f8220fa72015f1353de6d2d82f9
+Author: Stephanie Robinson <stephanierobinson@stephaniesmbp2.bc.edu>
+Date:   Sun Sep 5 18:25:51 2021 -0400
+
+    Project 1
+
+ Project.1.R            |  55 +++++++++++++++++++++++++++++++++++++++++++++++++
+ species.quadrant.1.pdf | Bin 0 -> 11676 bytes
+ 2 files changed, 55 insertions(+)
+
+commit 79183d4f37193b45b04518f17052fe5302229bab
+Author: Greg Kim <kimdzb@bc.edu>
+Date:   Sun Sep 5 18:20:54 2021 -0400
+
+    Add files via upload
+
+ species.quadrant.pdf | Bin 0 -> 11676 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8569ab1927051ae09da408343779ec0b52797b4b
+Author: Greg Kim <kimdzb@bc.edu>
+Date:   Sun Sep 5 18:20:40 2021 -0400
+
+    Add files via upload
+
+ Project_1_Greg.R | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 54 insertions(+)
+
+commit 95296fbe88d6390606c6ed4b15ef51f9532a6f4a
+Author: Stephanie Robinson <stephanierobinson@stephaniesmbp2.bc.edu>
+Date:   Fri Sep 3 10:37:23 2021 -0400
+
+    Hello world
+
+ molecool.Rproj | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
