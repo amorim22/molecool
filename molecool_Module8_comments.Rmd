@@ -1,0 +1,161 @@
+---
+title: "molecool_Module8"
+author: "molecool"
+date: "11/17/2021"
+output: html_document
+bibliography: BIOL3140.bib
+---
+
+<!-- for comments -->
+<style>
+div.comment pre { background-color:#ffbbbb; }
+div.comment pre.r { background-color:#ffbbbb; }
+div.comment {color: red;}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r,include=FALSE}
+library(tidyverse)
+library(ape)
+library(nlme)
+library(geiger)
+library(caper)
+library(phytools)
+library(viridis)
+library(MuMIn)
+```
+## Introduction
+
+When taking a closer look at the physiology of the muscular system and observing how it enables us to move by exerting force on our bones, it is important to understand two key factors, such as speed and length, behind this phenomenon and how their relationship is affected with muscle fatigue. Within a muscle cell’s myofibril, all of the necessary machinery controlling this force-length relationship is found in the form of myofilaments – actin and myosin – whose interaction with one another at the zone of overlap within a sarcomere culminates in cross-bridges (@silverthorn2015human). Yes! These microscopic but powerful attachments are the ones responsible for muscle contraction and movement. In essence, the number of cross-bridges formed in a sarcomere not only determines the amount that is being produced, but also limits its maximal isometric force overall. 
+
+Let’s not forget the body is not made up of just long, straight bones, but is also composed of many joints, which assemble lever systems when transected by muscles. In this project, we looked at a 3rd order lever present in the human upper limb, whose forearm flexors originate on the pectoral girdle just above the humerus and insert on the radius and ulna, creating the elbow joint. In this scenario, our system possessed a mechanical advantage, predicting the amount of output force transmitted by the input force. Although this mechanical advantage cannot always predict the output force, because the insertion angle varies as the forearm rotates, we incorporated the study of force in a biomechanical system done by physiologists into our work, and implied that the force measured at the hand during an isometric force at various lengths can be used to mirror the force-length relationship governing force in myofibrils (@rassier1999length).
+
+In undertaking this analysis, we focused on some key aspects:
+
+  •	When considering a force vs. length relationship, does class-wide force-angle data for isometric maximum voluntary contractions under fatigued and non-fatigued conditions agree?
+
+  •	What is the comparison between the angles at which maximum isometric force occurs and non-fatigued and eccentrically fatigued forearm flexors?
+  
+  •	 Is there a significant shift between θmax between the fatigue and non-fatigued force-length relationships?
+  
+Most importantly, answering these questions will not only give us more understanding of the force-length relationship of the human upper limb and how this relationship responds to fatigue by allowing us to produce isometric force-angle curves of our own for the human forearm under maximum voluntary contractions, but also help illustrate the underlying mechanisms resulting in a shift of θ max after eccentric fatigue.
+
+<div class="comment">
+Another great intro! I like how you state explicit questions!
+</div>
+## Methods 
+
+We first read and put all the data in a list to make it easier to edit and make necessary changes to the data for us to better analyze them. Then, we normalize the force data using the if loop, by computing the max force force based and not based on angle, and then dividing them from each other to create the list of normalized values, and then joining them to our list for further use. Then, we sort out and filter the data for better analyzation and create a separate list for the sorted out data. We then create three different polynomial models and compare the AICc values of the models to find out which model fits our data the best. We also find the predicted maximum angle that would produced the highest force based on the models that we created. Finally, now only using the best model of the three, we compare the maximum angle and AICc values of the best models based on the experiment, control or fatigue, and also the subject. But we make sure both the control and fatigue values show up so we can compare the control and fatigue values on their own and also the difference, or the shift between the control and the fatigue data values.  
+
+<div class="comment">
+I'm late to the punch grading this, but there's no data here. Was it ever? Seems it was in "Project 8 data" folder. I reconstructed this so it could run
+</div>
+## Results
+
+```{r,echo=FALSE, include=FALSE, message=FALSE}
+library(tidyverse)
+library(dbplyr)
+library(ggplot2)
+library(MuMIn)
+
+k<- list.files("./Project 8 data",pattern=".csv", full.names = T)
+print(k)
+k.l <- list()
+for(i in k){
+  met.dat <- unlist(strsplit(i,"_"))
+  group <- met.dat[1]
+  subject <- met.dat[2]
+  angle <- as.numeric(met.dat[3])
+  experiment <- gsub(".csv","",met.dat[4])
+  k.l[[i]] <- read_delim(i,delim = " ", col_names = c("Reading","Force","Unit"), id="Experiment") %>%
+    mutate(group=group,subject=subject,angle=angle,experiment=experiment)
+}
+
+dat<-do.call(rbind,k.l)
+
+if(TRUE){
+  d.max1 <- dat%>%
+    group_by(subject,experiment,angle)%>%
+    mutate(max.force=max(abs(Force),na.rm = TRUE),n=n())
+  
+  ## computing the max among all of the "maxes"
+  d.max2 <- d.max1%>%
+    group_by(subject,experiment)%>%
+    mutate(max.f2=max(abs(Force)))
+  
+  ## join the data
+  d.max <- d.max2%>%
+    left_join(d.max2)%>%
+    mutate(normF=max.force/max.f2)
+}
+```
+
+```{r,echo=FALSE, message=FALSE}
+d.max%>%
+  ggplot(aes(angle,normF,col=experiment))+geom_point()
+```
+
+```{r,echo=FALSE, include=FALSE, message=FALSE}
+AICs <- d.max%>% 
+  group_by(subject,experiment)%>% 
+  summarize(m2=AICc(lm(normF~poly(angle,2))), 
+            m3=AICc(lm(normF~poly(angle,3))), 
+            m4=AICc(lm(normF~poly(angle,4))))%>% 
+  pivot_longer(m2:m4,names_to="model",values_to="AICc")%>% 
+  print()
+
+x.pred <- seq(45,157.5,length.out = 1000)
+
+fits <- d.max%>%
+  group_by(subject,experiment)%>%
+  summarize(
+    m2=predict(lm(normF~poly(angle,2)),newdata=data.frame(angle=x.pred)), #second order
+    m3=predict(lm(normF~poly(angle,3)),newdata=data.frame(angle=x.pred)), #third order
+    m4=predict(lm(normF~poly(angle,4)),newdata=data.frame(angle=x.pred)) #fourth order
+  )%>%
+  pivot_longer(m2:m4,names_to="model")%>%
+  group_by(subject,experiment,model)%>%
+  summarize(theta_max=x.pred[which.max(value)])%>%
+  print()
+```
+
+
+```{r, include=FALSE, message=FALSE}
+best.models <- fits%>%
+  left_join(AICs)%>%
+  group_by(subject,experiment)%>%
+  mutate(best=AICc==min(AICc))%>%
+  filter(best==TRUE)%>%
+  print()
+```
+
+```{r,echo=FALSE, echo=FALSE, message=FALSE}
+anova(lm(theta_max~experiment,best.models))
+knitr::kable(best.models)
+```
+
+```{r, include=FALSE, message=FALSE}
+best.models %>%
+  pivot_wider(id_cols=subject,names_from = experiment,values_from=theta_max)%>%
+  mutate(shift=(fatigue-control))%>%
+  ungroup()%>%
+  summarise(mean.shift=mean(shift, na.rm=TRUE),se.shift=sd(shift, na.rm=TRUE)/sqrt(length(shift)))
+```
+mean shift=6.88
+standard deviation of shift=6.48
+
+<div class="comment">
+The results need to be more thann just a few numbers and figures. It needs to be a narrative. But, great work implementing the code.
+</div>
+
+## Discussion
+
+## Author Contributions
+
+As always, in an effort to contribute to each other's learning as a whole, Molecool team members worked together to figure out the code and compile an organized final .rmd document. All of the members met during the week or worked individually to collect the necessary data for this project. Team member Stephanie contributed by cracking the code and analyzing data, writing the results as well as assembling the Arduino unit; team member Greg contributed to the project by helping with the code and writing up the methods; team member Jessica contributed to the project by helping with the code, doing research to put together a comprehensive introduction, the bib file and author contributions; team member Julia contributed by writing up the discussion with citations.
+
+## References 
