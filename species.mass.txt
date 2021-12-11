@@ -1,3 +1,4 @@
+species, mass
 Archilochus colubris, 6 
 Buteo platypterus, 560 
 Catharus ustulatus, 45 
