@@ -20,14 +20,31 @@ library(phytools)
 library(viridis)
 library(MuMIn)
 ```
-##Introduction
+## Introduction
 
-##Methods
+Who has never wondered where birds went once the weather became really cold while growing up? After all, human beings can easily treat themselves to a warm cup of soup in their heated- houses, and not really worry about groceries as there is a supermarket nearly everywhere nowadays. Birds, on the contrary, and particularly neotropical ones, such as the so-called trans-Gulf migrants (TGMs), usually fly over the Gulf of Mexico on a non-stop route, venturing out every Spring season, and travelling long-distances from Central and South America to higher latitudes for food and breeding opportunities (@newton2011ecology). The arrival date for these birds is not a random effect though, for it has direct implications on fitness. In order words, arriving too early can increase and individual’s chances of finding a good mate and procreating, whereas arriving too late can perhaps allow an individual to find more food sources available (@smith2005arrival). Considering the importance of arrival time in the context of a changing climate, studies in the late 90s have shown variation in the arrival time of certain species, such as warblers, on a year to year basis, which was found to be linked to different environmental conditions (@smith2005arrival). However, in what specific ways these birds manage to shift their arrival and whether they actually do so remain up for a debate. 
 
-##Results
+In this project, we will explore available resources like eBird and NOAA’s National Climatic Data Center’s API in order to observe and study the effects of changes in local weather and environmental aspects linked to climate change and how these affect the migration of TGMs. 
 
-##Discussion
+In undertaking these analyses, we focused on a few key questions:
 
-##Author Contributions
+•	Is there an actual variation between arrival time and wind variables along migration route for TGMs migrating to MA?
 
-##References
+•	If so, what role can climate change potentially play in the population status of TGMs arriving in MA during the spring?
+
+•	Is there a variation among different species? In other words, does weight affect this variation at all?
+
+•	How does this project contribute to, challenge, or refine previous hypothesis concerning the role that climatic variables play in long-distance migration in passerine birds?
+
+Overall, answering these questions will not only provide a better understanding of how and if individual TGMs species are able to adjust their arrival time based on a changing climate and still successfully find suitable mates and food sources, but also show evidence that climate change is an ongoing phenomenon.
+
+
+## Methods
+
+## Results
+
+## Discussion
+
+## Author Contributions
+
+## References
