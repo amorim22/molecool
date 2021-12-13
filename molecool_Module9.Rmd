@@ -47,4 +47,6 @@ Overall, answering these questions will not only provide a better understanding 
 
 ## Author Contributions
 
+In an effort to contribute to each other's learning as a whole, Molecool team members worked together to tackle the code, downloading and normalizing data, culminating in an organized final .Rmd document. Team member Stephanie contributed by helping crack the code, and qualitatively assessing the effects of wind and bird mass and their respective results; team member Jessica contributed to the project by doing research to put together a comprehensive introduction, the bib file, citations, and coding; team member Greg contributed to the project by halping with the code, writing the discussion, and the Rmd file; team member Julia contributed to the project by doing creating a csv file containing bird mass according to species, writing up the methods, and heling crack the code as well.
+
 ## References
