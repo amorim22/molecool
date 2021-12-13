@@ -3,6 +3,7 @@ title: "molecool_Module9"
 author: "molecool"
 date: "12/10/2021"
 output: html_document
+bibliography: BIOL3140.bib
 ---
 
 ```{r setup, include=FALSE}
