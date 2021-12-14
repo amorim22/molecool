@@ -18,20 +18,24 @@ library(geiger)
 library(caper)
 library(phytools)
 library(viridis)
-library(MuMIn)
 library(rgbif)
 library(MuMIn)
-library(rnoaa)
-library(ggmap)
-library(usmap)
 library(magick)
 library(cowplot)
 library(lme4) 
 library(car) 
 library(data.table) 
-library(dplyr)
 library(knitr)
+library(kableExtra)
+library(magrittr)
+library(rnoaa)
+library(data.table)
+library(ggmap)
+library(usmap)
+library(rgdal)
+library(dplyr)
 ```
+
 ## Introduction
 
 Who has never wondered where birds went once the weather became really cold while growing up? After all, human beings can easily treat themselves to a warm cup of soup in their heated- houses, and not really worry about groceries as there is a supermarket nearly everywhere nowadays. Birds, on the contrary, and particularly neotropical ones, such as the so-called trans-Gulf migrants (TGMs), usually fly over the Gulf of Mexico on a non-stop route, venturing out every Spring season, and travelling long-distances from Central and South America to higher latitudes for food and breeding opportunities (@newton2011ecology). The arrival date for these birds is not a random effect though, for it has direct implications on fitness. In order words, arriving too early can increase and individual’s chances of finding a good mate and procreating, whereas arriving too late can perhaps allow an individual to find more food sources available (@smith2005arrival). Considering the importance of arrival time in the context of a changing climate, studies in the late 90s have shown variation in the arrival time of certain species, such as warblers, on a year to year basis, which was found to be linked to different environmental conditions (@smith2005arrival). However, in what specific ways these birds manage to shift their arrival and whether they actually do so remain up for a debate. 
@@ -50,31 +54,14 @@ In undertaking these analyses, we focused on a few key questions:
 
 Overall, answering these questions will not only provide a better understanding of how and if individual TGMs species are able to adjust their arrival time based on a changing climate and still successfully find suitable mates and food sources, but also show evidence that climate change is an ongoing phenomenon.
 
-
 ## Methods
 
+We decided to study 10 species of birds with varied in size and mass; "Archilochus colubris, Buteo platyperus, catharus ustulatus, Coccyzus erythrophtalmus, Contopus virens, Myiarchus crinitus, Parkesia noveboracensis, Piranga olivacea, Sphyrapicus varius, and Vermivora cyanoptera*. The occurrence data was constrained by species, occurrence within year, our chosen year and month range, occurrence in the U.S and Massachusetts, and so that we only had human observations.We used TGM’s to look at weather along the migration route, and used locations that represented logical sampling locations for the weather data, In Mobile, AL, Boston, MA, and Charlotte, NC. For the data analysis, we computed arrival time for each species by finding the day that corresponded to when 25% of the individuals arrived in a given year. We mutated the weather data to be according to Julian day, and scaled the wind direction to 200 degrees and multiplied by velocity in order to standardize the optimal wind direction. We also multiplied the vector by -1 so that the vector, if negative represents head wind, and if positive represents tailwind. We then joined the bird and weather data with the maximum average masses of the species for data analysis. We used data analysis to answer the question “Does mass of the bird predict arrival time (depending on weather along the migration route)?” Since we had parameters that we saw as important or explanatory, that could contribute to a slope and intercept of the model, we utilized linear mixed effect modeling, where location was specified as a random effect and the fixed effects were wind and mass. We used the dredge function to decompose the models to all the combinations of the terms, including interactions, and to report model fit values (AICc,Δ AIC, and AICw).
+
 ```{r,echo=FALSE, include=FALSE, message=FALSE, warning=FALSE}
-
-species <- c("Sphyrapicus varius","Archilochus colubris","Vermivora cyanoptera","Parkesia noveboracensis","Buteo platypterus","Contopus virens","Coccyzus erythropthalmus","Myiarchus crinitus","Catharus ustulatus","Piranga olivacea")
-y <- paste0("1990",",","2019")
-m <- paste0("3",",","6")
-
-dat.l <-list()
-for(s in species){
-  n.obs <-  occ_data(scientificName=s,year=y,month=m,limit=0,country="US",basisOfRecord = "HUMAN_OBSERVATION",stateProvince="Massachusetts")$meta$count 
-  print(n.obs)
-  
-  dat.l[[paste0(s)]] <- occ_data(scientificName = s,year=y,month=m,
-                                 limit=n.obs,country="US",
-                                 basisOfRecord = "HUMAN_OBSERVATION",
-                                 stateProvince="Massachusetts")[[2]]
-}
-dat <- rbindlist(dat.l,fill=T)
-head(dat)
-
-saveRDS(data,"massbird.data.RDS")
-library(tidyverse)
+dat <- readRDS("massbird.data.RDS")
 ```
+
 ```{r,echo=FALSE,message=FALSE, warning=FALSE}
 dat%>%
   group_by(year,species)%>%
@@ -188,7 +175,9 @@ mc.arr.aic <- dredge(mc.lmer2)
 mc.kb <- knitr::kable(mc.arr.aic[1:3,],caption = "Fit values for nested models of the lme model")
 kable_styling(mc.kb)
 ```
+
 ##Results
+
 Anova tests on one-day data, vs the two week mean data reveal that the two week mean data demonstrates a significant fixed effect of mass and wind vector. Further, the dredge table shows how a wind:mass model has an AICc value of 2202.674, as opposed to the AICc value of 2206.764 for a model relying solely on wind vector. The slope of the day of arrival vs mass model is -0.0008587, whereas the slope of the arrival day vs wind vector is 0.0010622.
 ```{r,echo=FALSE, include=FALSE, message=FALSE, warning=FALSE}
 best.lmer <-  lmer(j.day~mass+wk.wvec+(1|name),mc.arr.weath2,na.action = "na.fail")
@@ -197,7 +186,8 @@ Anova(best.lmer)
 ```
 
 ## Discussion
-The question we asked at the start of the process was whether wind vector that we would calculate based off of wind speed and the angle of the wind, and also the mass of the bird species would affect their arrival time. Through our experiment we proved that between the modeling including our calculated wind vectors a single variable and our wind vector and mass as covariates, the second model including the wind vector and mass proved to be a more accurate and statistically significant model. This connects to previous studies done in the same field as we also look at how exactly does wind and mass affect migratory bird flight, as we now have proven that wind and mass both have an effect on a migratory bird's travel. First looking at the mass's effect on migratory bird travel, we find that about 89.9% of variation in arrival time, and in a larger sense, migration pattern of different species of birds, is explained by mass, and phenology that is essentially connected to mass (@horton2019scaling). We also find in our data how largely mass affects the variation of the models through us observing the difference in statistical significance of models including single wind vector variable or wind vector and mass covariate. Additionally, looking at the comparison of the simple modeling of arrival time and  
+
+The question we asked at the start of the process was whether wind vector that we would calculate based off of wind speed and the angle of the wind, and also the mass of the bird species would affect their arrival time. Through our experiment we proved that between the modeling including our calculated wind vectors a single variable and our wind vector and mass as covariates, the second model including the wind vector and mass proved to be a more accurate and statistically significant model. This connects to previous studies done in the same field as we also look at how exactly does wind and mass affect migratory bird flight, as we now have proven that wind and mass both have an effect on a migratory bird's travel. First looking at the mass's effect on migratory bird travel, we find that about 89.9% of variation in arrival time, and in a larger sense, migration pattern of different species of birds, is explained by mass, and phenology that is essentially connected to mass (@horton2019holding). We also find in our data how largely mass affects the variation of the models through us observing the difference in statistical significance of models including single wind vector variable or wind vector and mass covariate. Additionally, looking at the comparison of the simple modeling of arrival time and our model including the wind vector, we see that the model recognizing the calculated wind vector is more statistically significant and does explain partially variation between arrival dates of species. Study shows that birds learned how to take advantage of the wind in their flight condition and to change and vary their flight patterns based on the wind condition at the time of which they migrate back to the US (@alerstam2011optimal). This explains how wind also affects arrival time variation, as different days provide varying wind speed or direction, which were the two variables from which we calculated our wind vector, which explains their affect on arrival date. Holistically our result connect to previous studies in the explanation of the effect mass and wind condition/vector has to arrival dates of different species of migratory birds when they migrate back to the US. 
 
 ## Author Contributions
 
