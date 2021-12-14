@@ -59,7 +59,22 @@ Overall, answering these questions will not only provide a better understanding 
 We decided to study 10 species of birds with varied in size and mass; "Archilochus colubris, Buteo platyperus, catharus ustulatus, Coccyzus erythrophtalmus, Contopus virens, Myiarchus crinitus, Parkesia noveboracensis, Piranga olivacea, Sphyrapicus varius, and Vermivora cyanoptera*. The occurrence data was constrained by species, occurrence within year, our chosen year and month range, occurrence in the U.S and Massachusetts, and so that we only had human observations.We used TGM’s to look at weather along the migration route, and used locations that represented logical sampling locations for the weather data, In Mobile, AL, Boston, MA, and Charlotte, NC. For the data analysis, we computed arrival time for each species by finding the day that corresponded to when 25% of the individuals arrived in a given year. We mutated the weather data to be according to Julian day, and scaled the wind direction to 200 degrees and multiplied by velocity in order to standardize the optimal wind direction. We also multiplied the vector by -1 so that the vector, if negative represents head wind, and if positive represents tailwind. We then joined the bird and weather data with the maximum average masses of the species for data analysis. We used data analysis to answer the question “Does mass of the bird predict arrival time (depending on weather along the migration route)?” Since we had parameters that we saw as important or explanatory, that could contribute to a slope and intercept of the model, we utilized linear mixed effect modeling, where location was specified as a random effect and the fixed effects were wind and mass. We used the dredge function to decompose the models to all the combinations of the terms, including interactions, and to report model fit values (AICc,Δ AIC, and AICw).
 
 ```{r,echo=FALSE, include=FALSE, message=FALSE, warning=FALSE}
-dat <- readRDS("massbird.data.RDS")
+species <- c("Sphyrapicus varius","Archilochus colubris","Vermivora cyanoptera","Parkesia noveboracensis","Buteo platypterus","Contopus virens","Coccyzus erythropthalmus","Myiarchus crinitus","Catharus ustulatus","Piranga olivacea")
+y <- paste0("1990",",","2019")
+m <- paste0("3",",","6")
+
+dat.l <-list()
+for(s in species){
+  n.obs <-  occ_data(scientificName=s,year=y,month=m,limit=0,country="US",basisOfRecord = "HUMAN_OBSERVATION",stateProvince="Massachusetts")$meta$count 
+  print(n.obs)
+  
+  dat.l[[paste0(s)]] <- occ_data(scientificName = s,year=y,month=m,
+        limit=n.obs,country="US",
+        basisOfRecord = "HUMAN_OBSERVATION",
+        stateProvince="Massachusetts")[[2]]
+}
+dat <- rbindlist(dat.l,fill=T)
+head(dat)
 ```
 
 ```{r,echo=FALSE,message=FALSE, warning=FALSE}
