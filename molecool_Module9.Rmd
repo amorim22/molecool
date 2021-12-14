@@ -22,6 +22,16 @@ library(caper)
 library(phytools)
 library(viridis)
 library(MuMIn)
+library(rgbif)
+library(MuMIn)
+library(rnoaa)
+library(ggmap)
+library(usmap)
+library(magick)#for examples
+library(cowplot)#for examples
+library(lme4) #for linear mixed effect models
+library(car) #for LME anova testing
+library(data.table) #
 ```
 ## Introduction
 
@@ -57,9 +67,9 @@ for(s in species){
   print(n.obs)
   
   dat.l[[paste0(s)]] <- occ_data(scientificName = s,year=y,month=m,
-        limit=n.obs,country="US",
-        basisOfRecord = "HUMAN_OBSERVATION",
-        stateProvince="Massachusetts")[[2]]
+                        limit=n.obs,country="US",
+                        basisOfRecord = "HUMAN_OBSERVATION",
+                        stateProvince="Massachusetts")[[2]]
 }
 dat <- rbindlist(dat.l,fill=T)
 head(dat)
